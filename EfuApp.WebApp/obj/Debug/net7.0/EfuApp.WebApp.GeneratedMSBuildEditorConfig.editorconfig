@@ -46,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDb3Vyc2VMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/EditCourse.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xFZGl0Q291cnNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

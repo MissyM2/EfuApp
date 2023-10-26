@@ -16,6 +16,8 @@ builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
 
 builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCase>();
 builder.Services.AddTransient<IAddCourseUseCase, AddCourseUseCase>();
+builder.Services.AddTransient<IEditCourseUseCase, EditCourseUseCase>();
+builder.Services.AddTransient<IViewCourseByIdUseCase, ViewCourseByIdUseCase>();
 
 var app = builder.Build();
 

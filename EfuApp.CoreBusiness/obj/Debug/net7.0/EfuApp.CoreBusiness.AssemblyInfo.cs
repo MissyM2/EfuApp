@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EfuApp.CoreBusiness")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e07a90a22d781ebbb0acd9edd429122acabc89a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85bd2ded720ee1eeecfa368d332cafdb0b1a9fc0")]
 [assembly: System.Reflection.AssemblyProductAttribute("EfuApp.CoreBusiness")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EfuApp.CoreBusiness")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

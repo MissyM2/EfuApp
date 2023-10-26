@@ -37,4 +37,35 @@ public class CourseRepository : ICourseRepository
 
         return Task.CompletedTask;
     }
+
+     public async Task<Course> GetCourseByIdAsync(int courseId)
+    {
+        var c = _courses.First(x => x.CourseId == courseId);
+        var newCourse = new Course
+        {
+            CourseId = c.CourseId,
+            CourseName = c.CourseName,
+            CourseDesc = c.CourseDesc
+        };
+
+        return await Task.FromResult(newCourse);
+    }
+
+     public Task UpdateCourseAsync(Course course)
+        {
+
+            // we are not allowing two different courses to have the same name, so we have to check to make sure
+            if (_courses.Any(x => x.CourseId != course.CourseId &&
+                x.CourseName.Equals(course.CourseName, StringComparison.OrdinalIgnoreCase)))
+                return Task.CompletedTask;
+
+            var crs = _courses.FirstOrDefault(x => x.CourseId == course.CourseId);
+            if (crs != null)
+            {
+                crs.CourseName = course.CourseName;
+                crs.CourseDesc = course.CourseDesc;
+            }
+
+            return Task.CompletedTask;
+        }
 }
