@@ -1,9 +1,23 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
 
-<h1>Hello, world!</h1>
+<PageTitle>Test Page</PageTitle>
+<br />
+<ul>
+    @foreach(var c in _courses)
+    {
+        <li>
+            @c.CourseName
+        </li>
+    }
+</ul>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+    private List<Course> _courses = new List<Course>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _courses = (await ViewCoursesByNameUseCase.ExecuteAsync()).ToList();
+    }
+}

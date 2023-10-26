@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using EfuApp.WebApp.Data;
+using EfuApp.Plugins.InMemory;
+using EfuApp.UseCases.Courses;
+using EfuApp.UseCases.PluginInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
+
+builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCase>();
 
 var app = builder.Build();
 

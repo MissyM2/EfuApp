@@ -1,0 +1,31 @@
+﻿@page "/courses"
+
+@inject NavigationManager NavManager
+
+
+<h3>Course List</h3>
+<br />
+
+<SearchCourseListComponent OnSearchCourseList="OnCourseListSearch"></SearchCourseListComponent>
+<br />
+<CourseListComponent SearchTerm="@searchTerm"></CourseListComponent>
+<br />
+Add button here
+@* <button type="button"
+        class="btn btn-primary"
+        @onclick="AddCourse">Add Course</button> *@
+
+@code {
+    private string searchTerm = string.Empty;
+
+    private void OnCourseListSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+    private void AddCourse()
+    {
+        NavManager.NavigateTo("/addcourse");
+    }
+
+}

@@ -1,0 +1,12 @@
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\bin\Debug\net7.0\EfuApp.CoreBusiness.deps.json
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\bin\Debug\net7.0\EfuApp.CoreBusiness.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\bin\Debug\net7.0\EfuApp.CoreBusiness.pdb
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\EfuApp.CoreBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\EfuApp.CoreBusiness.AssemblyInfoInputs.cache
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\EfuApp.CoreBusiness.AssemblyInfo.cs
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\EfuApp.CoreBusiness.csproj.CoreCompileInputs.cache
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\EfuApp.CoreBusiness.sourcelink.json
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\EfuApp.CoreBusiness.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\refint\EfuApp.CoreBusiness.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\EfuApp.CoreBusiness.pdb
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.CoreBusiness\obj\Debug\net7.0\ref\EfuApp.CoreBusiness.dll

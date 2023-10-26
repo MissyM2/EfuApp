@@ -1,5 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <ItemGroup>
+    <ProjectReference Include="..\EfuApp.UseCases\EfuApp.UseCases.csproj" />
+    <ProjectReference Include="..\EfuApp.Plugins\EfuApp.Plugins.InMemory\EfuApp.Plugins.InMemory.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>

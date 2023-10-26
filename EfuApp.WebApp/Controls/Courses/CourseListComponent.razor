@@ -1,0 +1,27 @@
+﻿@inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <CourseListItemComponent Courses="listCourses"></CourseListItemComponent>
+    </tbody>
+</table>
+
+@code {
+    private List<Course> listCourses = new List<Course>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync(this.SearchTerm)).ToList();
+    }
+
+
+}

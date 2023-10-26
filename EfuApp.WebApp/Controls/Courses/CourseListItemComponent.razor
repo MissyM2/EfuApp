@@ -1,0 +1,31 @@
+﻿@inject NavigationManager NavManager
+
+@if (Courses != null && Courses.Count > 0)
+{
+    foreach (var c in Courses)
+    {
+        <tr>
+            <td>@c.CourseName</td>
+            <td>@c.CourseDesc</td>
+            <td>Button Here
+                @* <button type="button"
+                        class="btn btn-light"
+                        @onclick="@(() => EditCourse(c.CourseId))">Edit</button>" *@
+            </td>
+        </tr>
+    }
+   
+
+}
+
+
+@code {
+    [Parameter]
+    public List<Course> Courses { get; set; } = new List<Course>();
+
+    @* private void EditCourse(int courseId)
+    {
+        NavManager.NavigateTo($"/editcourse/{courseId}");
+    } *@
+
+}

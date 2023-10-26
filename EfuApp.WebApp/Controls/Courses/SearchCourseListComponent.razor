@@ -1,0 +1,22 @@
+﻿<div class="input group">
+    <input type="text"
+            class="form-control"
+            placeholder="Type course name here to search"
+            @bind-value="courseNameToSearch" />
+    <button type="button"
+            class="btn-success input-group-text"
+            @onclick="OnSearch">Search</button>
+</div>
+
+@code {
+    private string courseNameToSearch = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> OnSearchCourseList { get; set; }
+
+    public void OnSearch()
+    {
+        OnSearchCourseList.InvokeAsync(courseNameToSearch);
+    }
+
+}
