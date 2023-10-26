@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EfuApp.Plugins.InMemory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+838771fcd4ce59335f881a6b3efd6356a814065f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e07a90a22d781ebbb0acd9edd429122acabc89a")]
 [assembly: System.Reflection.AssemblyProductAttribute("EfuApp.Plugins.InMemory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EfuApp.Plugins.InMemory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

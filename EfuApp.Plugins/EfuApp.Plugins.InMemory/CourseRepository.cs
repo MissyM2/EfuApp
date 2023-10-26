@@ -24,4 +24,17 @@ public class CourseRepository : ICourseRepository
 
         return _courses.Where(x => x.CourseName.Contains(name, StringComparison.OrdinalIgnoreCase));
     }
+
+    public Task AddCourseAsync(Course course)
+    {
+        if (_courses.Any(x => x.CourseName.Equals(course.CourseName, StringComparison.OrdinalIgnoreCase)))
+            return Task.CompletedTask;
+        
+        var maxId = _courses.Max(x => x.CourseId);
+        course.CourseId = maxId + 1;
+
+        _courses.Add(course);
+
+        return Task.CompletedTask;
+    }
 }

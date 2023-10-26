@@ -1,0 +1,47 @@
+﻿@page "/addcourse"
+
+@inject NavigationManager NavManager
+@inject IAddCourseUseCase AddCourseUseCase
+
+
+<h3>Add Course</h3>
+<br />
+<EditForm Model="course" OnValidSubmit="SaveCourse">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Course Name</label>
+        <InputText id="name"
+                   @bind-Value="course.CourseName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Course Description</label>
+        <InputText id="name"
+                   @bind-Value="course.CourseDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@code {
+    private Course course = new Course();
+
+    private async Task SaveCourse()
+    {
+        await AddCourseUseCase.ExecuteAsync(course);
+        NavManager.NavigateTo("/courses");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/courses");
+    }
+}

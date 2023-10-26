@@ -15,6 +15,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
 
 builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCase>();
+builder.Services.AddTransient<IAddCourseUseCase, AddCourseUseCase>();
 
 var app = builder.Build();
 
