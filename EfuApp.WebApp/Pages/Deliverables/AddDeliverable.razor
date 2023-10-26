@@ -1,0 +1,47 @@
+﻿@page "/adddeliverable"
+
+@inject NavigationManager NavManager
+@inject IAddDeliverableUseCase AddDeliverableUseCase
+
+
+<h3>Add Deliverable</h3>
+<br />
+<EditForm Model="deliverable" OnValidSubmit="SaveDeliverable">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Deliverable Name</label>
+        <InputText id="name"
+                   @bind-Value="deliverable.DeliverableName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Deliverable Description</label>
+        <InputText id="name"
+                   @bind-Value="deliverable.DeliverableDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@code {
+    private Deliverable deliverable = new Deliverable();
+
+    private async Task SaveDeliverable()
+    {
+        await AddDeliverableUseCase.ExecuteAsync(deliverable);
+        NavManager.NavigateTo("/deliverables");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/deliverables");
+    }
+}

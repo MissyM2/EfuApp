@@ -1,0 +1,22 @@
+﻿<div class="input group">
+    <input type="text"
+            class="form-control"
+            placeholder="Type deliverable name here to search"
+            @bind-value="deliverableNameToSearch" />
+    <button type="button"
+            class="btn-success input-group-text"
+            @onclick="OnSearch">Search</button>
+</div>
+
+@code {
+    private string deliverableNameToSearch = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> OnSearchDeliverableList { get; set; }
+
+    public void OnSearch()
+    {
+        OnSearchDeliverableList.InvokeAsync(deliverableNameToSearch);
+    }
+
+}

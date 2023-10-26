@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj": {}
+    "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj": {}
   },
   "projects": {
     "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.CoreBusiness\\EfuApp.CoreBusiness.csproj": {
@@ -78,14 +78,14 @@
         }
       }
     },
-    "c:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj": {
+    "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj",
+        "projectUniqueName": "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj",
         "projectName": "EfuApp.Plugins.InMemory",
-        "projectPath": "c:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj",
+        "projectPath": "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\EfuApp.Plugins.InMemory.csproj",
         "packagesPath": "C:\\Users\\maloney_f\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\obj\\",
+        "outputPath": "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.InMemory\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -4,6 +4,8 @@ using EfuApp.WebApp.Data;
 using EfuApp.Plugins.InMemory;
 using EfuApp.UseCases.Courses;
 using EfuApp.UseCases.PluginInterfaces;
+using EfuApp.UseCases;
+using EfuApp.UseCases.Deliverables;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,11 +15,18 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
+builder.Services.AddSingleton<IDeliverableRepository, DeliverableRepository>();
 
 builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCase>();
 builder.Services.AddTransient<IAddCourseUseCase, AddCourseUseCase>();
 builder.Services.AddTransient<IEditCourseUseCase, EditCourseUseCase>();
 builder.Services.AddTransient<IViewCourseByIdUseCase, ViewCourseByIdUseCase>();
+
+builder.Services.AddTransient<IViewDeliverablesByNameUseCase, ViewDeliverablesByNameUseCase>();
+builder.Services.AddTransient<IAddDeliverableUseCase, AddDeliverableUseCase>();
+builder.Services.AddTransient<IEditDeliverableUseCase, EditDeliverableUseCase>();
+builder.Services.AddTransient<IViewDeliverableByIdUseCase, ViewDeliverableByIdUseCase>();
+builder.Services.AddTransient<IViewDeliverablesByDateUseCase, ViewDeliverablesByDateUseCase>();
 
 var app = builder.Build();
 

@@ -1,0 +1,61 @@
+﻿@page "/editdeliverable/{DelId:int}"
+
+@inject NavigationManager NavManager
+@inject IViewDeliverableByIdUseCase ViewDeliverableByIdUseCase
+@inject IEditDeliverableUseCase EditDeliverableUseCase
+
+@attribute [Authorize(Policy = "Deliverable")]
+
+<h3>EditDeliverable</h3>
+
+<EditForm Model="deliverable" OnValidSubmit="SaveDeliverable">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Deliverable Name</label>
+        <InputText id="name"
+        @bind-Value="deliverable.DeliverableName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Deliverable Description</label>
+        <InputText id="name"
+        @bind-Value="deliverable.DeliverableDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+
+
+
+@code {
+    [Parameter]
+    public int DelId { get; set; }
+
+    private Deliverable deliverable = new Deliverable();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        this.deliverable = await ViewDeliverableByIdUseCase.ExecuteAsync(this.DelId);
+    }
+
+    private async Task SaveDeliverable()
+    {
+        await EditDeliverableUseCase.ExecuteAsync(this.deliverable);
+        NavManager.NavigateTo("/deliverables");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/deliverables");
+    }
+
+}

@@ -1,0 +1,29 @@
+﻿@inject IViewDeliverablesByNameUseCase ViewDeliverablesByNameUseCase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Assignment Date</th>
+            <th>Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <DeliverableListItemComponent Deliverables="listDeliverables"></DeliverableListItemComponent>
+    </tbody>
+</table>
+
+@code {
+    private List<Deliverable> listDeliverables = new List<Deliverable>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        listDeliverables = (await ViewDeliverablesByNameUseCase.ExecuteAsync(this.SearchTerm)).ToList();
+    }
+
+
+}

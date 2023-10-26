@@ -34,6 +34,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ291cnNlc1xTZWFyY2hDb3Vyc2VMaXN0Q29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Controls/Deliverables/DeliverableListComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRGVsaXZlcmFibGVzXERlbGl2ZXJhYmxlTGlzdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Controls/Deliverables/DeliverableListItemComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRGVsaXZlcmFibGVzXERlbGl2ZXJhYmxlTGlzdEl0ZW1Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Controls/Deliverables/SearchDeliverableListComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRGVsaXZlcmFibGVzXFNlYXJjaERlbGl2ZXJhYmxlTGlzdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +60,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/EditCourse.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xFZGl0Q291cnNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/AddDeliverable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXEFkZERlbGl2ZXJhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/DeliverableList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXERlbGl2ZXJhYmxlTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/EditDeliverable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXEVkaXREZWxpdmVyYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/FetchData.razor]

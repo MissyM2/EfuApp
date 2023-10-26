@@ -1,0 +1,31 @@
+﻿@page "/deliverables"
+
+@inject NavigationManager NavManager
+
+
+<h3>Deliverable List</h3>
+<br />
+
+<SearchDeliverableListComponent OnSearchDeliverableList="OnDeliverableListSearch"></SearchDeliverableListComponent>
+<br />
+<DeliverableListComponent SearchTerm="@searchTerm"></DeliverableListComponent>
+<br />
+
+<button type="button"
+        class="btn btn-primary"
+        @onclick="AddDeliverable">Add Deliverable</button>
+
+@code {
+    private string searchTerm = string.Empty;
+
+    private void OnDeliverableListSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+    private void AddDeliverable()
+    {
+        NavManager.NavigateTo("/adddeliverable");
+    }
+
+}

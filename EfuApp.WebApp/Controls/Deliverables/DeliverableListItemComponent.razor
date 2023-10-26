@@ -1,0 +1,33 @@
+﻿@inject NavigationManager NavManager
+
+@if (Deliverables != null && Deliverables.Count > 0)
+{
+    foreach (var c in Deliverables)
+    {
+        <tr>
+            <td>@c.DeliverableName</td>
+            <td>@c.DeliverableDesc</td>
+            <td>@c.AssignmentDate</td>
+            <td>@c.DueDate</td>
+            <td>
+                <button type="button"
+                        class="btn btn-light"
+                        @onclick="@(() => EditDeliverable(c.DeliverableId))">Edit</button>
+            </td>
+        </tr>
+    }
+   
+
+}
+
+
+@code {
+    [Parameter]
+    public List<Deliverable> Deliverables { get; set; } = new List<Deliverable>();
+
+    private void EditDeliverable(int deliverableId)
+    {
+        NavManager.NavigateTo($"/editdeliverable/{deliverableId}");
+    }
+
+}
