@@ -1,5 +1,22 @@
-﻿<h3>SearchTermListComponent</h3>
+﻿<div class="input group">
+    <input type="text"
+            class="form-control"
+            placeholder="Type term name here to search"
+            @bind-value="termNameToSearch" />
+    <button type="button"
+            class="btn-success input-group-text"
+            @onclick="OnSearch">Search</button>
+</div>
 
 @code {
+    private string termNameToSearch = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> OnSearchTermList { get; set; }
+
+    public void OnSearch()
+    {
+        OnSearchTermList.InvokeAsync(termNameToSearch);
+    }
 
 }

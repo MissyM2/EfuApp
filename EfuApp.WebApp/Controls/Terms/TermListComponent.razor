@@ -1,5 +1,27 @@
-﻿<h3>TermListComponent</h3>
+﻿@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <TermListItemComponent Terms="listTerms"></TermListItemComponent>
+    </tbody>
+</table>
 
 @code {
+    private List<Term> listTerms = new List<Term>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync(this.SearchTerm)).ToList();
+    }
+
 
 }

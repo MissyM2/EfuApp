@@ -2,8 +2,44 @@
 @inject NavigationManager NavManager
 @inject IAddWeekUseCase AddWeekUseCase
 
-<h3>AddWeek</h3>
+<h3>Add Week</h3>
+<br />
+<EditForm Model="week" OnValidSubmit="SaveWeek">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Week Name</label>
+        <InputText id="name"
+                   @bind-Value="week.WeekName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Week Description</label>
+        <InputText id="name"
+                   @bind-Value="week.WeekDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
 
 @code {
+    private Week week = new Week();
 
+    private async Task SaveWeek()
+    {
+        await AddWeekUseCase.ExecuteAsync(week);
+        NavManager.NavigateTo("/weeks");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/weeks");
+    }
 }

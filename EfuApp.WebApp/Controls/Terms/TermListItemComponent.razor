@@ -1,5 +1,31 @@
-﻿<h3>TermListItemComponent</h3>
+﻿@inject NavigationManager NavManager
+
+@if (Terms != null && Terms.Count > 0)
+{
+    foreach (var c in Terms)
+    {
+        <tr>
+            <td>@c.TermName</td>
+            <td>@c.TermDesc</td>
+            <td>
+                <button type="button"
+                        class="btn btn-light"
+                        @onclick="@(() => EditTerm(c.TermId))">Edit</button>
+            </td>
+        </tr>
+    }
+   
+
+}
+
 
 @code {
+    [Parameter]
+    public List<Term> Terms { get; set; } = new List<Term>();
+
+    private void EditTerm(int termId)
+    {
+        NavManager.NavigateTo($"/editterm/{termId}");
+    }
 
 }

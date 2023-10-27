@@ -2,8 +2,30 @@
 
 @inject NavigationManager NavManager
 
-<h3>TermList</h3>
+<h3>Term List</h3>
+<br />
+
+<SearchTermListComponent OnSearchTermList="OnTermListSearch"></SearchTermListComponent>
+<br />
+<TermListComponent SearchTerm="@searchTerm"></TermListComponent>
+<br />
+
+<button type="button"
+        class="btn btn-primary"
+        @onclick="AddTerm">Add Term</button>
 
 @code {
+    private string searchTerm = string.Empty;
+
+    private void OnTermListSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+    private void AddTerm()
+    {
+        NavManager.NavigateTo("/addterm");
+    }
 
 }
+

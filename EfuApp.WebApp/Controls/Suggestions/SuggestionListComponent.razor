@@ -1,5 +1,28 @@
-﻿<h3>SuggestionListComponent</h3>
+﻿@inject IViewSuggestionsByNameUseCase ViewSuggestionsByNameUseCase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <SuggestionListItemComponent Suggestions="listSuggestions"></SuggestionListItemComponent>
+    </tbody>
+</table>
 
 @code {
+    private List<Suggestion> listSuggestions = new List<Suggestion>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        listSuggestions = (await ViewSuggestionsByNameUseCase.ExecuteAsync(this.SearchTerm)).ToList();
+    }
+
 
 }
+

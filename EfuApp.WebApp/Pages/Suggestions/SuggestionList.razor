@@ -2,8 +2,29 @@
 
 @inject NavigationManager NavManager
 
-<h3>SuggestionList</h3>
+<h3>Suggestion List</h3>
+<br />
+
+<SearchSuggestionListComponent OnSearchSuggestionList="OnSuggestionListSearch"></SearchSuggestionListComponent>
+<br />
+<SuggestionListComponent SearchTerm="@searchTerm"></SuggestionListComponent>
+<br />
+
+<button type="button"
+        class="btn btn-primary"
+        @onclick="AddSuggestion">Add Suggestion</button>
 
 @code {
+    private string searchTerm = string.Empty;
+
+    private void OnSuggestionListSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+    private void AddSuggestion()
+    {
+        NavManager.NavigateTo("/addsuggestion");
+    }
 
 }

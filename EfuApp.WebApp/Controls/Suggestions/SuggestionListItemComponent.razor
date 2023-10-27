@@ -1,5 +1,31 @@
-﻿<h3>SuggestionListItemComponent</h3>
+﻿@inject NavigationManager NavManager
+
+@if (Suggestions != null && Suggestions.Count > 0)
+{
+    foreach (var c in Suggestions)
+    {
+        <tr>
+            <td>@c.SuggestionName</td>
+            <td>@c.SuggestionDesc</td>
+            <td>
+                <button type="button"
+                        class="btn btn-light"
+                        @onclick="@(() => EditSuggestion(c.SuggestionId))">Edit</button>
+            </td>
+        </tr>
+    }
+   
+
+}
+
 
 @code {
+    [Parameter]
+    public List<Suggestion> Suggestions { get; set; } = new List<Suggestion>();
+
+    private void EditSuggestion(int suggestionId)
+    {
+        NavManager.NavigateTo($"/editsuggestion/{suggestionId}");
+    }
 
 }

@@ -1,4 +1,4 @@
-﻿@page "/editWeek/{SugId:int}"
+﻿@page "/editWeek/{WkId:int}"
 
 @inject NavigationManager NavManager
 @inject IViewWeekByIdUseCase ViewWeekByIdUseCase
@@ -6,6 +6,54 @@
 
 <h3>EditWeek</h3>
 
+<EditForm Model="week" OnValidSubmit="SaveWeek">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Week Name</label>
+        <InputText id="name"
+        @bind-Value="week.WeekName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Week Description</label>
+        <InputText id="name"
+        @bind-Value="week.WeekDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+
+
+
 @code {
+    [Parameter]
+    public int WkId { get; set; }
+
+    private Week week = new Week();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        this.week = await ViewWeekByIdUseCase.ExecuteAsync(this.WkId);
+    }
+
+    private async Task SaveWeek()
+    {
+        await EditWeekUseCase.ExecuteAsync(this.week);
+        NavManager.NavigateTo("/weeks");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/weeks");
+    }
 
 }

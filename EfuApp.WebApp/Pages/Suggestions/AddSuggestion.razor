@@ -3,8 +3,44 @@
 @inject NavigationManager NavManager
 @inject IAddSuggestionUseCase AddSuggestionUseCase
 
-<h3>AddSuggestion</h3>
+<h3>Add Suggestion</h3>
+<br />
+<EditForm Model="suggestion" OnValidSubmit="SaveSuggestion">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Suggestion Name</label>
+        <InputText id="name"
+                   @bind-Value="suggestion.SuggestionName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Suggestion Description</label>
+        <InputText id="name"
+                   @bind-Value="suggestion.SuggestionDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
 
 @code {
+    private Suggestion suggestion = new Suggestion();
 
+    private async Task SaveSuggestion()
+    {
+        await AddSuggestionUseCase.ExecuteAsync(suggestion);
+        NavManager.NavigateTo("/suggestions");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/suggestions");
+    }
 }

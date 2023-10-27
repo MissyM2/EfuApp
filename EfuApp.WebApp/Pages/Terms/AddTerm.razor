@@ -3,8 +3,44 @@
 @inject NavigationManager NavManager
 @inject IAddTermUseCase AddTermUseCase
 
-<h3>AddTerm</h3>
+<h3>Add Term</h3>
+<br />
+<EditForm Model="term" OnValidSubmit="SaveTerm">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Term Name</label>
+        <InputText id="name"
+                   @bind-Value="term.TermName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Term Description</label>
+        <InputText id="name"
+                   @bind-Value="term.TermDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
 
 @code {
+    private Term term = new Term();
 
+    private async Task SaveTerm()
+    {
+        await AddTermUseCase.ExecuteAsync(term);
+        NavManager.NavigateTo("/terms");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/terms");
+    }
 }

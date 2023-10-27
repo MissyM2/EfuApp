@@ -1,5 +1,27 @@
-﻿<h3>WeekListComponent</h3>
+﻿@inject IViewWeeksByNameUseCase ViewWeeksByNameUseCase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <WeekListItemComponent Weeks="listWeeks"></WeekListItemComponent>
+    </tbody>
+</table>
 
 @code {
+    private List<Week> listWeeks = new List<Week>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        listWeeks = (await ViewWeeksByNameUseCase.ExecuteAsync(this.SearchTerm)).ToList();
+    }
+
 
 }

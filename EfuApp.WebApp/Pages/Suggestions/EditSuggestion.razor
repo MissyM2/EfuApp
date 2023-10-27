@@ -4,8 +4,56 @@
 @inject IViewSuggestionByIdUseCase ViewSuggestionByIdUseCase
 @inject IEditSuggestionUseCase EditSuggestionUseCase
 
-<h3>EditSuggestion</h3>
+<h3>Edit Suggestion</h3>
+
+<EditForm Model="suggestion" OnValidSubmit="SaveSuggestion">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="name">Suggestion Name</label>
+        <InputText id="name"
+        @bind-Value="suggestion.SuggestionName"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Suggestion Description</label>
+        <InputText id="name"
+        @bind-Value="suggestion.SuggestionDesc"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+
+
 
 @code {
+    [Parameter]
+    public int SugId { get; set; }
+
+    private Suggestion suggestion = new Suggestion();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        this.suggestion = await ViewSuggestionByIdUseCase.ExecuteAsync(this.SugId);
+    }
+
+    private async Task SaveSuggestion()
+    {
+        await EditSuggestionUseCase.ExecuteAsync(this.suggestion);
+        NavManager.NavigateTo("/suggestions");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/suggestions");
+    }
 
 }

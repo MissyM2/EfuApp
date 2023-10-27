@@ -2,8 +2,30 @@
 
 @inject NavigationManager NavManager
 
-<h3>WeekList</h3>
+<h3>Week List</h3>
+<br />
+
+<SearchWeekListComponent OnSearchWeekList="OnWeekListSearch"></SearchWeekListComponent>
+<br />
+<WeekListComponent SearchTerm="@searchTerm"></WeekListComponent>
+<br />
+
+<button type="button"
+        class="btn btn-primary"
+        @onclick="AddWeek">Add Week</button>
 
 @code {
+    private string searchTerm = string.Empty;
+
+    private void OnWeekListSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+    private void AddWeek()
+    {
+        NavManager.NavigateTo("/addweek");
+    }
 
 }
+

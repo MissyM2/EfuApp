@@ -1,5 +1,22 @@
-﻿<h3>SearchSuggestionListComponent</h3>
+﻿<div class="input group">
+    <input type="text"
+            class="form-control"
+            placeholder="Type suggestion name here to search"
+            @bind-value="suggestionNameToSearch" />
+    <button type="button"
+            class="btn-success input-group-text"
+            @onclick="OnSearch">Search</button>
+</div>
 
 @code {
+    private string suggestionNameToSearch = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> OnSearchSuggestionList { get; set; }
+
+    public void OnSearch()
+    {
+        OnSearchSuggestionList.InvokeAsync(suggestionNameToSearch);
+    }
 
 }
