@@ -1,6 +1,9 @@
-﻿namespace EfuApp.UseCases.Suggestions;
+﻿using EfuApp.CoreBusiness;
+
+namespace EfuApp.UseCases.Suggestions;
 
 public interface IAddSuggestionUseCase
 {
+    Task ExecuteAsync(Suggestion suggestion);
 
 }

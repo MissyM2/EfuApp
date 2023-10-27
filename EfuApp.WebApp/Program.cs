@@ -19,6 +19,9 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
 builder.Services.AddSingleton<IDeliverableRepository, DeliverableRepository>();
+builder.Services.AddSingleton<ISuggestionRepository, SuggestionRepository>();
+builder.Services.AddSingleton<ITermRepository, TermRepository>();
+builder.Services.AddSingleton<IWeekRepository, WeekRepository>();
 
 builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCase>();
 builder.Services.AddTransient<IAddCourseUseCase, AddCourseUseCase>();
