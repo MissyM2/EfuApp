@@ -19,5 +19,5 @@ public class Course
 
     
 
-    //public List<Deliverable> Deliverables { get; set; } = new List<Deliverable>();
+    public List<Deliverable> Deliverables { get; set; } = new List<Deliverable>();
 }

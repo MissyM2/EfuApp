@@ -12,8 +12,11 @@ public class Deliverable
 
     public string DeliverableDesc { get; set; } = string.Empty;
 
-    public DateTime AssignmentDate {get; set;}
+    public DateTime AssignmentDate { get; set;}
 
-    public DateTime DueDate {get; set;}
+    public DateTime DueDate { get; set;}
+
+    public int CourseId { get; set; }
+    public virtual Course Course { get; set; } = new Course();
 
 }

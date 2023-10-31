@@ -3,6 +3,7 @@
 @inject NavigationManager NavManager
 @inject IViewWeekByIdUseCase ViewWeekByIdUseCase
 @inject IEditWeekUseCase EditWeekUseCase
+@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
 
 <h3>EditWeek</h3>
 
@@ -26,6 +27,17 @@
         </InputText>
     </div>
 
+    <div class="form-group">
+        <label for="term">Term</label>
+        <InputSelect @bind-Value="week.TermId" class="form-select" id="term">
+            <option value="">-- Select Term --</option>
+            @foreach (var trm in listTerms)
+            {
+                <option value="@trm.TermId">@trm.TermName</option>
+            }
+        </InputSelect>
+    </div>
+
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
@@ -39,6 +51,12 @@
     public int WkId { get; set; }
 
     private Week week = new Week();
+    private List<Term> listTerms = new List<Term>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
+    }
 
     protected override async Task OnParametersSetAsync()
     {

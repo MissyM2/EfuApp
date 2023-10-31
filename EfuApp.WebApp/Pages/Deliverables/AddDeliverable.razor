@@ -2,6 +2,7 @@
 
 @inject NavigationManager NavManager
 @inject IAddDeliverableUseCase AddDeliverableUseCase
+@inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
 
 
 <h3>Add Deliverable</h3>
@@ -25,6 +26,16 @@
                    class="form-control">
         </InputText>
     </div>
+    <div class="form-group">
+        <label for="course">Course</label>
+        <InputSelect @bind-Value="deliverable.CourseId" class="form-select" id="course">
+            <option value="">-- Select Course --</option>
+            @foreach (var crs in listCourses)
+            {
+                <option value="@crs.CourseId">@crs.CourseName</option>
+            }
+        </InputSelect>
+    </div>
 
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
@@ -33,6 +44,12 @@
 
 @code {
     private Deliverable deliverable = new Deliverable();
+    private List<Course> listCourses = new List<Course>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
+    }
 
     private async Task SaveDeliverable()
     {

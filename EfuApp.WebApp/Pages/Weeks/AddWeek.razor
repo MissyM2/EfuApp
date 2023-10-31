@@ -1,6 +1,7 @@
 ﻿@page "/addweek"
 @inject NavigationManager NavManager
 @inject IAddWeekUseCase AddWeekUseCase
+@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
 
 <h3>Add Week</h3>
 <br />
@@ -24,6 +25,18 @@
         </InputText>
     </div>
 
+    <div class="form-group">
+        <label for="term">Term</label>
+        <InputSelect @bind-Value="week.TermId" class="form-select" id="term">
+            <option value="">-- Select Term --</option>
+            @foreach (var trm in listTerms)
+            {
+                <option value="@trm.TermId">@trm.TermName</option>
+            }
+        </InputSelect>
+    </div>
+
+
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
@@ -31,6 +44,12 @@
 
 @code {
     private Week week = new Week();
+    private List<Term> listTerms = new List<Term>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
+    }
 
     private async Task SaveWeek()
     {

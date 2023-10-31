@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "/OuBi0W9eFK7Sy6HbxAcdTMB/t0wIYpJ6RLatTdJ364i+Srv9oVmiOV+H71zypUni3k7D213NfYCwQAvV6Fuag==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.Plugins\\EfuApp.Plugins.Sqlite\\EfuApp.Plugins.Sqlite.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\maloney_f\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.1.6\\sqlitepclraw.bundle_green.2.1.6.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.6\\sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.12\\microsoft.netcore.app.ref.7.0.12.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.12\\microsoft.windowsdesktop.app.ref.7.0.12.nupkg.sha512",
+    "C:\\Users\\maloney_f\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.12\\microsoft.aspnetcore.app.ref.7.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

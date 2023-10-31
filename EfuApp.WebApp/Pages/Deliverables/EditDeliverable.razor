@@ -3,8 +3,7 @@
 @inject NavigationManager NavManager
 @inject IViewDeliverableByIdUseCase ViewDeliverableByIdUseCase
 @inject IEditDeliverableUseCase EditDeliverableUseCase
-
-@attribute [Authorize(Policy = "Deliverable")]
+@inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
 
 <h3>EditDeliverable</h3>
 
@@ -27,6 +26,16 @@
                    class="form-control">
         </InputText>
     </div>
+    <div class="form-group">
+        <label for="course">Course</label>
+        <InputSelect @bind-Value="deliverable.CourseId" class="form-select" id="course">
+            <option value="">-- Select Course --</option>
+            @foreach (var crs in listCourses)
+            {
+                <option value="@crs.CourseId">@crs.CourseName</option>
+            }
+        </InputSelect>
+    </div>
 
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
@@ -41,6 +50,12 @@
     public int DelId { get; set; }
 
     private Deliverable deliverable = new Deliverable();
+    private List<Course> listCourses = new List<Course>();
+
+         protected override async Task OnInitializedAsync()
+    {
+        listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
+    }
 
     protected override async Task OnParametersSetAsync()
     {

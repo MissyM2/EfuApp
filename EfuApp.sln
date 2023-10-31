@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfuApp.Plugins", "EfuApp.Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfuApp.Plugins.InMemory", "EfuApp.Plugins\EfuApp.Plugins.InMemory\EfuApp.Plugins.InMemory.csproj", "{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfuApp.Plugins.Sqlite", "EfuApp.Plugins\EfuApp.Plugins.Sqlite\EfuApp.Plugins.Sqlite.csproj", "{BD75FABE-3C72-4871-81C8-88B3AC609F6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD75FABE-3C72-4871-81C8-88B3AC609F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD75FABE-3C72-4871-81C8-88B3AC609F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD75FABE-3C72-4871-81C8-88B3AC609F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD75FABE-3C72-4871-81C8-88B3AC609F6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +50,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751} = {C8F4604F-3D53-4ACC-B972-D142A5895FBE}
+		{BD75FABE-3C72-4871-81C8-88B3AC609F6D} = {C8F4604F-3D53-4ACC-B972-D142A5895FBE}
 	EndGlobalSection
 EndGlobal
