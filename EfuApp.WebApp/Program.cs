@@ -9,19 +9,50 @@ using EfuApp.UseCases.Deliverables;
 using EfuApp.UseCases.Suggestions;
 using EfuApp.UseCases.Terms;
 using EfuApp.UseCases.Weeks;
+////using EfuApp.Plugins.Sqlite;
+using EfuApp.Plugins.EfCoreSqlServer;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//var constr = builder.Configuration.GetConnectionString("EfuApp");
+
+builder.Services.AddDbContext<EfuAppContext>(options =>
+{
+    // the UseSqlServer method is accessing the connection string from builder.Configuration
+    //options.UseSqlServer(constr);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EfuApp"));
+});
+
+// builder.Services.AddDbContextFactory<EfuAppContext>(options =>
+// {
+//     // the UseSqlServer method is accessing the connection string from builder.Configuration
+//     options.UseSqlServer(constr);
+// });
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
-builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
-builder.Services.AddSingleton<IDeliverableRepository, DeliverableRepository>();
-builder.Services.AddSingleton<ISuggestionRepository, SuggestionRepository>();
-builder.Services.AddSingleton<ITermRepository, TermRepository>();
-builder.Services.AddSingleton<IWeekRepository, WeekRepository>();
+// builder.Services.AddSingleton<ICourseRepository, CourseInMemoryRepository>();
+// builder.Services.AddSingleton<IDeliverableRepository, DeliverableInMemoryRepository>();
+// builder.Services.AddSingleton<ISuggestionRepository, SuggestionInMemoryRepository>();
+// builder.Services.AddSingleton<ITermRepository, TermInMemoryRepository>();
+// builder.Services.AddSingleton<IWeekRepository, WeekInMemoryRepository>();
+
+// builder.Services.AddSingleton<ICourseRepository, CourseSqliteRepository>();
+// builder.Services.AddSingleton<IDeliverableRepository, DeliverableSqliteRepository>();
+// builder.Services.AddSingleton<ISuggestionRepository, SuggestionSqliteRepository>();
+// builder.Services.AddSingleton<ITermRepository, TermSqliteRepository>();
+// builder.Services.AddSingleton<IWeekRepository, WeekSqliteRepository>();
+
+builder.Services.AddTransient<ICourseRepository, CourseEFCoreRepository>();
+builder.Services.AddTransient<IDeliverableRepository, DeliverableEfCoreRepository>();
+builder.Services.AddTransient<ISuggestionRepository, SuggestionEfCoreRepository>();
+builder.Services.AddTransient<ITermRepository, TermEfCoreRepository>();
+builder.Services.AddTransient<IWeekRepository, WeekEfCoreRepository>();
+
 
 builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCase>();
 builder.Services.AddTransient<IAddCourseUseCase, AddCourseUseCase>();
@@ -64,6 +95,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

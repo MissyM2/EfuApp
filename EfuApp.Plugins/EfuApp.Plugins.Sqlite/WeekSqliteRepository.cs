@@ -14,13 +14,23 @@ public class WeekSqliteRepository : IWeekRepository
        
         this.database.CreateTableAsync<Week>();
 
-        // _weeks = new List<Week>()
-        // {
-        //     new Week { WeekId = 1, WeekName = "1", WeekDesc = "first week of semester"},
-        //     new Week { WeekId = 2, WeekName = "2", WeekDesc = "second week of semester" },
-        //     new Week { WeekId = 3, WeekName = "3", WeekDesc = "third week of semester"},
-        //     new Week { WeekId = 4, WeekName = "4", WeekDesc = "fourth week of semester" }
-        // };
+        Console.WriteLine("Location of db - week: " + Constants.DatabasePath);
+
+        AddWeekSeedData();
+    }
+
+    void AddWeekSeedData()
+    {
+        var item1 = new Week { WeekName = "1", WeekDesc = "first week of semester"};
+        var item2 = new Week { WeekName = "2", WeekDesc = "second week of semester"};
+        var item3 = new Week { WeekName = "3", WeekDesc = "third week of semester"};
+        var item4 = new Week { WeekName = "4", WeekDesc = "fourth week of semester" };
+
+        this.database.InsertAsync(item1);
+        this.database.InsertAsync(item2);
+        this.database.InsertAsync(item3);
+        this.database.InsertAsync(item4);
+
     }
 
     public async Task<IEnumerable<Week>> GetWeeksByNameAsync(string name)
@@ -57,7 +67,7 @@ public class WeekSqliteRepository : IWeekRepository
         {
             wk.WeekName = week.WeekName;
             wk.WeekDesc = week.WeekDesc;
-            wk.TermId = week.TermId;
+            wk.WeekId = week.WeekId;
             wk.LikedMost = week.LikedMost;
             wk.LikedLeast = week.LikedMost;
             wk.MostDifficult = week.MostDifficult;

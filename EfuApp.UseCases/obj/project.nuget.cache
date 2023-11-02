@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UFU8Vce9nLeiH7ccRqtt1/y9A3Mr6bbcqXakravqXssWBnb6kYS1+B63CGsod4hizDEixbgPBoFqyonJTokWPA==",
+  "dgSpecHash": "kvPWAqXiUnx7c1cv3BDE5WV+swpMyQDpNjJler6dWRNuAuYGGji1Kobk+kcajfDkTp5rvuUB21LzFTQCs3AEFA==",
   "success": true,
   "projectFilePath": "C:\\Users\\maloney_f\\Documents\\My Apps\\EfuApp\\EfuApp.UseCases\\EfuApp.UseCases.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\maloney_f\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.12\\microsoft.netcore.app.ref.7.0.12.nupkg.sha512",
-    "C:\\Users\\maloney_f\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.12\\microsoft.windowsdesktop.app.ref.7.0.12.nupkg.sha512",
-    "C:\\Users\\maloney_f\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.12\\microsoft.aspnetcore.app.ref.7.0.12.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

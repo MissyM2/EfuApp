@@ -10,7 +10,6 @@ C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite\obj\Debug\net7.0\EfuApp.Plugins.Sqlite.AssemblyInfoInputs.cache
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite\obj\Debug\net7.0\EfuApp.Plugins.Sqlite.AssemblyInfo.cs
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite\obj\Debug\net7.0\EfuApp.Plugins.Sqlite.csproj.CoreCompileInputs.cache
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite\obj\Debug\net7.0\EfuApp.Plugins.Sqlite.sourcelink.json
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite\obj\Debug\net7.0\EfuApp.Plugins.Sqlite.csproj.CopyComplete
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite\obj\Debug\net7.0\EfuApp.Plugins.Sqlite.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.Plugins\EfuApp.Plugins.Sqlite\obj\Debug\net7.0\refint\EfuApp.Plugins.Sqlite.dll

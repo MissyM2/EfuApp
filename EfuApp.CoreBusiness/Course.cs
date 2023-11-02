@@ -13,11 +13,11 @@ public class Course
 
     public string CourseDesc { get; set; } = string.Empty;
 
-    // [Required]
-    // public int TermId {get; set;}
-    // public Term? Term {get; set; }
+    [Required]
+    public int TermId { get; set; }
+    public Term Term { get; set; } = null!;
 
-    
 
-    public List<Deliverable> Deliverables { get; set; } = new List<Deliverable>();
+
+    public List<Deliverable> Deliverables { get; } = new List<Deliverable>();
 }

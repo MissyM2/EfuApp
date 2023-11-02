@@ -137,6 +137,18 @@
           }
         }
       },
+      "SQLitePCLRaw.provider.dynamic_cdecl/2.1.6": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.1.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {}
+        }
+      },
       "SQLitePCLRaw.provider.e_sqlite3/2.1.6": {
         "type": "package",
         "dependencies": {
@@ -274,6 +286,18 @@
         "sqlitepclraw.lib.e_sqlite3.nuspec"
       ]
     },
+    "SQLitePCLRaw.provider.dynamic_cdecl/2.1.6": {
+      "sha512": "FWt5JjGGvOmppDcK3NodXqlf8hQPz5u5jxyqst0DbC6W1mT3P0Ribwb5m8Pc+djHBQEOxonuwNJLCcH/cujBvA==",
+      "type": "package",
+      "path": "sqlitepclraw.provider.dynamic_cdecl/2.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll",
+        "sqlitepclraw.provider.dynamic_cdecl.2.1.6.nupkg.sha512",
+        "sqlitepclraw.provider.dynamic_cdecl.nuspec"
+      ]
+    },
     "SQLitePCLRaw.provider.e_sqlite3/2.1.6": {
       "sha512": "PQ2Oq3yepLY4P7ll145P3xtx2bX8xF4PzaKPRpw9jZlKvfe4LE/saAV82inND9usn1XRpmxXk7Lal3MTI+6CNg==",
       "type": "package",
@@ -325,6 +349,7 @@
       "EfuApp.CoreBusiness >= 1.0.0",
       "EfuApp.UseCases >= 1.0.0",
       "SQLitePCLRaw.bundle_green >= 2.1.6",
+      "SQLitePCLRaw.provider.dynamic_cdecl >= 2.1.6",
       "sqlite-net-pcl >= 1.8.116"
     ]
   },
@@ -384,6 +409,10 @@
             "target": "Package",
             "version": "[2.1.6, )"
           },
+          "SQLitePCLRaw.provider.dynamic_cdecl": {
+            "target": "Package",
+            "version": "[2.1.6, )"
+          },
           "sqlite-net-pcl": {
             "target": "Package",
             "version": "[1.8.116, )"
@@ -400,26 +429,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.12, 7.0.12]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.12, 7.0.12]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[7.0.12, 7.0.12]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.2.23502.2\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

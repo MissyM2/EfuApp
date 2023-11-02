@@ -1,9 +1,0 @@
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.csproj.AssemblyReference.cache
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.AssemblyInfoInputs.cache
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.AssemblyInfo.cs
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.csproj.CoreCompileInputs.cache
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.RazorAssemblyInfo.cache
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.RazorAssemblyInfo.cs
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net8.0\EfuApp.WebApp.sourcelink.json

@@ -11,6 +11,7 @@
           "EfuApp.CoreBusiness": "1.0.0",
           "EfuApp.UseCases": "1.0.0",
           "SQLitePCLRaw.bundle_green": "2.1.6",
+          "SQLitePCLRaw.provider.dynamic_cdecl": "2.1.6",
           "sqlite-net-pcl": "1.8.116"
         },
         "runtime": {
@@ -155,6 +156,17 @@
           }
         }
       },
+      "SQLitePCLRaw.provider.dynamic_cdecl/2.1.6": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.1.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {
+            "assemblyVersion": "2.1.6.2060",
+            "fileVersion": "2.1.6.2060"
+          }
+        }
+      },
       "SQLitePCLRaw.provider.e_sqlite3/2.1.6": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.1.6"
@@ -215,6 +227,13 @@
       "sha512": "sha512-2ObJJLkIUIxRpOUlZNGuD4rICpBnrBR5anjyfUFQep4hMOIeqW+XGQYzrNmHSVz5xSWZ3klSbh7sFR6UyDj68Q==",
       "path": "sqlitepclraw.lib.e_sqlite3/2.1.6",
       "hashPath": "sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512"
+    },
+    "SQLitePCLRaw.provider.dynamic_cdecl/2.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FWt5JjGGvOmppDcK3NodXqlf8hQPz5u5jxyqst0DbC6W1mT3P0Ribwb5m8Pc+djHBQEOxonuwNJLCcH/cujBvA==",
+      "path": "sqlitepclraw.provider.dynamic_cdecl/2.1.6",
+      "hashPath": "sqlitepclraw.provider.dynamic_cdecl.2.1.6.nupkg.sha512"
     },
     "SQLitePCLRaw.provider.e_sqlite3/2.1.6": {
       "type": "package",

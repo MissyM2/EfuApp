@@ -8,7 +8,6 @@ C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\Efu
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\EfuApp.UseCases.AssemblyInfoInputs.cache
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\EfuApp.UseCases.AssemblyInfo.cs
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\EfuApp.UseCases.csproj.CoreCompileInputs.cache
-C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\EfuApp.UseCases.sourcelink.json
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\EfuApp.UseCases.csproj.CopyComplete
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\EfuApp.UseCases.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.UseCases\obj\Debug\net7.0\refint\EfuApp.UseCases.dll

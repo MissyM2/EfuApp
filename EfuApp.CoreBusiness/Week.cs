@@ -12,7 +12,7 @@ public class Week
 
     public string WeekDesc { get; set; } = string.Empty;
     public int TermId { get; set; }
-    public virtual Term Term { get; set; } = new Term();
+    public Term Term { get; set; } = null!;
     public string LikedLeast { get; set; } = string.Empty;
     public string LikedMost { get; set; } = string.Empty;
     public string MostDifficult { get; set; } = string.Empty;

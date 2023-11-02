@@ -1,72 +1,72 @@
 ﻿using EfuApp.CoreBusiness;
 using EfuApp.UseCases.PluginInterfaces;
+using SQLite;
 
 namespace EfuApp.Plugins.Sqlite;
 
 public class TermSqliteRepository : ITermRepository
 {
-    private List<Term> _courses;
+    private SQLiteAsyncConnection database;
 
     public TermSqliteRepository()
     {
-        _courses = new List<Term>()
-        {
-            new Term { TermId = 1, TermName = "Wi2023", TermDesc = "Winter, 2023"},
-            new Term { TermId = 2, TermName = "Sp2023", TermDesc = "Spring, 2023" },
-            new Term { TermId = 3, TermName = "Su2023", TermDesc = "Summer, 2023"},
-            new Term { TermId = 4, TermName = "Fa2023", TermDesc = "Fall, 2023" }
-        };
-    }
-
-    public async Task<IEnumerable<Term>> GetTermsByNameAsync(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name)) return await Task.FromResult(_courses);
-
-        return _courses.Where(x => x.TermName.Contains(name, StringComparison.OrdinalIgnoreCase));
-    }
-
-    public Task AddTermAsync(Term course)
-    {
-        if (_courses.Any(x => x.TermName.Equals(course.TermName, StringComparison.OrdinalIgnoreCase)))
-            return Task.CompletedTask;
+        this.database = new SQLiteAsyncConnection(Constants.DatabasePath);
+       
+        this.database.CreateTableAsync<Term>();
+        Console.WriteLine("Location of db - term: " + Constants.DatabasePath);
         
-        var maxId = _courses.Max(x => x.TermId);
-        course.TermId = maxId + 1;
-
-        _courses.Add(course);
-
-        return Task.CompletedTask;
+        AddTermSeedData();
     }
 
-     public async Task<Term> GetTermByIdAsync(int courseId)
+    void AddTermSeedData()
     {
-        var c = _courses.First(x => x.TermId == courseId);
-        var newTerm = new Term
-        {
-            TermId = c.TermId,
-            TermName = c.TermName,
-            TermDesc = c.TermDesc
-        };
+        var item1 = new Term { TermName = "Wi2023", TermDesc = "Winter, 2023"};
+        var item2 = new Term { TermName = "Sp2023", TermDesc = "Spring, 2023"};
+        var item3 = new Term { TermName = "Su2023", TermDesc = "Summer, 2023"};
+        var item4 = new Term { TermName = "Fa2023", TermDesc = "Fall, 2023" };
 
-        return await Task.FromResult(newTerm);
+        this.database.InsertAsync(item1);
+        this.database.InsertAsync(item2);
+        this.database.InsertAsync(item3);
+        this.database.InsertAsync(item4);
+
     }
 
-     public Task UpdateTermAsync(Term course)
+     public async Task<IEnumerable<Term>> GetTermsByNameAsync(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+                return await this.database.Table<Term>().ToListAsync();
+
+        return await this.database.Table<Term>().Where(x => x.TermName.Contains(name, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+    }
+
+    public async Task AddTermAsync(Term week)
+    {
+        var existingItems = await this.database.Table<Term>().Where(x => x.TermName.Contains(week.TermName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+        if (existingItems.Count > 0 ) return;
+
+        await this.database.InsertAsync(week);
+    }
+
+     public async Task<Term> GetTermByIdAsync(int weekId)
+    {
+        return await this.database.Table<Term>().Where(x => x.TermId == weekId).FirstOrDefaultAsync();
+    }
+
+      public async Task UpdateTermAsync(Term week)
+    {
+
+        // we are not allowing two different weeks to have the same name, so we have to check to make sure
+
+        var existingItems = await this.database.Table<Term>().Where(x => x.TermId != week.TermId && x.TermName.Contains(week.TermName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+        if (existingItems.Count > 0 ) return;
+
+        var trm = await this.database.Table<Term>().FirstOrDefaultAsync(x => x.TermId == week.TermId);
+        if (trm != null)
         {
-
-            // we are not allowing two different courses to have the same name, so we have to check to make sure
-            if (_courses.Any(x => x.TermId != course.TermId &&
-                x.TermName.Equals(course.TermName, StringComparison.OrdinalIgnoreCase)))
-                return Task.CompletedTask;
-
-            var crs = _courses.FirstOrDefault(x => x.TermId == course.TermId);
-            if (crs != null)
-            {
-                crs.TermName = course.TermName;
-                crs.TermDesc = course.TermDesc;
-            }
-
-            return Task.CompletedTask;
+            trm.TermName = week.TermName;
+            trm.TermDesc = week.TermDesc;
         }
+    }
 
 }

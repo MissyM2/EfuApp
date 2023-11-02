@@ -13,14 +13,23 @@ public class SuggestionSqliteRepository : ISuggestionRepository
         this.database = new SQLiteAsyncConnection(Constants.DatabasePath);
        
         this.database.CreateTableAsync<Suggestion>();
+        Console.WriteLine("Location of db - suggestion: " + Constants.DatabasePath);
 
-        // _suggestions = new List<Suggestion>()
-        // {
-        //     new Suggestion { SuggestionId = 1, SuggestionName = "Suggestion1", SuggestionDesc = "Read a book."},
-        //     new Suggestion { SuggestionId = 2, SuggestionName = "Suggestion2", SuggestionDesc = "Make a list." },
-        //     new Suggestion { SuggestionId = 3, SuggestionName = "Suggestion3", SuggestionDesc = "Take notes."},
-        //     new Suggestion { SuggestionId = 4, SuggestionName = "Suggestion4", SuggestionDesc = "Start early." }
-        // };
+        AddSuggestionSeedData();
+    }
+
+    void AddSuggestionSeedData()
+    {
+        var item1 = new Suggestion { SuggestionName = "Suggestion1", SuggestionDesc = "Read a book."};
+        var item2 = new Suggestion { SuggestionName = "Suggestion2", SuggestionDesc = "Make a list."};
+        var item3 = new Suggestion { SuggestionName = "Suggestion3", SuggestionDesc = "Take notes."};
+        var item4 = new Suggestion { SuggestionName = "Suggestion4", SuggestionDesc = "Start early." };
+
+        this.database.InsertAsync(item1);
+        this.database.InsertAsync(item2);
+        this.database.InsertAsync(item3);
+        this.database.InsertAsync(item4);
+
     }
 
     public async Task<IEnumerable<Suggestion>> GetSuggestionsByNameAsync(string name)

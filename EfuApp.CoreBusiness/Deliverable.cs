@@ -17,6 +17,7 @@ public class Deliverable
     public DateTime DueDate { get; set;}
 
     public int CourseId { get; set; }
-    public virtual Course Course { get; set; } = new Course();
+    public Course Course { get; set; } = null!;
+
 
 }
