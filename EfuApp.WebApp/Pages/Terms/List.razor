@@ -1,4 +1,4 @@
-﻿@page "/terms"
+﻿@page "/terms/list"
 
 @inject NavigationManager NavManager
 
@@ -24,7 +24,7 @@
 
     private void AddTerm()
     {
-        NavManager.NavigateTo("/addterm");
+        NavManager.NavigateTo("/terms/create");
     }
 
 }

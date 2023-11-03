@@ -1,11 +1,10 @@
-﻿@page "/editTerm/{TrmId:int}"
+﻿@page "/terms/create"
 
 @inject NavigationManager NavManager
-@inject IViewTermByIdUseCase ViewTermByIdUseCase
-@inject IEditTermUseCase EditTermUseCase
+@inject IAddTermUseCase AddTermUseCase
 
-<h3>Edit Term</h3>
-
+<h3>Add Term</h3>
+<br />
 <EditForm Model="term" OnValidSubmit="SaveTerm">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
@@ -13,7 +12,7 @@
     <div class="form-group">
         <label for="name">Term Name</label>
         <InputText id="name"
-        @bind-Value="term.TermName"
+                   @bind-Value="term.TermName"
                    class="form-control">
         </InputText>
     </div>
@@ -21,7 +20,7 @@
     <div class="form-group">
         <label for="name">Term Description</label>
         <InputText id="name"
-        @bind-Value="term.TermDesc"
+                   @bind-Value="term.TermDesc"
                    class="form-control">
         </InputText>
     </div>
@@ -31,29 +30,17 @@
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
 </EditForm>
 
-
-
-
 @code {
-    [Parameter]
-    public int TrmId { get; set; }
-
     private Term term = new Term();
-
-    protected override async Task OnParametersSetAsync()
-    {
-        this.term = await ViewTermByIdUseCase.ExecuteAsync(this.TrmId);
-    }
 
     private async Task SaveTerm()
     {
-        await EditTermUseCase.ExecuteAsync(this.term);
-        NavManager.NavigateTo("/terms");
+        await AddTermUseCase.ExecuteAsync(term);
+        NavManager.NavigateTo("/terms/list");
     }
 
     private void Cancel()
     {
-        NavManager.NavigateTo("/terms");
+        NavManager.NavigateTo("/terms/list");
     }
-
 }

@@ -13,6 +13,11 @@ public class Course
 
     public string CourseDesc { get; set; } = string.Empty;
 
+    public string DaysOfWeek { get; set; } = string.Empty;
+    public string Times { get; set; } = string.Empty;
+    public string Instructor { get; set; } = string.Empty;
+
+
     [Required]
     public int TermId { get; set; }
     public Term Term { get; set; } = null!;

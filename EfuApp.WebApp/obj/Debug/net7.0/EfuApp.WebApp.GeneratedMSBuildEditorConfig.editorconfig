@@ -84,28 +84,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/AddCourse.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xBZGRDb3Vyc2UucmF6b3I=
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/CourseList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDb3Vyc2VMaXN0LnJhem9y
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xFZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/EditCourse.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xFZGl0Q291cnNlLnJhem9y
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/AddDeliverable.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXEFkZERlbGl2ZXJhYmxlLnJhem9y
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXENyZWF0ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/DeliverableList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXERlbGl2ZXJhYmxlTGlzdC5yYXpvcg==
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXEVkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/EditDeliverable.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXEVkaXREZWxpdmVyYWJsZS5yYXpvcg==
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Deliverables/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcmFibGVzXExpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/FetchData.razor]
@@ -116,40 +116,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Suggestions/AddSuggestion.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VnZ2VzdGlvbnNcQWRkU3VnZ2VzdGlvbi5yYXpvcg==
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Suggestions/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VnZ2VzdGlvbnNcQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Suggestions/EditSuggestion.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VnZ2VzdGlvbnNcRWRpdFN1Z2dlc3Rpb24ucmF6b3I=
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Suggestions/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VnZ2VzdGlvbnNcRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Suggestions/SuggestionList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VnZ2VzdGlvbnNcU3VnZ2VzdGlvbkxpc3QucmF6b3I=
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Suggestions/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VnZ2VzdGlvbnNcTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Terms/AddTerm.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVybXNcQWRkVGVybS5yYXpvcg==
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Terms/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVybXNcQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Terms/EditTerm.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVybXNcRWRpdFRlcm0ucmF6b3I=
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Terms/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVybXNcRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Terms/TermList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVybXNcVGVybUxpc3QucmF6b3I=
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Terms/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVybXNcTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Weeks/AddWeek.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2Vla3NcQWRkV2Vlay5yYXpvcg==
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Weeks/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2Vla3NcQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Weeks/EditWeek.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2Vla3NcRWRpdFdlZWsucmF6b3I=
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Weeks/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2Vla3NcRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Weeks/WeekList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2Vla3NcV2Vla0xpc3QucmF6b3I=
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Weeks/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2Vla3NcTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Shared/SurveyPrompt.razor]
@@ -159,6 +159,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/Details.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xEZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-1sl25mvn29
 
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=

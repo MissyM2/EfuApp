@@ -5,11 +5,11 @@
     foreach (var c in Terms)
     {
         <tr>
-            <td>@c.TermName</td>
-            <td>@c.TermDesc</td>
-            <td>
+            <td class="col page-subtitle">@c.TermName</td>
+            <td class="col page-subtitle">@c.TermDesc</td>
+            <td class="col page-subtitle">
                 <button type="button"
-                        class="btn btn-light"
+                        class="btn btn-light page-subtitle"
                         @onclick="@(() => EditTerm(c.TermId))">Edit</button>
             </td>
         </tr>

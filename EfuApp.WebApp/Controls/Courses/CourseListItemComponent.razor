@@ -1,31 +1,36 @@
 ﻿@inject NavigationManager NavManager
 
-@if (Courses != null && Courses.Count > 0)
-{
-    foreach (var c in Courses)
+   @if (Courses != null && Courses.Count > 0)
     {
-        <tr>
-            <td>@c.CourseName</td>
-            <td>@c.CourseDesc</td>
-            <td>
-                <button type="button"
-                        class="btn btn-light"
-                        @onclick="@(() => EditCourse(c.CourseId))">Edit</button>
-            </td>
-        </tr>
+        foreach (var c in Courses)
+        {
+            <tr scope="row">
+                <td class="col page-subtitle">@c.CourseName</td>
+                <td class="col page-subtitle">@c.CourseDesc</td>
+                <td class="col page-subtitle">
+                    <a class="btn btn-primary page-subtitle"
+                    @onclick="@(() => OpenDetails(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Details </a>
+                    <button type="button"
+                            class="btn btn-light  page-subtitle"
+                            @onclick="@(() => EditCourse(c.CourseId))">Edit</button>
+                </td>
+            </tr>
+        }
     }
-   
-
-}
 
 
 @code {
     [Parameter]
     public List<Course> Courses { get; set; } = new List<Course>();
 
-    private void EditCourse(int courseId)
+    private void OpenDetails(int courseId)
     {
-        NavManager.NavigateTo($"/editcourse/{courseId}");
+        NavManager.NavigateTo($"/courses/details/{courseId}");
     }
 
+    private void EditCourse(int courseId)
+    {
+        NavManager.NavigateTo($"/courses/edit/{courseId}");
+    }
 }
+

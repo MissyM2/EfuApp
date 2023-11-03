@@ -1,9 +1,9 @@
-﻿@page "/deliverables"
+﻿@page "/deliverables/list"
 
 @inject NavigationManager NavManager
 
 
-<h3>Deliverable List</h3>
+<div class="page-title">Deliverable List</div>
 <br />
 
 <SearchDeliverableListComponent OnSearchDeliverableList="OnDeliverableListSearch"></SearchDeliverableListComponent>
@@ -25,7 +25,7 @@
 
     private void AddDeliverable()
     {
-        NavManager.NavigateTo("/adddeliverable");
+        NavManager.NavigateTo("/deliverables/create");
     }
 
 }

@@ -4,12 +4,12 @@
 {
     foreach (var c in Suggestions)
     {
-        <tr>
-            <td>@c.SuggestionName</td>
-            <td>@c.SuggestionDesc</td>
+        <tr scope="row">
+            <td class="col page-subtitle">@c.SuggestionName</td>
+            <td class="col page-subtitle">@c.SuggestionDesc</td>
             <td>
                 <button type="button"
-                        class="btn btn-light"
+                        class="btn btn-light page-subtitle"
                         @onclick="@(() => EditSuggestion(c.SuggestionId))">Edit</button>
             </td>
         </tr>

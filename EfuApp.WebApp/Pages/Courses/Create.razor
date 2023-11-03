@@ -1,13 +1,11 @@
-﻿@page "/editcourse/{CrsId:int}"
+﻿@page "/courses/create"
 
 @inject NavigationManager NavManager
-@inject IViewCourseByIdUseCase ViewCourseByIdUseCase
-@inject IEditCourseUseCase EditCourseUseCase
+@inject IAddCourseUseCase AddCourseUseCase
 
-@attribute [Authorize(Policy = "Course")]
 
-<h3>Edit Course</h3>
-
+<div class="page-title">Add Course</div>
+<br />
 <EditForm Model="course" OnValidSubmit="SaveCourse">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
@@ -15,7 +13,7 @@
     <div class="form-group">
         <label for="name">Course Name</label>
         <InputText id="name"
-        @bind-Value="course.CourseName"
+                   @bind-Value="course.CourseName"
                    class="form-control">
         </InputText>
     </div>
@@ -23,7 +21,7 @@
     <div class="form-group">
         <label for="name">Course Description</label>
         <InputText id="name"
-        @bind-Value="course.CourseDesc"
+                   @bind-Value="course.CourseDesc"
                    class="form-control">
         </InputText>
     </div>
@@ -33,29 +31,17 @@
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
 </EditForm>
 
-
-
-
 @code {
-    [Parameter]
-    public int CrsId { get; set; }
-
     private Course course = new Course();
-
-    protected override async Task OnParametersSetAsync()
-    {
-        this.course = await ViewCourseByIdUseCase.ExecuteAsync(this.CrsId);
-    }
 
     private async Task SaveCourse()
     {
-        await EditCourseUseCase.ExecuteAsync(this.course);
-        NavManager.NavigateTo("/courses");
+        await AddCourseUseCase.ExecuteAsync(course);
+        NavManager.NavigateTo("/courses/list");
     }
 
     private void Cancel()
     {
-        NavManager.NavigateTo("/courses");
+        NavManager.NavigateTo("/courses/list");
     }
-
 }

@@ -1,10 +1,12 @@
-﻿@page "/addweek"
+﻿@page "/weeks/edit/{WkId:int}"
+
 @inject NavigationManager NavManager
-@inject IAddWeekUseCase AddWeekUseCase
+@inject IViewWeekByIdUseCase ViewWeekByIdUseCase
+@inject IEditWeekUseCase EditWeekUseCase
 @inject IViewTermsByNameUseCase ViewTermsByNameUseCase
 
-<h3>Add Week</h3>
-<br />
+<h3>EditWeek</h3>
+
 <EditForm Model="week" OnValidSubmit="SaveWeek">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
@@ -12,7 +14,7 @@
     <div class="form-group">
         <label for="name">Week Name</label>
         <InputText id="name"
-                   @bind-Value="week.WeekName"
+        @bind-Value="week.WeekName"
                    class="form-control">
         </InputText>
     </div>
@@ -20,7 +22,7 @@
     <div class="form-group">
         <label for="name">Week Description</label>
         <InputText id="name"
-                   @bind-Value="week.WeekDesc"
+        @bind-Value="week.WeekDesc"
                    class="form-control">
         </InputText>
     </div>
@@ -36,13 +38,18 @@
         </InputSelect>
     </div>
 
-
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
 </EditForm>
 
+
+
+
 @code {
+    [Parameter]
+    public int WkId { get; set; }
+
     private Week week = new Week();
     private List<Term> listTerms = new List<Term>();
 
@@ -51,14 +58,20 @@
         listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
     }
 
+    protected override async Task OnParametersSetAsync()
+    {
+        this.week = await ViewWeekByIdUseCase.ExecuteAsync(this.WkId);
+    }
+
     private async Task SaveWeek()
     {
-        await AddWeekUseCase.ExecuteAsync(week);
-        NavManager.NavigateTo("/weeks");
+        await EditWeekUseCase.ExecuteAsync(this.week);
+        NavManager.NavigateTo("/weeks/list");
     }
 
     private void Cancel()
     {
-        NavManager.NavigateTo("/weeks");
+        NavManager.NavigateTo("/weeks/list");
     }
+
 }

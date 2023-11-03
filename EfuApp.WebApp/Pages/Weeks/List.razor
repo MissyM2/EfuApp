@@ -1,4 +1,4 @@
-﻿@page "/weeks"
+﻿@page "/weeks/list"
 
 @inject NavigationManager NavManager
 
@@ -24,7 +24,7 @@
 
     private void AddWeek()
     {
-        NavManager.NavigateTo("/addweek");
+        NavManager.NavigateTo("/weeks/create");
     }
 
 }

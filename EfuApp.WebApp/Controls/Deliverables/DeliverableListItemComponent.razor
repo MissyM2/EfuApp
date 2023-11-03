@@ -4,15 +4,15 @@
 {
     foreach (var c in Deliverables)
     {
-        <tr>
-            <td>@c.DeliverableName</td>
-            <td>@c.DeliverableDesc</td>
-            <td>@c.AssignmentDate</td>
-            <td>@c.DueDate</td>
-            <td>@c.Course.CourseName</td>
+        <tr scope="row">
+            <td class="col page-subtitle">@c.DeliverableName</td>
+            <td class="col page-subtitle">@c.DeliverableDesc</td>
+            <td class="col page-subtitle">@c.AssignmentDate.ToString("MM/dd/yyyy")</td>
+            <td class="col page-subtitle">@c.DueDate.ToString("MM/dd/yyyy")</td>
+            <td class="col page-subtitle">@c.Course.CourseName</td>
             <td>
                 <button type="button"
-                        class="btn btn-light"
+                        class="btn btn-light page-subtitle"
                         @onclick="@(() => EditDeliverable(c.DeliverableId))">Edit</button>
             </td>
         </tr>

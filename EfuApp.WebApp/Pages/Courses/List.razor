@@ -1,9 +1,9 @@
-﻿@page "/courses"
+﻿@page "/courses/list"
 
 @inject NavigationManager NavManager
 
 
-<h3>Course List</h3>
+<div class="page.title">Course List</div>
 <br />
 
 <SearchCourseListComponent OnSearchCourseList="OnCourseListSearch"></SearchCourseListComponent>
@@ -25,7 +25,7 @@
 
     private void AddCourse()
     {
-        NavManager.NavigateTo("/addcourse");
+        NavManager.NavigateTo("/courses/create");
     }
 
 }

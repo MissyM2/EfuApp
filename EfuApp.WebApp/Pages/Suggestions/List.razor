@@ -1,4 +1,4 @@
-﻿@page "/suggestions"
+﻿@page "/suggestions/list"
 
 @inject NavigationManager NavManager
 
@@ -24,7 +24,7 @@
 
     private void AddSuggestion()
     {
-        NavManager.NavigateTo("/addsuggestion");
+        NavManager.NavigateTo("/suggestions/create");
     }
 
 }

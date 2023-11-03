@@ -5,16 +5,16 @@
     foreach (var c in Weeks)
     {
         <tr>
-            <td>@c.WeekName</td>
-            <td>@c.WeekDesc</td>
-            <td>@c.Term.TermName</td>
-            <td>@c.LikedLeast</td>
-            <td>@c.LikedMost</td>
-            <td>@c.MostDifficult</td>
-            <td>@c.LeastDifficult</td>
-            <td>
+            <td class="col page-subtitle">@c.WeekName</td>
+            <td class="col page-subtitle">@c.WeekDesc</td>
+            <td class="col page-subtitle">@c.Term.TermName</td>
+            <td class="col page-subtitle">@c.LikedLeast</td>
+            <td class="col page-subtitle">@c.LikedMost</td>
+            <td class="col page-subtitle">@c.MostDifficult</td>
+            <td class="col page-subtitle">@c.LeastDifficult</td>
+            <td class="col page-subtitle">
                 <button type="button"
-                        class="btn btn-light"
+                        class="btn btn-light page-subtitle"
                         @onclick="@(() => EditWeek(c.WeekId))">Edit</button>
             </td>
         </tr>

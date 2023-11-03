@@ -5,17 +5,17 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfuApp.WebApp", "EfuApp.WebApp\EfuApp.WebApp.csproj", "{1D21686D-BA55-478C-AE75-6095FE3E1537}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfuApp.UseCases", "EfuApp.UseCases\EfuApp.UseCases.csproj", "{2E2FD773-9EBC-4A6E-B10D-314771F0CD2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfuApp.UseCases", "EfuApp.UseCases\EfuApp.UseCases.csproj", "{2E2FD773-9EBC-4A6E-B10D-314771F0CD2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfuApp.CoreBusiness", "EfuApp.CoreBusiness\EfuApp.CoreBusiness.csproj", "{20E3F778-C5EB-4715-8B20-57E08D6CE88E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfuApp.CoreBusiness", "EfuApp.CoreBusiness\EfuApp.CoreBusiness.csproj", "{20E3F778-C5EB-4715-8B20-57E08D6CE88E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfuApp.Plugins", "EfuApp.Plugins", "{C8F4604F-3D53-4ACC-B972-D142A5895FBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfuApp.Plugins.InMemory", "EfuApp.Plugins\EfuApp.Plugins.InMemory\EfuApp.Plugins.InMemory.csproj", "{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfuApp.Plugins.InMemory", "EfuApp.Plugins\EfuApp.Plugins.InMemory\EfuApp.Plugins.InMemory.csproj", "{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfuApp.Plugins.Sqlite", "EfuApp.Plugins\EfuApp.Plugins.Sqlite\EfuApp.Plugins.Sqlite.csproj", "{BD75FABE-3C72-4871-81C8-88B3AC609F6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfuApp.Plugins.Sqlite", "EfuApp.Plugins\EfuApp.Plugins.Sqlite\EfuApp.Plugins.Sqlite.csproj", "{BD75FABE-3C72-4871-81C8-88B3AC609F6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfuApp.Plugins.EfCoreSqlServer", "EfuApp.Plugins\EfuApp.Plugins.EfCoreSqlServer\EfuApp.Plugins.EfCoreSqlServer.csproj", "{FA1808B2-3288-4B6A-BF8B-EB5F930E4511}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfuApp.Plugins.EfCoreSqlServer", "EfuApp.Plugins\EfuApp.Plugins.EfCoreSqlServer\EfuApp.Plugins.EfCoreSqlServer.csproj", "{FA1808B2-3288-4B6A-BF8B-EB5F930E4511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,12 +51,12 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A0BABBD7-AD1E-42DE-8CFA-452B79C7B14D}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EE3AC37E-1DF4-4EC0-B3F9-1484913C1751} = {C8F4604F-3D53-4ACC-B972-D142A5895FBE}
 		{BD75FABE-3C72-4871-81C8-88B3AC609F6D} = {C8F4604F-3D53-4ACC-B972-D142A5895FBE}
 		{FA1808B2-3288-4B6A-BF8B-EB5F930E4511} = {C8F4604F-3D53-4ACC-B972-D142A5895FBE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0BABBD7-AD1E-42DE-8CFA-452B79C7B14D}
 	EndGlobalSection
 EndGlobal

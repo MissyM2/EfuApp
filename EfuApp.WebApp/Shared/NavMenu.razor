@@ -1,6 +1,6 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">EfuApp.WebApp</a>
+        <a class="navbar-brand  page-subtitle" href="">Executive Followup</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,34 +9,34 @@
 
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="flex-column">
-        <div class="nav-item px-3">
+        <div class="nav-item px-3 menu-title">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <span class="oi oi-home menu-title" aria-hidden="true"></span><div class="page-subtitle">Home</div>
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="courses">
-                <span class="oi oi-plus" aria-hidden="true"></span> Courses
+            <NavLink class="nav-link" href="courses/list">
+                <span class="oi oi-plus" aria-hidden="true"></span><div class="page-subtitle">Courses</div>
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="deliverables">
-                <span class="oi oi-plus" aria-hidden="true"></span> Deliverables
+            <NavLink class="nav-link" href="deliverables/list">
+                <span class="oi oi-plus" aria-hidden="true"></span><div class="page-subtitle">Deliverables</div>
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="suggestions">
-                <span class="oi oi-plus" aria-hidden="true"></span> Suggestions
+            <NavLink class="nav-link" href="suggestions/list">
+                <span class="oi oi-plus" aria-hidden="true"></span><div class="page-subtitle">Suggestions</div>
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weeks">
-                <span class="oi oi-plus" aria-hidden="true"></span> Weeks
+            <NavLink class="nav-link" href="weeks/list">
+                <span class="oi oi-plus" aria-hidden="true"></span><div class="page-subtitle">Weeks</div>
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="terms">
-                <span class="oi oi-plus" aria-hidden="true"></span> Terms
+            <NavLink class="nav-link" href="terms/list">
+                <span class="oi oi-plus" aria-hidden="true"></span><div class="page-subtitle">Terms</div>
             </NavLink>
         </div>
        

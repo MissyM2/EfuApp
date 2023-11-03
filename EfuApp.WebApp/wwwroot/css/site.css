@@ -8,6 +8,18 @@ h1:focus {
     outline: none;
 }
 
+.page-title{
+    font-size:1.2rem;
+}
+
+.page-subtitle{
+    font-size:.7rem;
+}
+
+.menu-title {
+    font-size:.4rem;
+}
+
 a, .btn-link {
     color: #0071c1;
 }
@@ -66,3 +78,5 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+   

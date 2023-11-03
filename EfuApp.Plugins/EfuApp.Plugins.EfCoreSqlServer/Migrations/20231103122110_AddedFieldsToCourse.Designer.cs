@@ -4,6 +4,7 @@ using EfuApp.Plugins.EfCoreSqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
 {
     [DbContext(typeof(EfuAppContext))]
-    partial class EfuAppContextModelSnapshot : ModelSnapshot
+    [Migration("20231103122110_AddedFieldsToCourse")]
+    partial class AddedFieldsToCourse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
