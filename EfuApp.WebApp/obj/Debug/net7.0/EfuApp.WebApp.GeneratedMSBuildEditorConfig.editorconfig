@@ -88,6 +88,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/Details.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xEZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/Edit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xFZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -159,10 +163,6 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Pages/Courses/Details.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xEZXRhaWxzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-1sl25mvn29
 
 [C:/Users/maloney_f/Documents/My Apps/EfuApp/EfuApp.WebApp/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=

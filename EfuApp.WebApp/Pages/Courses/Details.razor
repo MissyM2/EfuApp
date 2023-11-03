@@ -9,27 +9,27 @@
     <thead>
         <tr>
             <th scope="col">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center page-subtitle">
                     <label class="course-attributes" for="coursename">Name</label>
                 </div>
             </th>
             <th scope="col">
-                <div class="d-flex justify-content-center text-wrap">
+                <div class="d-flex justify-content-center text-wrap page-subtitle">
                     <label class="course-attributes" for="description">Description</label>
                 </div>
             </th>
             <th scope="col">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center page-subtitle">
                     <label class="course-attributes" for="daysofweek">Days of Week</label>
                 </div>
             </th>
             <th scope="col">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center page-subtitle">
                     <label class="course-attributes" for="times">Times</label>
                 </div>
             </th>
             <th scope="col">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center page-subtitle">
                     <label class="course-attributes" for="instructor">Instructor</label>
                 </div>
             </th>
@@ -38,25 +38,25 @@
     <tbody class="table-group-divider">
         <tr>
             <td class="col">
-                <div class="course-attributes text-center">
+                <div class="course-attributes text-center page-subtitle">
                     @course.CourseName
                 </div>
                 </td>
-            <td class="col course-attributes text-center">
+            <td class="col course-attributes text-center page-subtitle">
                     @course.CourseDesc
             </td>
             <td class="col">
-                <div class="course-attributes text-center">
+                <div class="course-attributes text-center page-subtitle">
                     @course.DaysOfWeek
                 </div>
             </td>
             <td class="col">
-                <div class="course-attributes text-center">
+                <div class="course-attributes text-center page-subtitle">
                     @course.Times
                 </div>
             </td>
             <td class="col">
-                <div class="course-attributes text-center">
+                <div class="course-attributes text-center page-subtitle">
                     @course.Instructor
                 </div>
             </td>
@@ -76,53 +76,53 @@
     else
     {
         <div class="row">
-            @foreach (var deliverable in course.Deliverables)
-            {
-                <div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">
-                                    <div class="d-flex justify-content-center">
-                                        <label class="deliverable-attributes" for="deliverablename">Name</label>
-                                    </div>
-                                </th>
-                                <th scope="col">
-                                    <div class="d-flex justify-content-center text-wrap">
-                                        <label class="deliverable-attributes" for="desc">Desc</label>
-                                    </div>
-                                </th>
-                                <th scope="col">
-                                    <div class="d-flex justify-content-center">
-                                        <label class="deliverable-attributes" for="assignmentdate">Assignment Date</label>
-                                    </div>
-                                </th>
-                                <th scope="col">
-                                    <div class="d-flex justify-content-center">
-                                        <label class="deliverable-attributes" for="duedate">Due Date</label>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="deliverable-attributes" for="deliverablename">Name</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center text-wrap page-subtitle">
+                                    <label class="deliverable-attributes" for="desc">Desc</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="deliverable-attributes" for="assignmentdate">Assignment Date</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="deliverable-attributes" for="duedate">Due Date</label>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var deliverable in course.Deliverables)
+                        {
                             <tr scope="row">
-                                <td class="col deliverable-attributes">
+                                <td class="col page-subtitle">
                                     @deliverable.DeliverableName
                                 </td>
-                                <td class="col deliverable-attributes">
+                                <td class="col page-subtitle">
                                     @deliverable.DeliverableDesc
                                 </td>
-                                <td class="col deliverable-attributes">
-                                    @deliverable.AssignmentDate
+                                <td class="col page-subtitle">
+                                    @deliverable.AssignmentDate.ToString("MM/dd/yyyy")
                                 </td>
-                                <td class="col deliverable-attributes">
-                                     @deliverable.DueDate
+                                <td class="col page-subtitle">
+                                    @deliverable.DueDate.ToString("MM/dd/yyyy")
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-            }
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     }
 </div>
