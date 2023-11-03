@@ -4,43 +4,67 @@
 @inject IViewWeekByIdUseCase ViewWeekByIdUseCase
 @inject IEditWeekUseCase EditWeekUseCase
 @inject IViewTermsByNameUseCase ViewTermsByNameUseCase
+@inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
 
-<h3>EditWeek</h3>
+<div class="page-title">Edit Week</div>
+
+
+
+    <div>
+    <div class="page-subtitle">Term: @week.Term.TermName / Week: @week.WeekName </div>
+    </div>
 
 <EditForm Model="week" OnValidSubmit="SaveWeek">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
 
     <div class="form-group">
-        <label for="name">Week Name</label>
-        <InputText id="name"
-        @bind-Value="week.WeekName"
-                   class="form-control">
-        </InputText>
-    </div>
-
-    <div class="form-group">
-        <label for="name">Week Description</label>
-        <InputText id="name"
-        @bind-Value="week.WeekDesc"
-                   class="form-control">
-        </InputText>
-    </div>
-
-    <div class="form-group">
-        <label for="term">Term</label>
-        <InputSelect @bind-Value="week.TermId" class="form-select" id="term">
-            <option value="">-- Select Term --</option>
-            @foreach (var trm in listTerms)
+        <label class="page-subtitle" for="courselikedleast">Liked Least</label>
+        <InputSelect @bind-Value="week.LikedLeast" class="form-select page-subtitle" id="courselikedleast">
+            <option value="">-- Select Course --</option>
+            @foreach (var crs in listCourses)
             {
-                <option value="@trm.TermId">@trm.TermName</option>
+                <option value="@crs.CourseName">@crs.CourseName</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label class="page-subtitle" for="courselikedmost">Liked Most</label>
+        <InputSelect @bind-Value="week.LikedMost" class="form-select page-subtitle" id="courselikedmost">
+            <option value="">-- Select Course --</option>
+            @foreach (var crs in listCourses)
+            {
+                <option value="@crs.CourseName">@crs.CourseName</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label class="page-subtitle" for="coursemostdifficult">Most Difficult</label>
+        <InputSelect @bind-Value="week.MostDifficult" class="form-select page-subtitle" id="coursemostdifficult">
+            <option value="">-- Select Course --</option>
+            @foreach (var crs in listCourses)
+            {
+                <option value="@crs.CourseName">@crs.CourseName</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label class="page-subtitle" for="courseleastdifficult">Least Difficult</label>
+        <InputSelect @bind-Value="week.LeastDifficult" class="form-select page-subtitle" id="courseleastdifficult">
+            <option value="">-- Select Course --</option>
+            @foreach (var crs in listCourses)
+            {
+                <option value="@crs.CourseName">@crs.CourseName</option>
             }
         </InputSelect>
     </div>
 
     <br />
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+    <button type="submit" class="btn btn-primary page-subtitle">Save</button>
+    <button type="button" class="btn btn-primary page-subtitle" @onclick="Cancel">Cancel</button>
 </EditForm>
 
 
@@ -52,10 +76,12 @@
 
     private Week week = new Week();
     private List<Term> listTerms = new List<Term>();
+    private List<Course> listCourses = new List<Course>();
 
     protected override async Task OnInitializedAsync()
     {
         listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
+        listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
     }
 
     protected override async Task OnParametersSetAsync()
