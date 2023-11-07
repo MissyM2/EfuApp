@@ -2,7 +2,9 @@
 @inject NavigationManager NavManager
 @inject IViewCourseByIdUseCase ViewCourseByIdUseCase
 @inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
+@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
 @inject ISearchDeliverablesByCourseUseCase SearchDeliverablesByCourseUseCase
+@inject IFilterCoursesByTermNameUseCase FilterCoursesByTermNameUseCase
 @inject IJSRuntime JSRuntime
 
 <div class="page-title">Course Details and Deliverables</div>
@@ -13,13 +15,19 @@
     <div class="row">
         <div class="col">
             <label for="trm">Term Name</label>
-            <input type="text" id="trm" class="form-control" @bind-value="trmName" />
+            <select id="termName" class="form-xonreol" @onchange="@TermChanged">
+                <option value="">-- Select Term --</option>
+                @foreach (var trm in listTerms)
+                {
+                    <option value="@trm.TermName">@trm.TermName</option>
+                }
+            </select>
         </div>
         <div class="col">
             <label for="crs">Course Name</label>
             <select id="courseName" class="form-xonreol" @bind="crsName">
                 <option value="">-- Select Course --</option>
-                @foreach (var crs in listCourses)
+                @foreach (var crs in filteredListCourses)
                 {
                     <option value="@crs.CourseName">@crs.CourseName</option>
                 }
@@ -27,11 +35,11 @@
         </div>
         <div class="col">
             <label>&nbsp;</label>
-            <button type="button" class="btn btn-primary form-control" @onclick="SearchCourses">Search</button>
+            <button type="button" class="btn btn-primary form-control page-subtitle" @onclick="SearchCoursesForDeliverables">Search</button>
         </div>
         <div class="col">
             <label>&nbsp;</label>
-            <button type="button" class="btn btn-primary form-control" @onclick="PrintReport">Print</button>
+            <button type="button" class="btn btn-primary form-control page-subtitle" @onclick="PrintReport">Print</button>
         </div>
     </div>
     <br />
@@ -96,18 +104,40 @@
 @code {
     private int crsId = 0;
 
-    private string trmName = string.Empty;
+    string selectedTrm = string.Empty;
     private string crsName = string.Empty;
 
     private List<Course> listCourses = new List<Course>();
+    private List<Course> filteredListCourses = new List<Course>();
+    private List<Term> listTerms = new List<Term>();
+
     private IEnumerable<Deliverable>? courseDeliverables;
 
     protected async override Task OnInitializedAsync()
     {
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
         listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
+
     }
 
-    private async Task SearchCourses()
+    void TermChanged(ChangeEventArgs args)
+    {
+        crsName = string.Empty;
+        var selectedTerm = args.Value?.ToString();
+        filteredListCourses.Clear();
+
+        foreach (var crs in listCourses)
+        {
+            if (crs.Term.TermName == selectedTerm)
+            {
+                filteredListCourses.Add(crs);
+            }
+        }
+
+    }
+
+
+    private async Task SearchCoursesForDeliverables()
     {
         courseDeliverables = await SearchDeliverablesByCourseUseCase.ExecuteAsync(crsName);
     }

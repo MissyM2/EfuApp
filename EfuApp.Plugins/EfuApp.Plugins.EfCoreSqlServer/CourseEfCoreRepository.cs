@@ -18,6 +18,7 @@ public class CourseEFCoreRepository : ICourseRepository
         return await context.Courses
             .Where(x => x.CourseName.ToLower().IndexOf(name.ToLower()) >= 0)
             .Include(course => course.Deliverables)
+            .Include(course => course.Term)
             .ToListAsync();
     }
 

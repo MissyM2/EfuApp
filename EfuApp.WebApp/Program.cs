@@ -59,6 +59,7 @@ builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCas
 builder.Services.AddTransient<IAddCourseUseCase, AddCourseUseCase>();
 builder.Services.AddTransient<IEditCourseUseCase, EditCourseUseCase>();
 builder.Services.AddTransient<IViewCourseByIdUseCase, ViewCourseByIdUseCase>();
+builder.Services.AddTransient<IFilterCoursesByTermNameUseCase, FilterCoursesByTermNameUseCase>();
 
 builder.Services.AddTransient<IViewDeliverablesByNameUseCase, ViewDeliverablesByNameUseCase>();
 builder.Services.AddTransient<IAddDeliverableUseCase, AddDeliverableUseCase>();
