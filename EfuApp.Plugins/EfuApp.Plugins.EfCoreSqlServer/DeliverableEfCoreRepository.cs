@@ -53,4 +53,13 @@ public class DeliverableEfCoreRepository : IDeliverableRepository
             x => x.DeliverableName.ToLower().IndexOf(name.ToLower()) >= 0).ToListAsync();
 
     }
+
+    public async Task<IEnumerable<Deliverable>> GetDeliverablesByCourseNameAsync(string crsName)
+    {
+        var deliverablesList = await context.Deliverables
+            .Include(deliverable => deliverable.Course)
+            .ToListAsync();
+        return deliverablesList.Where(x => x.Course.CourseName == crsName);
+
+    }
 }

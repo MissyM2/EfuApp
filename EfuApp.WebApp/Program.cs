@@ -12,6 +12,7 @@ using EfuApp.UseCases.Weeks;
 ////using EfuApp.Plugins.Sqlite;
 using EfuApp.Plugins.EfCoreSqlServer;
 using Microsoft.EntityFrameworkCore;
+using EfuApp.UseCases.Reports;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -64,6 +65,7 @@ builder.Services.AddTransient<IAddDeliverableUseCase, AddDeliverableUseCase>();
 builder.Services.AddTransient<IEditDeliverableUseCase, EditDeliverableUseCase>();
 builder.Services.AddTransient<IViewDeliverableByIdUseCase, ViewDeliverableByIdUseCase>();
 builder.Services.AddTransient<IViewDeliverablesByDateUseCase, ViewDeliverablesByDateUseCase>();
+builder.Services.AddTransient<ISearchDeliverablesByCourseUseCase, SearchDeliverablesByCourseUseCase>();
 
 builder.Services.AddTransient<IViewSuggestionsByNameUseCase, ViewSuggestionsByNameUseCase>();
 builder.Services.AddTransient<IAddSuggestionUseCase, AddSuggestionUseCase>();

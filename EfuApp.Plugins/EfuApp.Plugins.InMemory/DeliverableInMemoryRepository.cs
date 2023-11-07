@@ -80,4 +80,9 @@ public class DeliverableInMemoryRepository : IDeliverableRepository
 
         return _deliverables.Where(x => x.DeliverableName.Contains(name, StringComparison.OrdinalIgnoreCase));
     }
+
+    public async Task<IEnumerable<Deliverable>> GetDeliverablesByCourseNameAsync(string crsName)
+    {
+        return (IEnumerable<Deliverable>)Task.CompletedTask;
+    }
 }

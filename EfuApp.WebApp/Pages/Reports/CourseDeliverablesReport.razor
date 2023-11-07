@@ -1,0 +1,119 @@
+﻿@page "/coursereport"
+@inject NavigationManager NavManager
+@inject IViewCourseByIdUseCase ViewCourseByIdUseCase
+@inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
+@inject ISearchDeliverablesByCourseUseCase SearchDeliverablesByCourseUseCase
+@inject IJSRuntime JSRuntime
+
+<div class="page-title">Course Details and Deliverables</div>
+<br />
+
+<div id="printarea">
+
+    <div class="row">
+        <div class="col">
+            <label for="trm">Term Name</label>
+            <input type="text" id="trm" class="form-control" @bind-value="trmName" />
+        </div>
+        <div class="col">
+            <label for="crs">Course Name</label>
+            <select id="courseName" class="form-xonreol" @bind="crsName">
+                <option value="">-- Select Course --</option>
+                @foreach (var crs in listCourses)
+                {
+                    <option value="@crs.CourseName">@crs.CourseName</option>
+                }
+            </select>
+        </div>
+        <div class="col">
+            <label>&nbsp;</label>
+            <button type="button" class="btn btn-primary form-control" @onclick="SearchCourses">Search</button>
+        </div>
+        <div class="col">
+            <label>&nbsp;</label>
+            <button type="button" class="btn btn-primary form-control" @onclick="PrintReport">Print</button>
+        </div>
+    </div>
+    <br />
+
+    @if (courseDeliverables == null || courseDeliverables.Any() == false)
+    {
+        <div class="alert alert-dismissible alert-secondary">
+            No Deliverables for this Course
+        </div>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <div class="d-flex justify-content-center page-subtitle">
+                            <label class="deliverable-attributes" for="deliverablename">Name</label>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="d-flex justify-content-center text-wrap page-subtitle">
+                            <label class="deliverable-attributes" for="desc">Desc</label>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="d-flex justify-content-center page-subtitle">
+                            <label class="deliverable-attributes" for="assignmentdate">Assignment Date</label>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="d-flex justify-content-center page-subtitle">
+                            <label class="deliverable-attributes" for="duedate">Due Date</label>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cd in courseDeliverables)
+                {
+                    <tr scope="row">
+                        <td class="col page-subtitle">
+                            @cd.DeliverableName
+                        </td>
+                        <td class="col page-subtitle">
+                            @cd.DeliverableDesc
+                        </td>
+                        <td class="col page-subtitle">
+                            @cd.AssignmentDate.ToString("MM/dd/yyyy")
+                        </td>
+                        <td class="col page-subtitle">
+                            @cd.DueDate.ToString("MM/dd/yyyy")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+<br />
+
+@code {
+    private int crsId = 0;
+
+    private string trmName = string.Empty;
+    private string crsName = string.Empty;
+
+    private List<Course> listCourses = new List<Course>();
+    private IEnumerable<Deliverable>? courseDeliverables;
+
+    protected async override Task OnInitializedAsync()
+    {
+        listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
+    }
+
+    private async Task SearchCourses()
+    {
+        courseDeliverables = await SearchDeliverablesByCourseUseCase.ExecuteAsync(crsName);
+    }
+
+    private void PrintReport()
+    {
+        JSRuntime.InvokeVoidAsync("print");
+    }
+}

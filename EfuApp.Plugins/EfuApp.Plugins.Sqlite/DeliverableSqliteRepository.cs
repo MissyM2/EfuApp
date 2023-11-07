@@ -99,4 +99,13 @@ public class DeliverableSqliteRepository : IDeliverableRepository
 
         return await _dbConnection.Table<Deliverable>().Where(x => x.DeliverableName.Contains(name, StringComparison.OrdinalIgnoreCase)).ToListAsync();
     }
+
+    public async Task<IEnumerable<Deliverable>> GetDeliverablesByCourseNameAsync(string crsName)
+    {
+        var deliverablesList = await _dbConnection.Table<Deliverable>()
+            //.Include(deliverable => deliverable.Course)
+            .ToListAsync();
+        return deliverablesList.Where(x => x.Course.CourseName == crsName);
+
+    }
 }
