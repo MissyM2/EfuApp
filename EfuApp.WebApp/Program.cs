@@ -18,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //var constr = builder.Configuration.GetConnectionString("EfuApp");
 
-builder.Services.AddDbContext<EfuAppContext>(options =>
+builder.Services.AddDbContextFactory<EfuAppContext>(options =>
 {
     // the UseSqlServer method is accessing the connection string from builder.Configuration
     //options.UseSqlServer(constr);
@@ -59,7 +59,6 @@ builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCas
 builder.Services.AddTransient<IAddCourseUseCase, AddCourseUseCase>();
 builder.Services.AddTransient<IEditCourseUseCase, EditCourseUseCase>();
 builder.Services.AddTransient<IViewCourseByIdUseCase, ViewCourseByIdUseCase>();
-builder.Services.AddTransient<IFilterCoursesByTermNameUseCase, FilterCoursesByTermNameUseCase>();
 
 builder.Services.AddTransient<IViewDeliverablesByNameUseCase, ViewDeliverablesByNameUseCase>();
 builder.Services.AddTransient<IAddDeliverableUseCase, AddDeliverableUseCase>();

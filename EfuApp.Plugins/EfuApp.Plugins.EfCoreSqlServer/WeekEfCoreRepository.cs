@@ -6,16 +6,18 @@ namespace EfuApp.Plugins.EfCoreSqlServer;
 
 public class WeekEfCoreRepository : IWeekRepository
 {
-    private readonly EfuAppContext context;
+    private readonly IDbContextFactory<EfuAppContext> contextFactory;
 
-    public WeekEfCoreRepository(EfuAppContext context)
+    public WeekEfCoreRepository(IDbContextFactory<EfuAppContext> contextFactory)
     {
-        this.context = context;
+        this.contextFactory = contextFactory;
     }
 
     public async Task<IEnumerable<Week>> GetWeeksByNameAsync(string name)
     {
-        return await context.Weeks
+        using var db = this.contextFactory.CreateDbContext();
+
+        return await db.Weeks
             .Where(x => x.WeekName.ToLower().IndexOf(name.ToLower()) >= 0)
             .Include(week => week.Term)
             .ToListAsync();
@@ -23,13 +25,17 @@ public class WeekEfCoreRepository : IWeekRepository
 
     public async Task AddWeekAsync(Week week)
     {
-        context.Weeks.Add(week);
-        await context.SaveChangesAsync();
+        using var db = this.contextFactory.CreateDbContext();
+
+        db.Weeks.Add(week);
+        await db.SaveChangesAsync();
     }
 
     public async Task<Week> GetWeekByIdAsync(int weekId)
     {
-        var wk = await context.Weeks.FindAsync(weekId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var wk = await db.Weeks.FindAsync(weekId);
         if (wk != null) return wk;
 
         return new Week();
@@ -37,13 +43,15 @@ public class WeekEfCoreRepository : IWeekRepository
 
     public async Task UpdateWeekAsync(Week week)
     {
-        var wk = await context.Weeks.FindAsync(week.WeekId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var wk = await db.Weeks.FindAsync(week.WeekId);
         if (wk != null)
         {
             wk.WeekName = week.WeekName;
             wk.WeekDesc = week.WeekDesc;
 
-            await context.SaveChangesAsync();
+            await db.SaveChangesAsync();
         }
     }
 }

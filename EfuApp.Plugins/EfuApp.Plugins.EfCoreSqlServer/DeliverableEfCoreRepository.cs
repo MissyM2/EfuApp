@@ -6,16 +6,18 @@ namespace EfuApp.Plugins.EfCoreSqlServer;
 
 public class DeliverableEfCoreRepository : IDeliverableRepository
 {
-    private readonly EfuAppContext context;
+    private readonly IDbContextFactory<EfuAppContext> contextFactory;
 
-    public DeliverableEfCoreRepository(EfuAppContext context)
+    public DeliverableEfCoreRepository(IDbContextFactory<EfuAppContext> contextFactory)
     {
-        this.context = context;
+        this.contextFactory = contextFactory;
     }
 
     public async Task<IEnumerable<Deliverable>> GetDeliverablesByNameAsync(string name)
     {
-        return await context.Deliverables
+        using var db = this.contextFactory.CreateDbContext();
+
+        return await db.Deliverables
             .Where(x => x.DeliverableName.ToLower().IndexOf(name.ToLower()) >= 0)
             .Include(deliverable => deliverable.Course)
             .ToListAsync();
@@ -23,13 +25,17 @@ public class DeliverableEfCoreRepository : IDeliverableRepository
 
     public async Task AddDeliverableAsync(Deliverable deliverable)
     {
-        context.Deliverables.Add(deliverable);
-        await context.SaveChangesAsync();
+        using var db = this.contextFactory.CreateDbContext();
+
+        db.Deliverables.Add(deliverable);
+        await db.SaveChangesAsync();
     }
 
     public async Task<Deliverable> GetDeliverableByIdAsync(int deliverableId)
     {
-        var del = await context.Deliverables.FindAsync(deliverableId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var del = await db.Deliverables.FindAsync(deliverableId);
         if (del != null) return del;
 
         return new Deliverable();
@@ -37,26 +43,32 @@ public class DeliverableEfCoreRepository : IDeliverableRepository
 
     public async Task UpdateDeliverableAsync(Deliverable deliverable)
     {
-        var del = await context.Deliverables.FindAsync(deliverable.DeliverableId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var del = await db.Deliverables.FindAsync(deliverable.DeliverableId);
         if (del != null)
         {
             del.DeliverableName = deliverable.DeliverableName;
             del.DeliverableDesc = deliverable.DeliverableDesc;
 
-            await context.SaveChangesAsync();
+            await db.SaveChangesAsync();
         }
     }
 
     public async Task<IEnumerable<Deliverable>> GetDeliverablesByDateAsync(string name)
     {
-        return await context.Deliverables.Where(
+        using var db = this.contextFactory.CreateDbContext();
+
+        return await db.Deliverables.Where(
             x => x.DeliverableName.ToLower().IndexOf(name.ToLower()) >= 0).ToListAsync();
 
     }
 
     public async Task<IEnumerable<Deliverable>> GetDeliverablesByCourseNameAsync(string crsName)
     {
-        var deliverablesList = await context.Deliverables
+        using var db = this.contextFactory.CreateDbContext();
+
+        var deliverablesList = await db.Deliverables
             .Include(deliverable => deliverable.Course)
             .ToListAsync();
         return deliverablesList.Where(x => x.Course.CourseName == crsName);

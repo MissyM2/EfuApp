@@ -6,16 +6,18 @@ namespace EfuApp.Plugins.EfCoreSqlServer;
 
 public class CourseEFCoreRepository : ICourseRepository
 {
-    private readonly EfuAppContext context;
+    private readonly IDbContextFactory<EfuAppContext> contextFactory;
 
-    public CourseEFCoreRepository(EfuAppContext context)
+    public CourseEFCoreRepository(IDbContextFactory<EfuAppContext> contextFactory)
     {
-        this.context = context;
+        this.contextFactory = contextFactory;
     }
 
     public async Task<IEnumerable<Course>> GetCoursesByNameAsync(string name)
     {
-        return await context.Courses
+        using var db = this.contextFactory.CreateDbContext();
+
+        return await db.Courses
             .Where(x => x.CourseName.ToLower().IndexOf(name.ToLower()) >= 0)
             .Include(course => course.Deliverables)
             .Include(course => course.Term)
@@ -24,13 +26,17 @@ public class CourseEFCoreRepository : ICourseRepository
 
     public async Task AddCourseAsync(Course course)
     {
-        context.Courses.Add(course);
-        await context.SaveChangesAsync();
+        using var db = this.contextFactory.CreateDbContext();
+
+        db.Courses.Add(course);
+        await db.SaveChangesAsync();
     }
 
     public async Task<Course> GetCourseByIdAsync(int courseId)
     {
-        var crs = await context.Courses.FindAsync(courseId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var crs = await db.Courses.FindAsync(courseId);
         if (crs != null) return crs;
 
         return new Course();
@@ -38,13 +44,15 @@ public class CourseEFCoreRepository : ICourseRepository
 
     public async Task UpdateCourseAsync(Course course)
     {
-        var crs = await context.Courses.FindAsync(course.CourseId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var crs = await db.Courses.FindAsync(course.CourseId);
         if (crs != null)
         {
             crs.CourseName = course.CourseName;
             crs.CourseDesc = course.CourseDesc;
 
-            await context.SaveChangesAsync();
+            await db.SaveChangesAsync();
         }
     }
 }

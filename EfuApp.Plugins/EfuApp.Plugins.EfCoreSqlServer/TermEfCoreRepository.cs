@@ -6,16 +6,18 @@ namespace EfuApp.Plugins.EfCoreSqlServer;
 
 public class TermEfCoreRepository : ITermRepository
 {
-    private readonly EfuAppContext context;
+    private readonly IDbContextFactory<EfuAppContext> contextFactory;
 
-    public TermEfCoreRepository(EfuAppContext context)
+    public TermEfCoreRepository(IDbContextFactory<EfuAppContext> contextFactory)
     {
-        this.context = context;
+        this.contextFactory = contextFactory;
     }
 
     public async Task<IEnumerable<Term>> GetTermsByNameAsync(string name)
     {
-        return await context.Terms
+        using var db = this.contextFactory.CreateDbContext();
+
+        return await db.Terms
             .Where(x => x.TermName.ToLower().IndexOf(name.ToLower()) >= 0)
             .Include(term => term.Weeks)
             .ToListAsync();
@@ -23,13 +25,17 @@ public class TermEfCoreRepository : ITermRepository
 
     public async Task AddTermAsync(Term term)
     {
-        context.Terms.Add(term);
-        await context.SaveChangesAsync();
+        using var db = this.contextFactory.CreateDbContext();
+
+        db.Terms.Add(term);
+        await db.SaveChangesAsync();
     }
 
     public async Task<Term> GetTermByIdAsync(int termId)
     {
-        var trm = await context.Terms.FindAsync(termId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var trm = await db.Terms.FindAsync(termId);
         if (trm != null) return trm;
 
         return new Term();
@@ -37,13 +43,15 @@ public class TermEfCoreRepository : ITermRepository
 
     public async Task UpdateTermAsync(Term term)
     {
-        var trm = await context.Terms.FindAsync(term.TermId);
+        using var db = this.contextFactory.CreateDbContext();
+
+        var trm = await db.Terms.FindAsync(term.TermId);
         if (trm != null)
         {
             trm.TermName = term.TermName;
             trm.TermDesc = term.TermDesc;
 
-            await context.SaveChangesAsync();
+            await db.SaveChangesAsync();
         }
     }
 }
