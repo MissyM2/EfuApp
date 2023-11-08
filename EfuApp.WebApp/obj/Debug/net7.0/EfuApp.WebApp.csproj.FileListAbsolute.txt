@@ -9,6 +9,10 @@ C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\EfuAp
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Humanizer.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Build.dll
@@ -34,6 +38,10 @@ C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Micro
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Sqlite.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Identity.Client.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
@@ -269,6 +277,7 @@ C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuAp
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuApp.WebApp.AssemblyInfoInputs.cache
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuApp.WebApp.AssemblyInfo.cs
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuApp.WebApp.csproj.CoreCompileInputs.cache
+C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuApp.WebApp.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuApp.WebApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuApp.WebApp.RazorAssemblyInfo.cache
 C:\Users\maloney_f\Documents\My Apps\EfuApp\EfuApp.WebApp\obj\Debug\net7.0\EfuApp.WebApp.RazorAssemblyInfo.cs

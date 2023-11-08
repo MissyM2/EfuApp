@@ -13,23 +13,31 @@ using EfuApp.UseCases.Weeks;
 using EfuApp.Plugins.EfCoreSqlServer;
 using Microsoft.EntityFrameworkCore;
 using EfuApp.UseCases.Reports;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var constr = builder.Configuration.GetConnectionString("EfuApp");
+var constr = builder.Configuration.GetConnectionString("EfuApp");
+
+// configure EF Core for Identity
+builder.Services.AddDbContext<AccountDbContext>(options =>
+{
+    options.UseSqlServer(constr);
+});
+
+// configure Identity
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    // this is a very basic identity implementation
+    options.SignIn.RequireConfirmedEmail = false;
+}).AddEntityFrameworkStores<AccountDbContext>();
 
 builder.Services.AddDbContextFactory<EfuAppContext>(options =>
 {
     // the UseSqlServer method is accessing the connection string from builder.Configuration
-    //options.UseSqlServer(constr);
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EfuApp"));
+    options.UseSqlServer(constr);
 });
 
-// builder.Services.AddDbContextFactory<EfuAppContext>(options =>
-// {
-//     // the UseSqlServer method is accessing the connection string from builder.Configuration
-//     options.UseSqlServer(constr);
-// });
 
 // Add services to the container.
 builder.Services.AddRazorPages();
