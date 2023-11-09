@@ -27,6 +27,11 @@
         </InputText>
     </div>
 
+     <div class="form-group">
+            <label for="wks">Weeks</label>       
+            <CourseWeeksComponent Course="this.course"></CourseWeeksComponent>
+    </div>
+
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
@@ -48,7 +53,11 @@
 
     private async Task SaveCourse()
     {
-        await EditCourseUseCase.ExecuteAsync(this.course);
+        if (this.course != null)
+        {
+            await EditCourseUseCase.ExecuteAsync(this.course);
+        }
+        
         NavManager.NavigateTo("/courses/list");
     }
 

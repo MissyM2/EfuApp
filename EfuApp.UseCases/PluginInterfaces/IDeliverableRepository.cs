@@ -7,6 +7,8 @@ public interface IDeliverableRepository
     Task<IEnumerable<Deliverable>> GetDeliverablesByNameAsync(string name);
     Task AddDeliverableAsync(Deliverable course);
     Task<Deliverable> GetDeliverableByIdAsync(int courseId);
+
+    Task<IEnumerable<Deliverable>> GetDeliverablesByCourseIdAsync(int courseId);
     Task UpdateDeliverableAsync(Deliverable course);
      Task<IEnumerable<Deliverable>> GetDeliverablesByDateAsync(string name);
     Task<IEnumerable<Deliverable>> GetDeliverablesByCourseNameAsync(string crsName);

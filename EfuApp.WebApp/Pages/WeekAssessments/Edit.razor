@@ -1,0 +1,49 @@
+﻿@page "/weekAssessments/edit/{WaId:int}"
+
+@inject NavigationManager NavManager
+@inject IEditWeekAssessmentUseCase EditWeekAssessmentUseCase
+@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
+@inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
+
+<div class="page-title">Edit WeekAssessment</div>
+
+
+
+    <div>
+    <div class="page-subtitle">WeekAssessment: @weekAssessment.WeekNumber </div>
+    </div>
+
+
+
+
+@code {
+    [Parameter]
+    public int WkId { get; set; }
+
+    private WeekAssessment weekAssessment = new WeekAssessment();
+    private List<Term> listTerms = new List<Term>();
+    private List<Course> listCourses = new List<Course>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
+        listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
+    }
+
+    // protected override async Task OnParametersSetAsync()
+    // {
+    //     this.weekAssessment = await ViewWeekAssessmentByIdUseCase.ExecuteAsync(this.WaId);
+    // }
+
+    private async Task SaveWeekAssessment()
+    {
+        await EditWeekAssessmentUseCase.ExecuteAsync(this.weekAssessment);
+        NavManager.NavigateTo("/weekAssessments/list");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/weekAssessments/list");
+    }
+
+}

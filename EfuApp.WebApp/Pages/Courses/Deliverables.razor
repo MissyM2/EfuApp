@@ -1,0 +1,168 @@
+﻿@page "/courses/deliverables/{id:int}"
+@inject NavigationManager NavManager
+@inject IViewCourseByIdUseCase ViewCourseByIdUseCase
+@inject IEditCourseUseCase EditCourseUseCase
+@inject IViewDeliverablesByCourseIdUseCase ViewDeliverablesByCourseIdUseCase
+
+<div class="page-title">Course and Deliverables</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="coursename">Name</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center text-wrap page-subtitle">
+                    <label class="course-attributes" for="description">Description</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="daysofweek">Days of Week</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="times">Times</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="instructor">Instructor</label>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.CourseName
+                </div>
+                </td>
+            <td class="col course-attributes text-center page-subtitle">
+                    @course.CourseDesc
+            </td>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.DaysOfWeek
+                </div>
+            </td>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.Times
+                </div>
+            </td>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.Instructor
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="font-size:.7rem;">Deliverables</div>
+<div class="d-flex justify-content-center">
+       
+    @if (listDeliverables == null || listDeliverables.Any() == false)
+    {
+        <div class="alert alert-dismissible alert-secondary">
+            No Deliverables for this Course
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="deliverable-attributes" for="deliverablename">Name</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center text-wrap page-subtitle">
+                                    <label class="deliverable-attributes" for="desc">Desc</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="deliverable-attributes" for="assignmentdate">Assignment Date</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="deliverable-attributes" for="duedate">Due Date</label>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var deliverable in listDeliverables)
+                        {
+                            <tr scope="row">
+                                <td class="col page-subtitle">
+                                    @deliverable.DeliverableName
+                                </td>
+                                <td class="col page-subtitle">
+                                    @deliverable.DeliverableDesc
+                                </td>
+                                <td class="col page-subtitle">
+                                    @deliverable.AssignmentDate.ToString("MM/dd/yyyy")
+                                </td>
+                                <td class="col page-subtitle">
+                                    @deliverable.DueDate.ToString("MM/dd/yyyy")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+<br />
+
+<button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Course course = new Course();
+
+    private List<Deliverable> listDeliverables = new List<Deliverable>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        course = await ViewCourseByIdUseCase.ExecuteAsync(Id);
+        listDeliverables = (await ViewDeliverablesByCourseIdUseCase.ExecuteAsync(Id)).ToList();
+    }
+
+    private void BackToList()
+    {
+        NavManager.NavigateTo("/courses/list");
+    }
+
+    private void GoToEdit()
+    {
+        NavManager.NavigateTo($"/courses/edit/{course.CourseId}");
+    }
+
+    private async Task SaveCourse()
+    {
+        await EditCourseUseCase.ExecuteAsync(this.course);
+        NavManager.NavigateTo("/courses/list");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/courses/list");
+    }
+}

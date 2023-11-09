@@ -1,0 +1,43 @@
+﻿@inject IViewWeekAssessmentsByCourseUseCase ViewWeekAssessmentsByNameUseCase
+
+<SearchWeekAssessmentListComponent OnSearchWeekAssessmentList="OnSearchWeekAssessmentList"></SearchWeekAssessmentListComponent>
+@if (_weekAssessments.Count > 0)
+{
+    <div class="search-result">
+        <ul>
+            @foreach(var wk in _weekAssessments)
+            {
+                <li @key="wk.WeekAssessmentId" 
+                    @onclick="@(async () => { await OnSelectWeekAssessment(wk);})">
+                    @wk.WeekNumber
+                </li>
+            }
+
+        </ul>
+    </div>
+}
+
+@code {
+    private List<WeekAssessment> _weekAssessments = new List<WeekAssessment>();
+
+    [Parameter]
+    public EventCallback<WeekAssessment> OnWeekAssessmentSelected { get; set; }
+
+    private async Task OnSearchWeekAssessmentList(string searchTerm)
+    {
+        _weekAssessments = (await ViewWeekAssessmentsByNameUseCase.ExecuteAsync(searchTerm)).ToList();
+    }
+
+    private async Task OnSelectWeekAssessment(WeekAssessment weekAssessment)
+    {
+        // tell parent component that we have selected the weekAssessment; pass the weekAssessment in this method to the parent.. EVENTCALLBACK
+        await OnWeekAssessmentSelected.InvokeAsync(weekAssessment);
+
+        // close the box
+        _weekAssessments.Clear();
+
+       
+    }
+
+}
+

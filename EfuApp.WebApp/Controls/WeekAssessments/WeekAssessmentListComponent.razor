@@ -1,0 +1,65 @@
+﻿@inject IViewWeekAssessmentsByCourseUseCase ViewWeekAssessmentsByCourseUseCase
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    Name
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    Description
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    TermId
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    Term Name
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    Liked Least
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    Liked Most
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    Most Difficult
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    Least Difficult
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <WeekAssessmentListItemComponent WeekAssessments="listWeekAssessments"></WeekAssessmentListItemComponent>
+    </tbody>
+</table>
+ *@
+@code {
+    // private List<WeekAssessment> listWeekAssessments = new List<WeekAssessment>();
+
+    // [Parameter]
+    // public string SearchTerm { get; set; } = string.Empty;
+
+    // protected override async Task OnParametersSetAsync()
+    // {
+    //     listWeekAssessments = (await ViewWeekAssessmentsByCourse.ExecuteAsync(this.SearchTerm)).ToList();
+    // }
+
+
+}

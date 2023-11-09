@@ -22,7 +22,10 @@ public class Course
     public int TermId { get; set; }
     public Term Term { get; set; } = null!;
 
+    public int WeekCount { get; set; } = 0;
 
 
     public List<Deliverable> Deliverables { get; } = new List<Deliverable>();
+
+    public List<WeekAssessment> WeekAssessments { get; set; } = new List<WeekAssessment>();
 }

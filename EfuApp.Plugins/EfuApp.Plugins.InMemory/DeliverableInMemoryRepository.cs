@@ -85,4 +85,9 @@ public class DeliverableInMemoryRepository : IDeliverableRepository
     {
         return (IEnumerable<Deliverable>)Task.CompletedTask;
     }
+
+    public Task<IEnumerable<Deliverable>> GetDeliverablesByCourseIdAsync(int courseId)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -7,6 +7,10 @@ public class Deliverable
     public int DeliverableId { get; set; }
 
     [Required]
+    public int CourseId { get; set; }
+    public Course Course { get; set; } = null!;
+
+    [Required]
     [StringLength(150)]
     public string DeliverableName { get; set; } = string.Empty;
 
@@ -16,8 +20,7 @@ public class Deliverable
 
     public DateTime DueDate { get; set;}
 
-    public int CourseId { get; set; }
-    public Course Course { get; set; } = null!;
+    
 
 
 }

@@ -1,0 +1,30 @@
+﻿@inject NavigationManager NavManager
+
+@if (WeekAssessments != null && WeekAssessments.Count > 0)
+{
+    foreach (var c in WeekAssessments)
+    {
+        <tr>
+            <td class="col page-subtitle">@c.WeekNumber</td>
+            @* <td class="col page-subtitle">
+                <button type="button"
+                        class="btn btn-light page-subtitle"
+                        @onclick="@(() => EditWeekAssessment(c.WeekAssessmentId))">Edit</button>
+            </td> *@
+        </tr>
+    }
+   
+
+}
+
+
+@code {
+    [Parameter]
+    public List<WeekAssessment> WeekAssessments { get; set; } = new List<WeekAssessment>();
+
+    private void EditWeekAssessment(int weekAssessmentId)
+    {
+        NavManager.NavigateTo($"weekAssessments/edit/{weekAssessmentId}");
+    }
+
+}

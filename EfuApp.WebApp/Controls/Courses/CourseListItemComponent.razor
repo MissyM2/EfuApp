@@ -8,11 +8,10 @@
                 <td class="col page-subtitle">@c.CourseName</td>
                 <td class="col page-subtitle">@c.CourseDesc</td>
                 <td class="col page-subtitle">
-                    <a class="btn btn-primary page-subtitle"
-                    @onclick="@(() => OpenDetails(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Details </a>
-                    <button type="button"
-                            class="btn btn-light  page-subtitle"
-                            @onclick="@(() => EditCourse(c.CourseId))">Edit</button>
+                    <button type="button" class="btn btn-light page-subtitle" @onclick="@(() => EditCourse(c.CourseId))">Edit</button>
+                <a class="btn btn-primary page-subtitle" @onclick="@(() => ViewDeliverables(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Deliverables </a>
+                    <a class="btn btn-primary page-subtitle" @onclick="@(() => ViewWeekAssessments(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Week Assessments </a>
+
                 </td>
             </tr>
         }
@@ -23,9 +22,14 @@
     [Parameter]
     public List<Course> Courses { get; set; } = new List<Course>();
 
-    private void OpenDetails(int courseId)
+    private void ViewDeliverables(int courseId)
     {
-        NavManager.NavigateTo($"/courses/details/{courseId}");
+        NavManager.NavigateTo($"/courses/deliverables/{courseId}");
+    }
+
+    private void ViewWeekAssessments(int courseId)
+    {
+        NavManager.NavigateTo($"/courses/weekassessments/{courseId}");
     }
 
     private void EditCourse(int courseId)

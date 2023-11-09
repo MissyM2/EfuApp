@@ -108,4 +108,9 @@ public class DeliverableSqliteRepository : IDeliverableRepository
         return deliverablesList.Where(x => x.Course.CourseName == crsName);
 
     }
+
+    public Task<IEnumerable<Deliverable>> GetDeliverablesByCourseIdAsync(int courseId)
+    {
+        throw new NotImplementedException();
+    }
 }

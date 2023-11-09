@@ -1,0 +1,31 @@
+﻿@page "/weekAssessments/list"
+
+@inject NavigationManager NavManager
+
+<h3>WeekAssessment List</h3>
+<br />
+
+<SearchWeekAssessmentListComponent OnSearchWeekAssessmentList="OnWeekAssessmentListSearch"></SearchWeekAssessmentListComponent>
+<br />
+<WeekAssessmentListComponent SearchTerm="@searchTerm"></WeekAssessmentListComponent>
+<br />
+
+<button type="button"
+        class="btn btn-primary"
+        @onclick="AddWeekAssessment">Add WeekAssessment</button>
+
+@code {
+    private string searchTerm = string.Empty;
+
+    private void OnWeekAssessmentListSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+    private void AddWeekAssessment()
+    {
+        NavManager.NavigateTo("/weekAssessments/create");
+    }
+
+}
+

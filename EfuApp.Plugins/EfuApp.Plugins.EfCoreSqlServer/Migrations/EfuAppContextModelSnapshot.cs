@@ -17,7 +17,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -54,6 +54,9 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("WeekCount")
+                        .HasColumnType("int");
+
                     b.HasKey("CourseId");
 
                     b.HasIndex("TermId");
@@ -69,7 +72,8 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                             DaysOfWeek = "",
                             Instructor = "",
                             TermId = 1,
-                            Times = ""
+                            Times = "",
+                            WeekCount = 0
                         },
                         new
                         {
@@ -79,7 +83,8 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                             DaysOfWeek = "",
                             Instructor = "",
                             TermId = 1,
-                            Times = ""
+                            Times = "",
+                            WeekCount = 0
                         },
                         new
                         {
@@ -89,7 +94,8 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                             DaysOfWeek = "",
                             Instructor = "",
                             TermId = 1,
-                            Times = ""
+                            Times = "",
+                            WeekCount = 0
                         },
                         new
                         {
@@ -99,7 +105,8 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                             DaysOfWeek = "",
                             Instructor = "",
                             TermId = 1,
-                            Times = ""
+                            Times = "",
+                            WeekCount = 0
                         });
                 });
 
@@ -270,13 +277,16 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("EfuApp.CoreBusiness.Week", b =>
+            modelBuilder.Entity("EfuApp.CoreBusiness.WeekAssessment", b =>
                 {
-                    b.Property<int>("WeekId")
+                    b.Property<int>("WeekAssessmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeekId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeekAssessmentId"));
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LeastDifficult")
                         .IsRequired()
@@ -294,69 +304,14 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TermId")
+                    b.Property<int>("WeekNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("WeekDesc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("WeekAssessmentId");
 
-                    b.Property<string>("WeekName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                    b.HasIndex("CourseId");
 
-                    b.HasKey("WeekId");
-
-                    b.HasIndex("TermId");
-
-                    b.ToTable("Weeks");
-
-                    b.HasData(
-                        new
-                        {
-                            WeekId = 1,
-                            LeastDifficult = "",
-                            LikedLeast = "",
-                            LikedMost = "",
-                            MostDifficult = "",
-                            TermId = 2,
-                            WeekDesc = "first week of semester",
-                            WeekName = "1"
-                        },
-                        new
-                        {
-                            WeekId = 2,
-                            LeastDifficult = "",
-                            LikedLeast = "",
-                            LikedMost = "",
-                            MostDifficult = "",
-                            TermId = 2,
-                            WeekDesc = "second week of semester",
-                            WeekName = "2"
-                        },
-                        new
-                        {
-                            WeekId = 3,
-                            LeastDifficult = "",
-                            LikedLeast = "",
-                            LikedMost = "",
-                            MostDifficult = "",
-                            TermId = 4,
-                            WeekDesc = "third week of semester",
-                            WeekName = "3"
-                        },
-                        new
-                        {
-                            WeekId = 4,
-                            LeastDifficult = "",
-                            LikedLeast = "",
-                            LikedMost = "",
-                            MostDifficult = "",
-                            TermId = 4,
-                            WeekDesc = "fourth week of semester",
-                            WeekName = "4"
-                        });
+                    b.ToTable("WeekAssessments");
                 });
 
             modelBuilder.Entity("EfuApp.CoreBusiness.Course", b =>
@@ -381,27 +336,27 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("EfuApp.CoreBusiness.Week", b =>
+            modelBuilder.Entity("EfuApp.CoreBusiness.WeekAssessment", b =>
                 {
-                    b.HasOne("EfuApp.CoreBusiness.Term", "Term")
-                        .WithMany("Weeks")
-                        .HasForeignKey("TermId")
+                    b.HasOne("EfuApp.CoreBusiness.Course", "Course")
+                        .WithMany("WeekAssessments")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Term");
+                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("EfuApp.CoreBusiness.Course", b =>
                 {
                     b.Navigation("Deliverables");
+
+                    b.Navigation("WeekAssessments");
                 });
 
             modelBuilder.Entity("EfuApp.CoreBusiness.Term", b =>
                 {
                     b.Navigation("Courses");
-
-                    b.Navigation("Weeks");
                 });
 #pragma warning restore 612, 618
         }

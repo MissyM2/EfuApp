@@ -8,12 +8,12 @@ using EfuApp.UseCases;
 using EfuApp.UseCases.Deliverables;
 using EfuApp.UseCases.Suggestions;
 using EfuApp.UseCases.Terms;
-using EfuApp.UseCases.Weeks;
 ////using EfuApp.Plugins.Sqlite;
 using EfuApp.Plugins.EfCoreSqlServer;
 using Microsoft.EntityFrameworkCore;
 using EfuApp.UseCases.Reports;
 using Microsoft.AspNetCore.Identity;
+using EfuApp.UseCases.WeekAssessments;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +60,7 @@ builder.Services.AddTransient<ICourseRepository, CourseEFCoreRepository>();
 builder.Services.AddTransient<IDeliverableRepository, DeliverableEfCoreRepository>();
 builder.Services.AddTransient<ISuggestionRepository, SuggestionEfCoreRepository>();
 builder.Services.AddTransient<ITermRepository, TermEfCoreRepository>();
-builder.Services.AddTransient<IWeekRepository, WeekEfCoreRepository>();
+builder.Services.AddTransient<IWeekAssessmentRepository, WeekAssessmentEFCoreRepository>();
 
 
 builder.Services.AddTransient<IViewCoursesByNameUseCase, ViewCoursesByNameUseCase>();
@@ -72,6 +72,7 @@ builder.Services.AddTransient<IViewDeliverablesByNameUseCase, ViewDeliverablesBy
 builder.Services.AddTransient<IAddDeliverableUseCase, AddDeliverableUseCase>();
 builder.Services.AddTransient<IEditDeliverableUseCase, EditDeliverableUseCase>();
 builder.Services.AddTransient<IViewDeliverableByIdUseCase, ViewDeliverableByIdUseCase>();
+builder.Services.AddTransient<IViewDeliverablesByCourseIdUseCase, ViewDeliverablesByCourseIdUseCase>();
 builder.Services.AddTransient<IViewDeliverablesByDateUseCase, ViewDeliverablesByDateUseCase>();
 builder.Services.AddTransient<ISearchDeliverablesByCourseUseCase, SearchDeliverablesByCourseUseCase>();
 
@@ -85,10 +86,10 @@ builder.Services.AddTransient<IAddTermUseCase, AddTermUseCase>();
 builder.Services.AddTransient<IEditTermUseCase, EditTermUseCase>();
 builder.Services.AddTransient<IViewTermByIdUseCase, ViewTermByIdUseCase>();
 
-builder.Services.AddTransient<IViewWeeksByNameUseCase, ViewWeeksByNameUseCase>();
-builder.Services.AddTransient<IAddWeekUseCase, AddWeekUseCase>();
-builder.Services.AddTransient<IEditWeekUseCase, EditWeekUseCase>();
-builder.Services.AddTransient<IViewWeekByIdUseCase, ViewWeekByIdUseCase>();
+builder.Services.AddTransient<IAddWeekAssessmentUseCase, AddWeekAssessmentUseCase>();
+builder.Services.AddTransient<IEditWeekAssessmentUseCase, EditWeekAssessmentUseCase>();
+builder.Services.AddTransient<IViewWeekAssessmentsByCourseUseCase, ViewWeekAssessmentsByCourseUseCase>();
+builder.Services.AddTransient<IViewWeekAssessmentsByCourseIdUseCase, ViewWeekAssessmentsByCourseIdUseCase>();
 
 var app = builder.Build();
 

@@ -1,0 +1,175 @@
+﻿@page "/courses/weekassessments/{id:int}"
+@inject NavigationManager NavManager
+@inject IViewCourseByIdUseCase ViewCourseByIdUseCase
+@inject IEditCourseUseCase EditCourseUseCase
+@inject IViewWeekAssessmentsByCourseIdUseCase ViewWeekAssessmentsByCourseIdUseCase
+
+<div class="page-title">Course and WeekAssessments</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="coursename">Name</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center text-wrap page-subtitle">
+                    <label class="course-attributes" for="description">Description</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="daysofweek">Days of Week</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="times">Times</label>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="d-flex justify-content-center page-subtitle">
+                    <label class="course-attributes" for="instructor">Instructor</label>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.CourseName
+                </div>
+                </td>
+            <td class="col course-attributes text-center page-subtitle">
+                    @course.CourseDesc
+            </td>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.DaysOfWeek
+                </div>
+            </td>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.Times
+                </div>
+            </td>
+            <td class="col">
+                <div class="course-attributes text-center page-subtitle">
+                    @course.Instructor
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="font-size:.7rem;">Week Assessments</div>
+<div class="d-flex justify-content-center">
+       
+    @if (listWeekAssessments == null || listWeekAssessments.Any() == false)
+    {
+        <div class="alert alert-dismissible alert-secondary">
+            No Week Assessments for this Course
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="weekAssessmentweeknumber">Week Number</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="weekAssessmentname">Liked Least</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center text-wrap page-subtitle">
+                                    <label class="weekassessments-attributes" for="desc">Liked Most</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="assignmentdate">Most Difficult</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="duedate">Least Difficult</label>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var weekAssessment in listWeekAssessments)
+                        {
+                            <tr scope="row">
+                                <td class="col page-subtitle">
+                                    @weekAssessment.WeekNumber
+                                </td>
+                                <td class="col page-subtitle">
+                                    @weekAssessment.LikedLeast
+                                </td>
+                                <td class="col page-subtitle">
+                                    @weekAssessment.LikedMost
+                                </td>
+                                <td class="col page-subtitle">
+                                    @weekAssessment.MostDifficult
+                                </td>
+                                <td class="col page-subtitle">
+                                    @weekAssessment.LeastDifficult
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+<br />
+
+<button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Course course = new Course();
+    private List<WeekAssessment> listWeekAssessments = new List<WeekAssessment>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        course = await ViewCourseByIdUseCase.ExecuteAsync(Id);
+        listWeekAssessments = (await ViewWeekAssessmentsByCourseIdUseCase.ExecuteAsync(Id)).ToList();
+    }
+
+    private void BackToList()
+    {
+        NavManager.NavigateTo("/courses/list");
+    }
+
+    private void GoToEdit()
+    {
+        NavManager.NavigateTo($"/courses/edit/{course.CourseId}");
+    }
+
+    private async Task SaveCourse()
+    {
+        await EditCourseUseCase.ExecuteAsync(this.course);
+        NavManager.NavigateTo("/courses/list");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/courses/list");
+    }
+} 

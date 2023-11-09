@@ -41,6 +41,15 @@ public class DeliverableEfCoreRepository : IDeliverableRepository
         return new Deliverable();
     }
 
+    public async Task<IEnumerable<Deliverable>> GetDeliverablesByCourseIdAsync(int courseId)
+    {
+        using var db = this.contextFactory.CreateDbContext();
+
+        return await db.Deliverables
+            .Where(x => x.CourseId == courseId)
+            .ToListAsync();
+    }
+
     public async Task UpdateDeliverableAsync(Deliverable deliverable)
     {
         using var db = this.contextFactory.CreateDbContext();

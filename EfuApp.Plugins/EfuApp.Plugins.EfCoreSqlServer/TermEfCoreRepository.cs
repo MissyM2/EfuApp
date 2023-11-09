@@ -19,7 +19,6 @@ public class TermEfCoreRepository : ITermRepository
 
         return await db.Terms
             .Where(x => x.TermName.ToLower().IndexOf(name.ToLower()) >= 0)
-            .Include(term => term.Weeks)
             .ToListAsync();
     }
 

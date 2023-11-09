@@ -2,6 +2,7 @@
 
 @inject NavigationManager NavManager
 @inject IAddCourseUseCase AddCourseUseCase
+@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
 
 
 <div class="page-title">Add Course</div>
@@ -10,29 +11,83 @@
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
 
-    <div class="form-group">
-        <label for="name">Course Name</label>
-        <InputText id="name"
+    <div class="form-group page-subtitle">
+        <label for="term">Term</label>
+        <InputSelect @bind-Value="course.TermId" class="form-select" id="term">
+            <option value="">-- Select Term --</option>
+            @foreach (var trm in listTerms)
+            {
+                <option value="@trm.TermId">@trm.TermName</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group page-subtitle">
+        <label for="coursename">Course Name</label>
+        <InputText id="coursename"
                    @bind-Value="course.CourseName"
                    class="form-control">
         </InputText>
     </div>
 
-    <div class="form-group">
-        <label for="name">Course Description</label>
-        <InputText id="name"
+    <div class="form-group page-subtitle">
+        <label for="coursedesc">Course Description</label>
+        <InputText id="coursedesc"
                    @bind-Value="course.CourseDesc"
+                   class="form-control page-subtitle">
+        </InputText>
+    </div>
+
+    <div class="form-group page-subtitle">
+        <label for="daysofweek">Days of the Week</label>
+        <InputText id="daysofweek"
+        @bind-Value="course.DaysOfWeek"
                    class="form-control">
         </InputText>
     </div>
 
+    <div class="form-group page-subtitle">
+        <label for="times">Times</label>
+        <InputText id="times"
+        @bind-Value="course.Times"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group page-subtitle">
+        <label for="instructor">Instructor</label>
+        <InputText id="instructor"
+        @bind-Value="course.Instructor"
+                   class="form-control">
+        </InputText>
+    </div>
+
+    <div class="form-group page-subtitle">
+        <label for="weekcount">Number of Weeks</label>
+        <InputNumber id="weekcount"
+        @bind-Value="course.WeekCount"
+                   class="form-control page-sbutitle">
+        </InputNumber>
+    </div>
+
+    @* <div class="form-group">
+        <label for="wks">Weeks</label>
+        <CourseWeeksComponent Course="this.course"></CourseWeeksComponent> 
+    </div> *@
+
     <br />
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+    <button type="submit" class="btn btn-primary page-subtitle">Save</button>
+    <button type="button" class="btn btn-primary page-subtitle" @onclick="Cancel">Cancel</button>
 </EditForm>
 
 @code {
     private Course course = new Course();
+    private List<Term> listTerms = new List<Term>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
+    }
 
     private async Task SaveCourse()
     {

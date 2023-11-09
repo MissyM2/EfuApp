@@ -8,9 +8,9 @@ public class EfuAppContext : DbContext
 {
     public DbSet<Course> Courses { get; set; }
     public DbSet<Deliverable> Deliverables { get; set; }
-    public DbSet<Term> Terms {get; set;}
+    public DbSet<Term> Terms { get; set; }
     public DbSet<Suggestion> Suggestions {get; set;}
-    public DbSet<Week> Weeks {get; set;}
+    public DbSet<WeekAssessment> WeekAssessments { get; set; }
 
     public EfuAppContext(DbContextOptions<EfuAppContext> options) : base(options)
     {
@@ -31,11 +31,11 @@ public class EfuAppContext : DbContext
             .HasForeignKey(e => e.CourseId)
             .IsRequired();
 
-        modelBuilder.Entity<Week>()
-            .HasOne(e => e.Term)
-            .WithMany(e => e.Weeks)
-            .HasForeignKey(e => e.TermId)
-            .IsRequired();
+        modelBuilder.Entity<WeekAssessment>()
+           .HasOne(e => e.Course)
+           .WithMany(e => e.WeekAssessments)
+           .HasForeignKey(e => e.CourseId)
+           .IsRequired();
 
         //seeding data
         modelBuilder.Entity<Course>().HasData(
@@ -93,13 +93,6 @@ public class EfuAppContext : DbContext
             new Term { TermId = 2, TermName = "Sp2023", TermDesc = "Spring, 2023" },
             new Term { TermId = 3, TermName = "Su2023", TermDesc = "Summer, 2023"},
             new Term { TermId = 4, TermName = "Fa2023", TermDesc = "Fall, 2023" }
-        );
-
-        modelBuilder.Entity<Week>().HasData(
-            new Week { WeekId = 1, TermId = 2, WeekName = "1", WeekDesc = "first week of semester"},
-            new Week { WeekId = 2, TermId = 2, WeekName = "2", WeekDesc = "second week of semester" },
-            new Week { WeekId = 3, TermId = 4, WeekName = "3", WeekDesc = "third week of semester"},
-            new Week { WeekId = 4, TermId = 4, WeekName = "4", WeekDesc = "fourth week of semester" }
         );
     }
 
