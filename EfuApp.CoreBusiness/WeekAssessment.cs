@@ -11,9 +11,10 @@ namespace EfuApp.CoreBusiness
     {
         public int WeekAssessmentId { get; set; }
 
-        public int CourseId { get; set; }
+        [Required]
+        public int TermId { get; set; }
 
-        public Course? Course { get; set; } = null!;
+        public Term Term { get; set; } = null!;
 
         [Required]
         public int WeekNumber { get; set; }

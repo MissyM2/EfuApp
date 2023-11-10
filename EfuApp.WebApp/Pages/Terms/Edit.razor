@@ -26,6 +26,14 @@
         </InputText>
     </div>
 
+    <div class="form-group">
+        <label for="name">Number of Weeks</label>
+        <InputNumber id="name"
+        @bind-Value="term.TermWeekCount"
+                   class="form-control">
+        </InputNumber>
+    </div>
+
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>

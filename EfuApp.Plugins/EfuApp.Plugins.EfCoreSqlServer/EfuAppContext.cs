@@ -19,11 +19,16 @@ public class EfuAppContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Course>()
-            .HasOne(e => e.Term)
-            .WithMany(e => e.Courses)
-            .HasForeignKey(e => e.TermId)
+        modelBuilder.Entity<Term>()
+            .HasMany(t => t.WeekAssessments)
+            .WithOne(e => e.Term)
             .IsRequired();
+
+        modelBuilder.Entity<Term>()
+            .HasMany(t => t.Courses)
+            .WithOne(e => e.Term)
+            .IsRequired();
+
 
         modelBuilder.Entity<Deliverable>()
             .HasOne(e => e.Course)
@@ -31,11 +36,7 @@ public class EfuAppContext : DbContext
             .HasForeignKey(e => e.CourseId)
             .IsRequired();
 
-        modelBuilder.Entity<WeekAssessment>()
-           .HasOne(e => e.Course)
-           .WithMany(e => e.WeekAssessments)
-           .HasForeignKey(e => e.CourseId)
-           .IsRequired();
+       
 
         //seeding data
         modelBuilder.Entity<Course>().HasData(
@@ -88,12 +89,12 @@ public class EfuAppContext : DbContext
 
         );
 
-        modelBuilder.Entity<Term>().HasData(
-            new Term { TermId = 1, TermName = "Wi2023", TermDesc = "Winter, 2023"},
-            new Term { TermId = 2, TermName = "Sp2023", TermDesc = "Spring, 2023" },
-            new Term { TermId = 3, TermName = "Su2023", TermDesc = "Summer, 2023"},
-            new Term { TermId = 4, TermName = "Fa2023", TermDesc = "Fall, 2023" }
-        );
+        //modelBuilder.Entity<Term>().HasData(
+        //    new Term { TermId = 1, TermName = "Wi2023", TermDesc = "Winter, 2023", TermWeekCount = 4},
+        //    new Term { TermId = 2, TermName = "Sp2023", TermDesc = "Spring, 2023", TermWeekCount = 12 },
+        //    new Term { TermId = 3, TermName = "Su2023", TermDesc = "Summer, 2023", TermWeekCount = 9 },
+        //    new Term { TermId = 4, TermName = "Fa2023", TermDesc = "Fall, 2023", TermWeekCount = 12 }
+        //);
     }
 
 

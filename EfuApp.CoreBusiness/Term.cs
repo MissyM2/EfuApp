@@ -12,8 +12,13 @@ public class Term
 
     public string TermDesc { get; set; } = string.Empty;
 
+    public int TermWeekCount { get; set; } = 0;
+
+    public virtual List<WeekAssessment> WeekAssessments { get; set; } = new List<WeekAssessment>();
 
     public virtual List<Course> Courses { get; set; } = new List<Course>();
+
+    
 
 
 }

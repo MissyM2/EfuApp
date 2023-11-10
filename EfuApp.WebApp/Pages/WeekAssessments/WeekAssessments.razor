@@ -1,37 +1,17 @@
-﻿@page "/courses/weekassessments/{id:int}"
+﻿@page "/terms/weekassessments/{id:int}"
 @inject NavigationManager NavManager
-@inject IViewCourseByIdUseCase ViewCourseByIdUseCase
-@inject IEditCourseUseCase EditCourseUseCase
-@inject IViewWeekAssessmentsByCourseIdUseCase ViewWeekAssessmentsByCourseIdUseCase
+@inject IViewTermByIdUseCase ViewTermByIdUseCase
+@inject IEditTermUseCase EditTermUseCase
+@inject IViewWeekAssessmentsByTermIdUseCase ViewWeekAssessmentsByTermIdUseCase
 
-<div class="page-title">Course and WeekAssessments</div>
+<div class="page-title">Term and WeekAssessments</div>
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">
                 <div class="d-flex justify-content-center page-subtitle">
-                    <label class="course-attributes" for="coursename">Name</label>
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center text-wrap page-subtitle">
-                    <label class="course-attributes" for="description">Description</label>
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    <label class="course-attributes" for="daysofweek">Days of Week</label>
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    <label class="course-attributes" for="times">Times</label>
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    <label class="course-attributes" for="instructor">Instructor</label>
+                    <label class="term-attributes" for="termname"> Term Name</label>
                 </div>
             </th>
         </tr>
@@ -39,28 +19,11 @@
     <tbody class="table-group-divider">
         <tr>
             <td class="col">
-                <div class="course-attributes text-center page-subtitle">
-                    @course.CourseName
-                </div>
-                </td>
-            <td class="col course-attributes text-center page-subtitle">
-                    @course.CourseDesc
-            </td>
-            <td class="col">
-                <div class="course-attributes text-center page-subtitle">
-                    @course.DaysOfWeek
+                <div class="term-attributes text-center page-subtitle">
+                    @term.TermName
                 </div>
             </td>
-            <td class="col">
-                <div class="course-attributes text-center page-subtitle">
-                    @course.Times
-                </div>
-            </td>
-            <td class="col">
-                <div class="course-attributes text-center page-subtitle">
-                    @course.Instructor
-                </div>
-            </td>
+
         </tr>
     </tbody>
 </table>
@@ -71,7 +34,7 @@
     @if (listWeekAssessments == null || listWeekAssessments.Any() == false)
     {
         <div class="alert alert-dismissible alert-secondary">
-            No Week Assessments for this Course
+            No Week Assessments for this Term
         </div>
     }
     else
@@ -143,33 +106,33 @@
     [Parameter]
     public int Id { get; set; }
 
-    private Course course = new Course();
+    private Term term = new Term();
     private List<WeekAssessment> listWeekAssessments = new List<WeekAssessment>();
 
     protected async override Task OnInitializedAsync()
     {
-        course = await ViewCourseByIdUseCase.ExecuteAsync(Id);
-        listWeekAssessments = (await ViewWeekAssessmentsByCourseIdUseCase.ExecuteAsync(Id)).ToList();
+        term = await ViewTermByIdUseCase.ExecuteAsync(Id);
+        listWeekAssessments = (await ViewWeekAssessmentsByTermIdUseCase.ExecuteAsync(Id)).ToList();
     }
 
     private void BackToList()
     {
-        NavManager.NavigateTo("/courses/list");
+        NavManager.NavigateTo("/terms/list");
     }
 
     private void GoToEdit()
     {
-        NavManager.NavigateTo($"/courses/edit/{course.CourseId}");
+        NavManager.NavigateTo($"/terms/edit/{term.TermId}");
     }
 
     private async Task SaveCourse()
     {
-        await EditCourseUseCase.ExecuteAsync(this.course);
-        NavManager.NavigateTo("/courses/list");
+        await EditTermUseCase.ExecuteAsync(this.term);
+        NavManager.NavigateTo("/terms/list");
     }
 
     private void Cancel()
     {
-        NavManager.NavigateTo("/courses/list");
+        NavManager.NavigateTo("/terms/list");
     }
 } 

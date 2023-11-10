@@ -88,8 +88,8 @@ builder.Services.AddTransient<IViewTermByIdUseCase, ViewTermByIdUseCase>();
 
 builder.Services.AddTransient<IAddWeekAssessmentUseCase, AddWeekAssessmentUseCase>();
 builder.Services.AddTransient<IEditWeekAssessmentUseCase, EditWeekAssessmentUseCase>();
-builder.Services.AddTransient<IViewWeekAssessmentsByCourseUseCase, ViewWeekAssessmentsByCourseUseCase>();
-builder.Services.AddTransient<IViewWeekAssessmentsByCourseIdUseCase, ViewWeekAssessmentsByCourseIdUseCase>();
+builder.Services.AddTransient<IViewWeekAssessmentsByTermUseCase, ViewWeekAssessmentsByTermUseCase>();
+builder.Services.AddTransient<IViewWeekAssessmentsByTermIdUseCase, ViewWeekAssessmentsByTermIdUseCase>();
 
 var app = builder.Build();
 

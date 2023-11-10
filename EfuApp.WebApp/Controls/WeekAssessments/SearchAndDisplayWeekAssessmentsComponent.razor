@@ -1,4 +1,4 @@
-﻿@inject IViewWeekAssessmentsByCourseUseCase ViewWeekAssessmentsByNameUseCase
+﻿@inject IViewWeekAssessmentsByTermUseCase ViewWeekAssessmentsByTermUseCase
 
 <SearchWeekAssessmentListComponent OnSearchWeekAssessmentList="OnSearchWeekAssessmentList"></SearchWeekAssessmentListComponent>
 @if (_weekAssessments.Count > 0)
@@ -25,7 +25,7 @@
 
     private async Task OnSearchWeekAssessmentList(string searchTerm)
     {
-        _weekAssessments = (await ViewWeekAssessmentsByNameUseCase.ExecuteAsync(searchTerm)).ToList();
+        _weekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(searchTerm)).ToList();
     }
 
     private async Task OnSelectWeekAssessment(WeekAssessment weekAssessment)

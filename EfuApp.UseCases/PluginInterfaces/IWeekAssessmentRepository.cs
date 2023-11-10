@@ -6,8 +6,8 @@ namespace EfuApp.UseCases.PluginInterfaces
     {
         Task AddWeekAssessmentAsync(WeekAssessment weekAssessment);
         Task UpdateWeekAssessmentAsync(WeekAssessment weekAssessment);
-        Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByCourseNameAsync(string crsName);
-        Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByCourseIdAsync(int courseId);
+        Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermNameAsync(string trmName);
+        Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermIdAsync(int trmId);
 
     }
 }

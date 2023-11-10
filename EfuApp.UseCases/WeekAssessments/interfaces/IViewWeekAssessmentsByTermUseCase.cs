@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace EfuApp.UseCases.WeekAssessments
 {
-    public interface IViewWeekAssessmentsByCourseUseCase
+    public interface IViewWeekAssessmentsByTermUseCase
     {
-        Task<IEnumerable<WeekAssessment>> ExecuteAsync(string course = "");
+        Task<IEnumerable<WeekAssessment>> ExecuteAsync(string term = "");
     }
 }

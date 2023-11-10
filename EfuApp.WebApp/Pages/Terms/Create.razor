@@ -18,11 +18,19 @@
     </div>
 
     <div class="form-group">
-        <label for="name">Term Description</label>
-        <InputText id="name"
+        <label for="desc">Term Description</label>
+        <InputText id="desc"
                    @bind-Value="term.TermDesc"
                    class="form-control">
         </InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="weeknum">Number of Weeks</label>
+        <InputNumber id="name"
+        @bind-Value="term.TermWeekCount"
+                   class="form-control">
+        </InputNumber>
     </div>
 
     <br />
