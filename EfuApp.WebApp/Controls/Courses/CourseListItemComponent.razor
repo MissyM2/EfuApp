@@ -9,9 +9,7 @@
                 <td class="col page-subtitle">@c.CourseDesc</td>
                 <td class="col page-subtitle">
                     <button type="button" class="btn btn-light page-subtitle" @onclick="@(() => EditCourse(c.CourseId))">Edit</button>
-                <a class="btn btn-primary page-subtitle" @onclick="@(() => ViewDeliverables(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Deliverables </a>
-                    <a class="btn btn-primary page-subtitle" @onclick="@(() => ViewWeekAssessments(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Week Assessments </a>
-
+                    <a class="btn btn-primary page-subtitle" @onclick="@(() => ViewDeliverables(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Deliverables </a>
                 </td>
             </tr>
         }
@@ -25,11 +23,6 @@
     private void ViewDeliverables(int courseId)
     {
         NavManager.NavigateTo($"/courses/deliverables/{courseId}");
-    }
-
-    private void ViewWeekAssessments(int courseId)
-    {
-        NavManager.NavigateTo($"/courses/weekassessments/{courseId}");
     }
 
     private void EditCourse(int courseId)

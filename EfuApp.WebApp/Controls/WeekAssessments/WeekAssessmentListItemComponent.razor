@@ -1,26 +1,33 @@
 ﻿@inject NavigationManager NavManager
 
-@if (WeekAssessments != null && WeekAssessments.Count > 0)
+@foreach (var wa in ListWeekAssessments)
 {
-    foreach (var c in WeekAssessments)
-    {
-        <tr>
-            <td class="col page-subtitle">@c.WeekNumber</td>
-            @* <td class="col page-subtitle">
-                <button type="button"
-                        class="btn btn-light page-subtitle"
-                        @onclick="@(() => EditWeekAssessment(c.WeekAssessmentId))">Edit</button>
-            </td> *@
-        </tr>
-    }
-   
-
+    <tr scope="row">
+        <td class="col page-subtitle">
+            @wa.WeekNumber
+        </td>
+        <td class="col page-subtitle">
+            @wa.LikedLeast
+        </td>
+        <td class="col page-subtitle">
+            @wa.LikedMost
+        </td>
+        <td class="col page-subtitle">
+            @wa.MostDifficult
+        </td>
+        <td class="col page-subtitle">
+            @wa.LeastDifficult
+        </td>
+        <td class="col page-subtitle">
+            <button type="button" class="btn btn-light page-subtitle" @onclick="@(() => EditWeekAssessment(wa.WeekAssessmentId))">Edit</button>
+        </td>
+    </tr>
 }
 
 
 @code {
     [Parameter]
-    public List<WeekAssessment> WeekAssessments { get; set; } = new List<WeekAssessment>();
+    public List<WeekAssessment> ListWeekAssessments { get; set; } = new List<WeekAssessment>();
 
     private void EditWeekAssessment(int weekAssessmentId)
     {

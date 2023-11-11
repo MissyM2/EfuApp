@@ -21,13 +21,17 @@ namespace EfuApp.Plugins.EfCoreSqlServer
             await db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermIdAsync(int trmId)
+        public async Task<WeekAssessment> GetWeekAssessmentByIdAsync(int weekAssessmentId)
         {
             using var db = this.contextFactory.CreateDbContext();
 
-            return await db.WeekAssessments
-                .Where(x => x.TermId == trmId)
-                .ToListAsync();
+            var wa = await db.WeekAssessments
+                .FindAsync(weekAssessmentId);
+
+            if (wa != null) return wa;
+
+            return new WeekAssessment();
+
         }
 
         public async Task UpdateWeekAssessmentAsync(WeekAssessment weekAssessment)
@@ -47,16 +51,26 @@ namespace EfuApp.Plugins.EfCoreSqlServer
             }
         }
 
-        public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermNameAsync(string trmName)
+        public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByWeekNumberAsync()
         {
             using var db = this.contextFactory.CreateDbContext();
 
-            var weekAssessmentsList = await db.WeekAssessments
-                .Include(weekAssessment => weekAssessment.Term.TermName)
+            return await db.WeekAssessments
+                .Include(x => x.Term)
                 .ToListAsync();
 
-            return weekAssessmentsList.Where(x => x.Term.TermName == trmName);
 
+        }
+
+        public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermAsync(string trmName)
+        {
+            using var db = this.contextFactory.CreateDbContext();
+
+            var weekAssessmentList = await db.WeekAssessments
+                .Include(x => x.Term)
+                .ToListAsync();
+
+            return weekAssessmentList.Where(x => x.Term.TermName == trmName);
         }
     }
 }

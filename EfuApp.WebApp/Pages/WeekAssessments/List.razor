@@ -1,31 +1,60 @@
-﻿@page "/weekAssessments/list"
-
+﻿@page "/weekassessments/list"
 @inject NavigationManager NavManager
+@inject IViewTermByIdUseCase ViewTermByIdUseCase
+@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
 
-<h3>WeekAssessment List</h3>
+<div class="page-title">Week Assessments by Term</div>
 <br />
-
-<SearchWeekAssessmentListComponent OnSearchWeekAssessmentList="OnWeekAssessmentListSearch"></SearchWeekAssessmentListComponent>
+<div class="row">
+    <div class="col">
+        <label for="trm">Select Term</label>
+        <select id="termName" class="form-xonreol" @onchange="@TermChanged">
+            <option value="">-- Select Term --</option>
+            @foreach (var trm in listTerms)
+            {
+                <option value="@trm.TermName">@trm.TermName</option>
+            }
+        </select>
+    </div>
+</div>
 <br />
-<WeekAssessmentListComponent SearchTerm="@searchTerm"></WeekAssessmentListComponent>
+<div class="d-flex justify-content-left">
+    <WeekAssessmentListComponent SelectedTerm = "@selectedTerm"></WeekAssessmentListComponent>    
+</div>
 <br />
-
-<button type="button"
-        class="btn btn-primary"
-        @onclick="AddWeekAssessment">Add WeekAssessment</button>
 
 @code {
-    private string searchTerm = string.Empty;
+    public string? selectedTerm = string.Empty;
 
-    private void OnWeekAssessmentListSearch(string searchTerm)
+    private List<Term> listTerms = new List<Term>();
+
+
+    protected async override Task OnInitializedAsync()
     {
-        this.searchTerm = searchTerm;
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
     }
 
-    private void AddWeekAssessment()
+    void TermChanged(ChangeEventArgs args)
     {
-        NavManager.NavigateTo("/weekAssessments/create");
+        selectedTerm = args.Value?.ToString();
+       
+
     }
 
-}
+    private void BackToList()
+    {
+        NavManager.NavigateTo("/terms/list");
+    }
 
+    // private void GoToEdit()
+    // {
+    //     NavManager.NavigateTo($"/weekassessments/edit/{weekassessment.weekAsId}");
+    // }
+
+    // private async Task SaveCourse()
+    // {
+    //     await EditTermUseCase.ExecuteAsync(this.term);
+    //     NavManager.NavigateTo("/terms/list");
+    // }
+
+} 

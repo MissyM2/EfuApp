@@ -14,7 +14,7 @@ namespace EfuApp.UseCases.WeekAssessments
 
         public async Task<IEnumerable<WeekAssessment>> ExecuteAsync(string term = "")
         {
-            return await weekAssessmentRepository.GetWeekAssessmentsByTermNameAsync(term);
+            return await weekAssessmentRepository.GetWeekAssessmentsByTermAsync(term);
         }
     }
 

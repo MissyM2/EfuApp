@@ -24,48 +24,28 @@
 
     <div class="form-group page-subtitle">
         <label for="coursename">Course Name</label>
-        <InputText id="coursename"
-                   @bind-Value="course.CourseName"
-                   class="form-control">
-        </InputText>
+        <InputText id="coursename" @bind-Value="course.CourseName" class="form-control"></InputText>
     </div>
 
     <div class="form-group page-subtitle">
         <label for="coursedesc">Course Description</label>
-        <InputText id="coursedesc"
-                   @bind-Value="course.CourseDesc"
-                   class="form-control page-subtitle">
-        </InputText>
+        <InputText id="coursedesc" @bind-Value="course.CourseDesc" class="form-control page-subtitle"></InputText>
     </div>
 
     <div class="form-group page-subtitle">
         <label for="daysofweek">Days of the Week</label>
-        <InputText id="daysofweek"
-        @bind-Value="course.DaysOfWeek"
-                   class="form-control">
-        </InputText>
+        <InputText id="daysofweek" @bind-Value="course.DaysOfWeek" class="form-control"></InputText>
     </div>
 
     <div class="form-group page-subtitle">
         <label for="times">Times</label>
-        <InputText id="times"
-        @bind-Value="course.Times"
-                   class="form-control">
-        </InputText>
+        <InputText id="times" @bind-Value="course.Times" class="form-control"></InputText>
     </div>
 
     <div class="form-group page-subtitle">
         <label for="instructor">Instructor</label>
-        <InputText id="instructor"
-        @bind-Value="course.Instructor"
-                   class="form-control">
-        </InputText>
+        <InputText id="instructor" @bind-Value="course.Instructor" class="form-control"></InputText>
     </div>
-
-    @* <div class="form-group">
-        <label for="wks">Weeks</label>
-        <CourseWeeksComponent Course="this.course"></CourseWeeksComponent> 
-    </div> *@
 
     <br />
     <button type="submit" class="btn btn-primary page-subtitle">Save</button>

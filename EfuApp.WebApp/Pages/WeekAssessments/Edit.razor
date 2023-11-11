@@ -4,21 +4,43 @@
 @inject IEditWeekAssessmentUseCase EditWeekAssessmentUseCase
 @inject IViewTermsByNameUseCase ViewTermsByNameUseCase
 @inject IViewCoursesByNameUseCase ViewCoursesByNameUseCase
+@inject IViewWeekAssessmentByIdUseCase ViewWeekAssessmentByIdUseCase
 
 <div class="page-title">Edit WeekAssessment</div>
 
+<EditForm Model="weekAssessment" OnValidSubmit="SaveWeekAssessment">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
 
-
-    <div>
-    <div class="page-subtitle">WeekAssessment: @weekAssessment.WeekNumber </div>
+    <div class="form-group">
+        <label for="likedleast">Liked Least</label>
+        <InputText id="likedleast" @bind-Value="weekAssessment.LikedLeast" class="form-control"></InputText>
     </div>
 
+    <div class="form-group">
+        <label for="likedmost">Liked Most</label>
+        <InputText id="likedmost" @bind-Value="weekAssessment.LikedMost" class="form-control"></InputText>
+    </div>
 
+     <div class="form-group">
+        <label for="mostdifficult">Most Difficult</label>
+        <InputText id="mostdifficult" @bind-Value="weekAssessment.MostDifficult" class="form-control"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="leastdifficult">Least Difficult</label>
+        <InputText id="leastdifficult" @bind-Value="weekAssessment.LeastDifficult" class="form-control"></InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
 
 
 @code {
     [Parameter]
-    public int WkId { get; set; }
+    public int WaId { get; set; }
 
     private WeekAssessment weekAssessment = new WeekAssessment();
     private List<Term> listTerms = new List<Term>();
@@ -30,10 +52,7 @@
         listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
     }
 
-    // protected override async Task OnParametersSetAsync()
-    // {
-    //     this.weekAssessment = await ViewWeekAssessmentByIdUseCase.ExecuteAsync(this.WaId);
-    // }
+    protected override async Task OnParametersSetAsync() => this.weekAssessment = await ViewWeekAssessmentByIdUseCase.ExecuteAsync(this.WaId);
 
     private async Task SaveWeekAssessment()
     {
@@ -41,9 +60,6 @@
         NavManager.NavigateTo("/weekAssessments/list");
     }
 
-    private void Cancel()
-    {
-        NavManager.NavigateTo("/weekAssessments/list");
-    }
+    private void Cancel() => NavManager.NavigateTo("/weekAssessments/list");
 
 }

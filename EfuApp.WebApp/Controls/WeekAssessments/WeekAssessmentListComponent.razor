@@ -1,65 +1,64 @@
 ﻿@inject IViewWeekAssessmentsByTermUseCase ViewWeekAssessmentsByTermUseCase
 
-@* <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    Name
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    Description
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    TermId
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    Term Name
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    Liked Least
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    Liked Most
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    Most Difficult
-                </div>
-            </th>
-            <th scope="col">
-                <div class="d-flex justify-content-center page-subtitle">
-                    Least Difficult
-                </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <WeekAssessmentListItemComponent WeekAssessments="listWeekAssessments"></WeekAssessmentListItemComponent>
-    </tbody>
-</table>
- *@
+ @if (listWeekAssessments == null || listWeekAssessments.Any() == false)
+    {
+        <div class="alert alert-dismissible alert-secondary">
+            No Week Assessments for this Term
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="weekAssessmentweeknumber">Week Number</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="weekAssessmentname">Liked Least</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center text-wrap page-subtitle">
+                                    <label class="weekassessments-attributes" for="desc">Liked Most</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="assignmentdate">Most Difficult</label>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex justify-content-center page-subtitle">
+                                    <label class="weekassessments-attributes" for="duedate">Least Difficult</label>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <WeekAssessmentListItemComponent ListWeekAssessments = "@listWeekAssessments"></WeekAssessmentListItemComponent>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+}
+
+
 @code {
-    // private List<WeekAssessment> listWeekAssessments = new List<WeekAssessment>();
+    private List<WeekAssessment> listWeekAssessments = new List<WeekAssessment>();
 
-    // [Parameter]
-    // public string SearchTerm { get; set; } = string.Empty;
+    [Parameter]
+    public string SelectedTerm { get; set; } = string.Empty;
 
-    // protected override async Task OnParametersSetAsync()
-    // {
-    //     listWeekAssessments = (await ViewWeekAssessmentsByCourse.ExecuteAsync(this.SearchTerm)).ToList();
-    // }
+    protected override async Task OnParametersSetAsync()
+    {
+         listWeekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(this.SelectedTerm)).ToList();
+     }
 
 
 }
