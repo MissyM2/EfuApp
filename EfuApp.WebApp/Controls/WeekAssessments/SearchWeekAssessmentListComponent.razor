@@ -10,10 +10,10 @@
 </div>
 
 @code {
-    private string weekAssessmentCourseToSearch = string.Empty;
+    private int weekAssessmentCourseToSearch = 0;
 
     [Parameter]
-    public EventCallback<string> OnSearchWeekAssessmentList { get; set; }
+    public EventCallback<int> OnSearchWeekAssessmentList { get; set; }
 
     public void OnSearch()
     {

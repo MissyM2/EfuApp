@@ -12,14 +12,14 @@
             <option value="">-- Select Term --</option>
             @foreach (var trm in listTerms)
             {
-                <option value="@trm.TermName">@trm.TermName</option>
+                <option value="@trm.TermId">@trm.TermName</option>
             }
         </select>
     </div>
 </div>
 <br />
 <div class="d-flex justify-content-left">
-    <WeekAssessmentListComponent SelectedTerm = "@selectedTerm"></WeekAssessmentListComponent>    
+    <WeekAssessmentListComponent SelectedTermId = "@selectedTermId"></WeekAssessmentListComponent>    
 </div>
 <br />
 
@@ -28,7 +28,8 @@
 
     // [CascadingParameter]
     // private Task<AuthenticationState>? authenticationStateTask { get; set; }
-    public string? selectedTerm = string.Empty;
+    public string selectedTerm = string.Empty;
+    public int selectedTermId = 0;
 
     private List<Term> listTerms = new List<Term>();
 
@@ -40,8 +41,11 @@
 
     void TermChanged(ChangeEventArgs args)
     {
+
         selectedTerm = args.Value?.ToString();
-       
+
+        selectedTermId = int.Parse(selectedTerm);
+
 
     }
 

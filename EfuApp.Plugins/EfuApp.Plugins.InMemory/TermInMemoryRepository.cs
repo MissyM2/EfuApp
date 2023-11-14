@@ -69,4 +69,8 @@ public class TermInMemoryRepository : ITermRepository
             return Task.CompletedTask;
         }
 
+    public Task<Term> GetTermByNameAsync(string trmName)
+    {
+        throw new NotImplementedException();
+    }
 }

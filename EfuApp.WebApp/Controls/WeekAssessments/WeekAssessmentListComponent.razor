@@ -1,9 +1,13 @@
 ﻿@inject IViewWeekAssessmentsByTermUseCase ViewWeekAssessmentsByTermUseCase
+@inject IViewTermByIdUseCase ViewTermByIdUseCase
+@inject IAddWeekAssessmentsUseCase AddWeekAssessmentsUseCase
 
  @if (listWeekAssessments == null || listWeekAssessments.Any() == false)
     {
         <div class="alert alert-dismissible alert-secondary">
-            No Week Assessments for this Term
+            There are no week Assessments for this student for this term.  To create week assessments, click
+        <a class="btn btn-primary page-subtitle" @onclick="@(() => CreateWeekAssessmentsForThisStudentForThisTerm())"> Here </a>
+        here.
         </div>
     }
     else
@@ -55,15 +59,45 @@
 
 
 @code {
+
+    private AuthenticationState? authenticationState;
+
+    [CascadingParameter]
+    private Task<AuthenticationState>? authenticationStateTask { get; set; }
+
+    private Term term = new Term();
+
+
+
     private List<WeekAssessment> listWeekAssessments = new List<WeekAssessment>();
 
     [Parameter]
-    public string SelectedTerm { get; set; } = string.Empty;
+    public int SelectedTermId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        authenticationState = await authenticationStateTask;
+    }
 
     protected override async Task OnParametersSetAsync()
     {
-         listWeekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(this.SelectedTerm)).ToList();
-     }
+        listWeekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(this.SelectedTermId)).ToList();
+    }
 
+    private async Task CreateWeekAssessmentsForThisStudentForThisTerm()
+    {
+        var user = authenticationState?.User?.Claims?.FirstOrDefault()?.Value;
+
+        term = await ViewTermByIdUseCase.ExecuteAsync(SelectedTermId);
+
+       // term = await ViewTermByNameUseCase.ExecuteAsync(SelectedTermId);
+
+        if (user != null && term != null)
+            await AddWeekAssessmentsUseCase.ExecuteAsync(term, term.TermWeekCount, user);
+
+        listWeekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(this.SelectedTermId)).ToList();
+
+        //listWeekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(this.SelectedTermId)).ToList();
+    }
 
 }

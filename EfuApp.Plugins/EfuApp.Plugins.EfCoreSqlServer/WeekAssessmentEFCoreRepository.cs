@@ -13,11 +13,26 @@ namespace EfuApp.Plugins.EfCoreSqlServer
             this.contextFactory = contextFactory;
         }
 
-        public async Task AddWeekAssessmentAsync(WeekAssessment weekAssessment)
+        public async Task AddWeekAssessmentsAsync(Term term, int wkCount, string userId)
         {
             using var db = this.contextFactory.CreateDbContext();
 
-            db.WeekAssessments.Add(weekAssessment);
+            for (int i = 1; i <= wkCount; i++)
+            {
+                db.WeekAssessments.Add(new WeekAssessment
+                {
+                    TermId = term.TermId,
+                    Term = term,
+                    WeekNumber = i,
+                    LikedLeast = "",
+                    LikedMost = "",
+                    MostDifficult = "",
+                    LeastDifficult = "",
+                    UserId = userId
+                });
+
+                await db.SaveChangesAsync();
+            }
             await db.SaveChangesAsync();
         }
 
@@ -63,7 +78,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer
 
         }
 
-        public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermAsync(string trmName)
+        public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermAsync(int trmId)
         {
             using var db = this.contextFactory.CreateDbContext();
 
@@ -71,7 +86,18 @@ namespace EfuApp.Plugins.EfCoreSqlServer
                 .Include(x => x.Term)
                 .ToListAsync();
 
-            return weekAssessmentList.Where(x => x.Term.TermName == trmName);
+            return weekAssessmentList.Where(x => x.Term.TermId == trmId);
         }
+
+        //public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermAsync(string trmName)
+        //{
+        //    using var db = this.contextFactory.CreateDbContext();
+
+        //    var weekAssessmentList = await db.WeekAssessments
+        //        .Include(x => x.Term)
+        //        .ToListAsync();
+
+        //    return weekAssessmentList.Where(x => x.Term.TermName == trmName);
+        //}
     }
 }

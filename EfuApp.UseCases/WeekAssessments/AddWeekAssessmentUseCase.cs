@@ -3,17 +3,17 @@ using EfuApp.UseCases.PluginInterfaces;
 
 namespace EfuApp.UseCases.WeekAssessments
 {
-    public class AddWeekAssessmentUseCase : IAddWeekAssessmentUseCase
+    public class AddWeekAssessmentsUseCase : IAddWeekAssessmentsUseCase
     {
         private readonly IWeekAssessmentRepository weekAssessmentRepository;
-        public AddWeekAssessmentUseCase(IWeekAssessmentRepository weekAssessmentRepository)
+        public AddWeekAssessmentsUseCase(IWeekAssessmentRepository weekAssessmentRepository)
         {
             this.weekAssessmentRepository = weekAssessmentRepository;
         }
 
-        public async Task ExecuteAsync(WeekAssessment weekAssessment)
+        public async Task ExecuteAsync(Term term, int wkCount, string userId)
         {
-            await this.weekAssessmentRepository.AddWeekAssessmentAsync(weekAssessment);
+            await this.weekAssessmentRepository.AddWeekAssessmentsAsync(term, wkCount, userId);
         }
     }
 }

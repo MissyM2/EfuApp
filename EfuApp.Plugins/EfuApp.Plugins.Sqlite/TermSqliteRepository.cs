@@ -69,4 +69,8 @@ public class TermSqliteRepository : ITermRepository
         }
     }
 
+    public Task<Term> GetTermByNameAsync(string trmName)
+    {
+        throw new NotImplementedException();
+    }
 }

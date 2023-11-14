@@ -23,9 +23,9 @@
     [Parameter]
     public EventCallback<WeekAssessment> OnWeekAssessmentSelected { get; set; }
 
-    private async Task OnSearchWeekAssessmentList(string searchTerm)
+    private async Task OnSearchWeekAssessmentList(int termId)
     {
-        _weekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(searchTerm)).ToList();
+        _weekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(termId)).ToList();
     }
 
     private async Task OnSelectWeekAssessment(WeekAssessment weekAssessment)

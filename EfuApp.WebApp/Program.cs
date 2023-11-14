@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using EfuApp.UseCases.Reports;
 using Microsoft.AspNetCore.Identity;
 using EfuApp.UseCases.WeekAssessments;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,11 +27,20 @@ builder.Services.AddDbContext<AccountDbContext>(options =>
 });
 
 // configure Identity
-builder.Services.AddDefaultIdentity<IdentityUser>(options =>
-{
-    // this is a very basic identity implementation
-    options.SignIn.RequireConfirmedEmail = false;
-}).AddEntityFrameworkStores<AccountDbContext>();
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+    {
+        // this is a very basic identity implementation
+        options.SignIn.RequireConfirmedEmail = false;
+    })
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<AccountDbContext>();
+
+//builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+//{
+//    // this is a very basic identity implementation
+//    options.SignIn.RequireConfirmedEmail = false;
+//}).AddEntityFrameworkStores<AccountDbContext>();
 
 builder.Services.AddDbContextFactory<EfuAppContext>(options =>
 {
@@ -85,8 +95,9 @@ builder.Services.AddTransient<IViewTermsByNameUseCase, ViewTermsByNameUseCase>()
 builder.Services.AddTransient<IAddTermUseCase, AddTermUseCase>();
 builder.Services.AddTransient<IEditTermUseCase, EditTermUseCase>();
 builder.Services.AddTransient<IViewTermByIdUseCase, ViewTermByIdUseCase>();
+builder.Services.AddTransient<IViewTermByNameUseCase, ViewTermByNameUseCase>();
 
-builder.Services.AddTransient<IAddWeekAssessmentUseCase, AddWeekAssessmentUseCase>();
+builder.Services.AddTransient<IAddWeekAssessmentsUseCase, AddWeekAssessmentsUseCase>();
 builder.Services.AddTransient<IEditWeekAssessmentUseCase, EditWeekAssessmentUseCase>();
 builder.Services.AddTransient<IViewWeekAssessmentsByTermUseCase, ViewWeekAssessmentsByTermUseCase>();
 builder.Services.AddTransient<IViewWeekAssessmentByIdUseCase, ViewWeekAssessmentByIdUseCase>();

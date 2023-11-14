@@ -9,6 +9,7 @@ namespace EfuApp.UseCases.WeekAssessments
 {
     public interface IViewWeekAssessmentsByTermUseCase
     {
-        Task<IEnumerable<WeekAssessment>> ExecuteAsync(string term = "");
+        //Task<IEnumerable<WeekAssessment>> ExecuteAsync(string term = "");
+        Task<IEnumerable<WeekAssessment>> ExecuteAsync(int trmId);
     }
 }

@@ -22,6 +22,16 @@ public class TermEfCoreRepository : ITermRepository
             .ToListAsync();
     }
 
+    public async Task<Term> GetTermByNameAsync(string trmName)
+    {
+        using var db = this.contextFactory.CreateDbContext();
+
+        var trm = await db.Terms.FindAsync(trmName);
+        if (trm != null) return trm;
+
+        return new Term();
+    }
+
     public async Task AddTermAsync(Term term, string userId)
     {
         using var db = this.contextFactory.CreateDbContext();
@@ -32,22 +42,7 @@ public class TermEfCoreRepository : ITermRepository
         int newTermId = term.TermId;
         int wkCount = term.TermWeekCount;
 
-        for (int i = 1; i <= term.TermWeekCount; i++)
-        {
-            db.WeekAssessments.Add(new WeekAssessment
-            {
-                TermId = term.TermId,
-                Term = term,
-                WeekNumber = i,
-                LikedLeast = "",
-                LikedMost = "",
-                MostDifficult = "",
-                LeastDifficult = "",
-                UserId = userId
-            });
-
-            await db.SaveChangesAsync();
-        }
+       
     }
 
     public async Task<Term> GetTermByIdAsync(int termId)

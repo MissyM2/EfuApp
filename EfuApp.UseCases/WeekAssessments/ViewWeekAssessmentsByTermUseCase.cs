@@ -12,10 +12,15 @@ namespace EfuApp.UseCases.WeekAssessments
             this.weekAssessmentRepository = weekAssessmentRepository;
         }
 
-        public async Task<IEnumerable<WeekAssessment>> ExecuteAsync(string term = "")
+        public async Task<IEnumerable<WeekAssessment>> ExecuteAsync(int trmId)
         {
-            return await weekAssessmentRepository.GetWeekAssessmentsByTermAsync(term);
+            return await weekAssessmentRepository.GetWeekAssessmentsByTermAsync(trmId);
         }
+
+        //public async Task<IEnumerable<WeekAssessment>> ExecuteAsync(string term = "")
+        //{
+        //    return await weekAssessmentRepository.GetWeekAssessmentsByTermAsync(term);
+        //}
     }
 
     
