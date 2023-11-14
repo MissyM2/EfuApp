@@ -22,7 +22,7 @@ public class TermEfCoreRepository : ITermRepository
             .ToListAsync();
     }
 
-    public async Task AddTermAsync(Term term)
+    public async Task AddTermAsync(Term term, string userId)
     {
         using var db = this.contextFactory.CreateDbContext();
 
@@ -42,7 +42,8 @@ public class TermEfCoreRepository : ITermRepository
                 LikedLeast = "",
                 LikedMost = "",
                 MostDifficult = "",
-                LeastDifficult = ""
+                LeastDifficult = "",
+                UserId = userId
             });
 
             await db.SaveChangesAsync();

@@ -4,6 +4,7 @@ using EfuApp.Plugins.EfCoreSqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
 {
     [DbContext(typeof(EfuAppContext))]
-    partial class EfuAppContextModelSnapshot : ModelSnapshot
+    [Migration("20231113202611_AddedDoneBy")]
+    partial class AddedDoneBy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,6 +152,10 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeekAssessmentId"));
 
+                    b.Property<string>("DoneBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LeastDifficult")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -167,10 +174,6 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
 
                     b.Property<int>("TermId")
                         .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("WeekNumber")
                         .HasColumnType("int");

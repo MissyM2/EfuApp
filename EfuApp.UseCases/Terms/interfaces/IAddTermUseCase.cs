@@ -4,6 +4,6 @@ namespace EfuApp.UseCases.Terms;
 
 public interface IAddTermUseCase
 {
-    Task ExecuteAsync(Term term);
+    Task ExecuteAsync(Term term, string userId);
 
 }

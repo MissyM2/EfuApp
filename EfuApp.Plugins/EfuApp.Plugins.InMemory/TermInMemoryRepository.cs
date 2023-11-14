@@ -25,7 +25,7 @@ public class TermInMemoryRepository : ITermRepository
         return _courses.Where(x => x.TermName.Contains(name, StringComparison.OrdinalIgnoreCase));
     }
 
-    public Task AddTermAsync(Term course)
+    public Task AddTermAsync(Term course, string userId)
     {
         if (_courses.Any(x => x.TermName.Equals(course.TermName, StringComparison.OrdinalIgnoreCase)))
             return Task.CompletedTask;

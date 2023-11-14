@@ -19,8 +19,8 @@ namespace EfuApp.CoreBusiness
         [Required]
         public int WeekNumber { get; set; }
 
-        //[Required]
-        //public string DoneBy { get; set; } = string.Empty;
+        [Required]
+        public string UserId { get; set; }
 
         public string LikedLeast { get; set; } = null!;
 

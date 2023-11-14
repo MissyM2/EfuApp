@@ -46,6 +46,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer
                 wa.LikedMost = weekAssessment.LikedMost;
                 wa.MostDifficult = weekAssessment.MostDifficult;
                 wa.LeastDifficult = weekAssessment.LeastDifficult;
+                wa.UserId = weekAssessment.UserId;
 
                 await db.SaveChangesAsync();
             }

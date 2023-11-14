@@ -40,7 +40,7 @@ public class TermSqliteRepository : ITermRepository
         return await this.database.Table<Term>().Where(x => x.TermName.Contains(name, StringComparison.OrdinalIgnoreCase)).ToListAsync();
     }
 
-    public async Task AddTermAsync(Term week)
+    public async Task AddTermAsync(Term week, string userId)
     {
         var existingItems = await this.database.Table<Term>().Where(x => x.TermName.Contains(week.TermName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
         if (existingItems.Count > 0 ) return;
