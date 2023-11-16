@@ -33,7 +33,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
         // this is a very basic identity implementation
         options.SignIn.RequireConfirmedEmail = false;
     })
-    .AddRoles<IdentityRole>()
+    //.AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AccountDbContext>();
 
 //builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
