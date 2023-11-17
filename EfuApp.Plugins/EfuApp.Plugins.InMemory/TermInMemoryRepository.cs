@@ -11,10 +11,10 @@ public class TermInMemoryRepository : ITermRepository
     {
         _courses = new List<Term>()
         {
-            new Term { TermId = 1, TermName = "Wi2023", TermDesc = "Winter, 2023"},
-            new Term { TermId = 2, TermName = "Sp2023", TermDesc = "Spring, 2023" },
-            new Term { TermId = 3, TermName = "Su2023", TermDesc = "Summer, 2023"},
-            new Term { TermId = 4, TermName = "Fa2023", TermDesc = "Fall, 2023" }
+            new Term { Id = 1, TermName = "Wi2023", TermDesc = "Winter, 2023"},
+            new Term { Id = 2, TermName = "Sp2023", TermDesc = "Spring, 2023" },
+            new Term { Id = 3, TermName = "Su2023", TermDesc = "Summer, 2023"},
+            new Term { Id = 4, TermName = "Fa2023", TermDesc = "Fall, 2023" }
         };
     }
 
@@ -30,8 +30,8 @@ public class TermInMemoryRepository : ITermRepository
         if (_courses.Any(x => x.TermName.Equals(course.TermName, StringComparison.OrdinalIgnoreCase)))
             return Task.CompletedTask;
         
-        var maxId = _courses.Max(x => x.TermId);
-        course.TermId = maxId + 1;
+        var maxId = _courses.Max(x => x.Id);
+        course.Id = maxId + 1;
 
         _courses.Add(course);
 
@@ -40,10 +40,10 @@ public class TermInMemoryRepository : ITermRepository
 
      public async Task<Term> GetTermByIdAsync(int courseId)
     {
-        var c = _courses.First(x => x.TermId == courseId);
+        var c = _courses.First(x => x.Id == courseId);
         var newTerm = new Term
         {
-            TermId = c.TermId,
+            Id = c.Id,
             TermName = c.TermName,
             TermDesc = c.TermDesc
         };
@@ -55,11 +55,11 @@ public class TermInMemoryRepository : ITermRepository
         {
 
             // we are not allowing two different courses to have the same name, so we have to check to make sure
-            if (_courses.Any(x => x.TermId != course.TermId &&
+            if (_courses.Any(x => x.Id != course.Id &&
                 x.TermName.Equals(course.TermName, StringComparison.OrdinalIgnoreCase)))
                 return Task.CompletedTask;
 
-            var crs = _courses.FirstOrDefault(x => x.TermId == course.TermId);
+            var crs = _courses.FirstOrDefault(x => x.Id == course.Id);
             if (crs != null)
             {
                 crs.TermName = course.TermName;

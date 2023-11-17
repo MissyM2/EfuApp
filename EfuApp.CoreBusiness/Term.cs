@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EfuApp.CoreBusiness.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace EfuApp.CoreBusiness;
 
-public class Term
-{
-    public int TermId { get; set; }
+public class Term : EntityBase
+{ 
 
     [Required]
     [StringLength(150)]

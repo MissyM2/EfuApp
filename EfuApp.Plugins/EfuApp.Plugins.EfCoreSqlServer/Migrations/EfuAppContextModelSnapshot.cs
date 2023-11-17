@@ -24,11 +24,12 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
 
             modelBuilder.Entity("EfuApp.CoreBusiness.Course", b =>
                 {
-                    b.Property<int>("CourseId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CourseId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CourseDesc")
                         .IsRequired()
@@ -54,7 +55,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CourseId");
+                    b.HasKey("Id");
 
                     b.HasIndex("TermId");
 
@@ -63,11 +64,12 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
 
             modelBuilder.Entity("EfuApp.CoreBusiness.Deliverable", b =>
                 {
-                    b.Property<int>("DeliverableId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("DeliverableId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DeliverableId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("AssignmentDate")
                         .HasColumnType("datetime2");
@@ -87,7 +89,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("DeliverableId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CourseId");
 
@@ -96,11 +98,12 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
 
             modelBuilder.Entity("EfuApp.CoreBusiness.Suggestion", b =>
                 {
-                    b.Property<int>("SuggestionId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("SuggestionId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SuggestionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("SuggestionDesc")
                         .IsRequired()
@@ -111,18 +114,19 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.HasKey("SuggestionId");
+                    b.HasKey("Id");
 
                     b.ToTable("Suggestions");
                 });
 
             modelBuilder.Entity("EfuApp.CoreBusiness.Term", b =>
                 {
-                    b.Property<int>("TermId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("TermId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TermId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("TermDesc")
                         .IsRequired()
@@ -136,18 +140,19 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                     b.Property<int>("TermWeekCount")
                         .HasColumnType("int");
 
-                    b.HasKey("TermId");
+                    b.HasKey("Id");
 
                     b.ToTable("Terms");
                 });
 
             modelBuilder.Entity("EfuApp.CoreBusiness.WeekAssessment", b =>
                 {
-                    b.Property<int>("WeekAssessmentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("WeekAssessmentId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeekAssessmentId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("LeastDifficult")
                         .IsRequired()
@@ -168,14 +173,10 @@ namespace EfuApp.Plugins.EfCoreSqlServer.Migrations
                     b.Property<int>("TermId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("WeekNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("WeekAssessmentId");
+                    b.HasKey("Id");
 
                     b.HasIndex("TermId");
 

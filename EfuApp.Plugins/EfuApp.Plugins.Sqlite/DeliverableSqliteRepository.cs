@@ -69,7 +69,7 @@ public class DeliverableSqliteRepository : IDeliverableRepository
      public async Task<Deliverable> GetDeliverableByIdAsync(int deliverableId)
     {
 
-        return await _dbConnection.Table<Deliverable>().Where(x => x.DeliverableId == deliverableId).FirstOrDefaultAsync();
+        return await _dbConnection.Table<Deliverable>().Where(x => x.Id == deliverableId).FirstOrDefaultAsync();
     }
 
      public async Task UpdateDeliverableAsync(Deliverable deliverable)
@@ -77,10 +77,10 @@ public class DeliverableSqliteRepository : IDeliverableRepository
 
             // we are not allowing two different deliverables to have the same name, so we have to check to make sure
 
-            var existingItems = await _dbConnection.Table<Deliverable>().Where(x => x.DeliverableId != deliverable.DeliverableId && x.DeliverableName.Contains(deliverable.DeliverableName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+            var existingItems = await _dbConnection.Table<Deliverable>().Where(x => x.Id != deliverable.Id && x.DeliverableName.Contains(deliverable.DeliverableName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
             if (existingItems.Count > 0 ) return;
 
-             var del = await _dbConnection.Table<Deliverable>().FirstOrDefaultAsync(x => x.DeliverableId == deliverable.DeliverableId);
+             var del = await _dbConnection.Table<Deliverable>().FirstOrDefaultAsync(x => x.Id == deliverable.Id);
             if (del != null)
             {
                 del.DeliverableName = deliverable.DeliverableName;

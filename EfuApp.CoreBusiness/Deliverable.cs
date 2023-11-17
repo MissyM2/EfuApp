@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EfuApp.CoreBusiness.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace EfuApp.CoreBusiness;
 
-public class Deliverable
+public class Deliverable : EntityBase
 {
-    public int DeliverableId { get; set; }
 
     [Required]
     public int CourseId { get; set; }

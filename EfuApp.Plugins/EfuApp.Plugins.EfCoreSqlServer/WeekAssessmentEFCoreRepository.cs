@@ -21,14 +21,14 @@ namespace EfuApp.Plugins.EfCoreSqlServer
             {
                 db.WeekAssessments.Add(new WeekAssessment
                 {
-                    TermId = term.TermId,
+                    Id = term.Id,
                     Term = term,
                     WeekNumber = i,
                     LikedLeast = "",
                     LikedMost = "",
                     MostDifficult = "",
                     LeastDifficult = "",
-                    UserId = userId
+                    //UserId = userId
                 });
 
                 await db.SaveChangesAsync();
@@ -53,7 +53,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer
         {
             using var db = this.contextFactory.CreateDbContext();
 
-            var wa = await db.WeekAssessments.FindAsync(weekAssessment.WeekAssessmentId);
+            var wa = await db.WeekAssessments.FindAsync(weekAssessment.Id);
             if (wa != null)
             {
                 wa.WeekNumber = weekAssessment.WeekNumber;
@@ -61,7 +61,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer
                 wa.LikedMost = weekAssessment.LikedMost;
                 wa.MostDifficult = weekAssessment.MostDifficult;
                 wa.LeastDifficult = weekAssessment.LeastDifficult;
-                wa.UserId = weekAssessment.UserId;
+                //wa.UserId = weekAssessment.UserId;
 
                 await db.SaveChangesAsync();
             }
@@ -86,7 +86,7 @@ namespace EfuApp.Plugins.EfCoreSqlServer
                 .Include(x => x.Term)
                 .ToListAsync();
 
-            return weekAssessmentList.Where(x => x.Term.TermId == trmId);
+            return weekAssessmentList.Where(x => x.Term.Id == trmId);
         }
 
         //public async Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermAsync(string trmName)

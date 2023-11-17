@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EfuApp.CoreBusiness.Base;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 namespace EfuApp.CoreBusiness;
 
-public class Course
+public class Course : EntityBase
 {
-    public int CourseId { get; set; }
 
     [Required]
     public int TermId { get; set; }

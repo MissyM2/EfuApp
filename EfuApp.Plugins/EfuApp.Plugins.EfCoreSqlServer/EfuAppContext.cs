@@ -19,33 +19,66 @@ public class EfuAppContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Term>()
-            .HasMany(t => t.WeekAssessments)
+        modelBuilder.Entity<Term>(entity =>
+        {
+            entity.HasMany(t => t.WeekAssessments)
             .WithOne(e => e.Term)
             .IsRequired();
 
-        modelBuilder.Entity<Term>()
-            .HasMany(t => t.Courses)
+            entity.HasMany(t => t.Courses)
             .WithOne(e => e.Term)
             .IsRequired();
 
+            entity.Property(nameof(Term.Id))
+            .HasColumnName("TermId");
 
-        modelBuilder.Entity<Deliverable>()
-            .HasOne(e => e.Course)
+        });
+
+        modelBuilder.Entity<Course>(entity =>
+        {
+            entity.Property(nameof(Course.Id))
+           .HasColumnName("CourseId");
+
+        });
+
+        modelBuilder.Entity<Deliverable>(entity =>
+        {
+            entity.HasOne(e => e.Course)
             .WithMany(e => e.Deliverables)
             .HasForeignKey(e => e.CourseId)
             .IsRequired();
+
+            entity.Property(nameof(Deliverable.Id))
+           .HasColumnName("DeliverableId");
+
+        });
+
+        modelBuilder.Entity<WeekAssessment>(entity =>
+        {
+            entity.Property(nameof(WeekAssessment.Id))
+           .HasColumnName("WeekAssessmentId");
+
+        });
+
+        modelBuilder.Entity<Suggestion>(entity =>
+        {
+            entity.Property(nameof(Suggestion.Id))
+           .HasColumnName("SuggestionId");
+        });
+
+
+
 
 
 
         //seeding data
 
         //modelBuilder.Entity<Term>().HasData(
-          // new Term { TermId = 1, TermName = "Wi2023", TermDesc = "Winter, 2023", TermWeekCount = 0 },
-            //new Term { TermId = 2, TermName = "Sp2023", TermDesc = "Spring, 2023", TermWeekCount = 12 },
-            //new Term { TermId = 3, TermName = "Su2023", TermDesc = "Summer, 2023", TermWeekCount = 9 },
-            //new Term { TermId = 4, TermName = "Fa2023", TermDesc = "Fall, 2023", TermWeekCount = 12 }
-      // );
+        // new Term { TermId = 1, TermName = "Wi2023", TermDesc = "Winter, 2023", TermWeekCount = 0 },
+        //new Term { TermId = 2, TermName = "Sp2023", TermDesc = "Spring, 2023", TermWeekCount = 12 },
+        //new Term { TermId = 3, TermName = "Su2023", TermDesc = "Summer, 2023", TermWeekCount = 9 },
+        //new Term { TermId = 4, TermName = "Fa2023", TermDesc = "Fall, 2023", TermWeekCount = 12 }
+        // );
 
         //modelBuilder.Entity<Course>().HasData(
         //    new Course { CourseId = 1, TermId = 1, CourseName = "English 101", CourseDesc = "A course on English"},
@@ -98,7 +131,7 @@ public class EfuAppContext : DbContext
 
         //);
 
-       
+
     }
 
 

@@ -39,7 +39,7 @@ public class TermEfCoreRepository : ITermRepository
         db.Terms.Add(term);
         await db.SaveChangesAsync();
 
-        int newTermId = term.TermId;
+        int newTermId = term.Id;
         int wkCount = term.TermWeekCount;
 
        
@@ -61,7 +61,7 @@ public class TermEfCoreRepository : ITermRepository
 
         var trm = await db.Terms
             .Include(x => x.WeekAssessments)
-            .FirstOrDefaultAsync(x => x.TermId == term.TermId);
+            .FirstOrDefaultAsync(x => x.Id == term.Id);
 
         if (trm != null)
         {

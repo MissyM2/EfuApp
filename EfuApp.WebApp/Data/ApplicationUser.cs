@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using EfuApp.CoreBusiness;
+using Microsoft.AspNetCore.Identity;
 
 namespace EfuApp.WebApp.Data
 {
@@ -12,5 +13,7 @@ namespace EfuApp.WebApp.Data
 
         [PersonalData]
         public DateTime DOB { get; set; }
+
+        public virtual ICollection<WeekAssessment> WeekAssessments { get; set; } = new List<WeekAssessment>();
     }
 }

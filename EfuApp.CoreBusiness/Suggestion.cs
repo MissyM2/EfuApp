@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EfuApp.CoreBusiness.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace EfuApp.CoreBusiness;
 
-public class Suggestion
+public class Suggestion : EntityBase
 {
-    public int SuggestionId { get; set; }
 
     [Required]
     [StringLength(150)]

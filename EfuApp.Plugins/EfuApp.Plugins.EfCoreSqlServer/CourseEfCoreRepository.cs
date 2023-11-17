@@ -50,7 +50,7 @@ public class CourseEFCoreRepository : ICourseRepository
     {
         using var db = this.contextFactory.CreateDbContext();
 
-        var crs = await db.Courses.FindAsync(course.CourseId);
+        var crs = await db.Courses.FindAsync(course.Id);
 
         if (crs != null)
         {

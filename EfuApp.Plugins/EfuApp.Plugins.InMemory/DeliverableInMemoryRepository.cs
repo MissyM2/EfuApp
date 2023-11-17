@@ -11,10 +11,10 @@ public class DeliverableInMemoryRepository : IDeliverableRepository
     {
         _deliverables = new List<Deliverable>()
         {
-            new Deliverable { DeliverableId = 1, DeliverableName = "English Essay", DeliverableDesc = "5 paragraphs", AssignmentDate = new DateTime(2023, 9, 15), DueDate = new DateTime(2023, 10, 15)},
-            new Deliverable { DeliverableId = 2, DeliverableName = "Sociology Term Paper", DeliverableDesc = "5 paragraphs", AssignmentDate = new DateTime(2023, 9, 1), DueDate = new DateTime(2023, 9, 29) },
-            new Deliverable { DeliverableId = 3, DeliverableName = "Psychology Study", DeliverableDesc = "5 pages; topic of your choice", AssignmentDate = new DateTime(2023, 9, 10), DueDate = new DateTime(2023, 9, 20)},
-            new Deliverable { DeliverableId = 4, DeliverableName = "Math Homework", DeliverableDesc = "2 worksheets", AssignmentDate = new DateTime(2023, 9, 20), DueDate = new DateTime(2023, 9, 21) }
+            new Deliverable { Id = 1, DeliverableName = "English Essay", DeliverableDesc = "5 paragraphs", AssignmentDate = new DateTime(2023, 9, 15), DueDate = new DateTime(2023, 10, 15)},
+            new Deliverable { Id = 2, DeliverableName = "Sociology Term Paper", DeliverableDesc = "5 paragraphs", AssignmentDate = new DateTime(2023, 9, 1), DueDate = new DateTime(2023, 9, 29) },
+            new Deliverable { Id = 3, DeliverableName = "Psychology Study", DeliverableDesc = "5 pages; topic of your choice", AssignmentDate = new DateTime(2023, 9, 10), DueDate = new DateTime(2023, 9, 20)},
+            new Deliverable { Id = 4, DeliverableName = "Math Homework", DeliverableDesc = "2 worksheets", AssignmentDate = new DateTime(2023, 9, 20), DueDate = new DateTime(2023, 9, 21) }
         };
     }
 
@@ -30,8 +30,8 @@ public class DeliverableInMemoryRepository : IDeliverableRepository
         if (_deliverables.Any(x => x.DeliverableName.Equals(deliverable.DeliverableName, StringComparison.OrdinalIgnoreCase)))
             return Task.CompletedTask;
         
-        var maxId = _deliverables.Max(x => x.DeliverableId);
-        deliverable.DeliverableId = maxId + 1;
+        var maxId = _deliverables.Max(x => x.Id);
+        deliverable.Id = maxId + 1;
 
         _deliverables.Add(deliverable);
 
@@ -40,10 +40,10 @@ public class DeliverableInMemoryRepository : IDeliverableRepository
 
      public async Task<Deliverable> GetDeliverableByIdAsync(int deliverableId)
     {
-        var c = _deliverables.First(x => x.DeliverableId == deliverableId);
+        var c = _deliverables.First(x => x.Id == deliverableId);
         var newDeliverable = new Deliverable
         {
-            DeliverableId = c.DeliverableId,
+            Id = c.Id,
             DeliverableName = c.DeliverableName,
             DeliverableDesc = c.DeliverableDesc,
             AssignmentDate = c.AssignmentDate,
@@ -57,11 +57,11 @@ public class DeliverableInMemoryRepository : IDeliverableRepository
         {
 
             // we are not allowing two different deliverables to have the same name, so we have to check to make sure
-            if (_deliverables.Any(x => x.DeliverableId != deliverable.DeliverableId &&
+            if (_deliverables.Any(x => x.Id != deliverable.Id &&
                 x.DeliverableName.Equals(deliverable.DeliverableName, StringComparison.OrdinalIgnoreCase)))
                 return Task.CompletedTask;
 
-            var del = _deliverables.FirstOrDefault(x => x.DeliverableId == deliverable.DeliverableId);
+            var del = _deliverables.FirstOrDefault(x => x.Id == deliverable.Id);
             if (del != null)
             {
                 del.DeliverableName = deliverable.DeliverableName;

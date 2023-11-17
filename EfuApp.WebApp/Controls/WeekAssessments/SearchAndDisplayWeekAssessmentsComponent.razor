@@ -7,7 +7,7 @@
         <ul>
             @foreach(var wk in _weekAssessments)
             {
-                <li @key="wk.WeekAssessmentId" 
+                <li @key="wk.Id" 
                     @onclick="@(async () => { await OnSelectWeekAssessment(wk);})">
                     @wk.WeekNumber
                 </li>
