@@ -101,12 +101,6 @@
 <br />
 
 @code {
-
-    private AuthenticationState authenticationState;
-
-    [CascadingParameter]
-    private Task<AuthenticationState> authenticationStateTask { get; set; }
-
     private int crsId = 0;
 
     string selectedTrm = string.Empty;
@@ -120,8 +114,6 @@
 
     protected async override Task OnInitializedAsync()
     {
-        authenticationState = await authenticationStateTask;
-
         listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
         listCourses = (await ViewCoursesByNameUseCase.ExecuteAsync("")).ToList();
 

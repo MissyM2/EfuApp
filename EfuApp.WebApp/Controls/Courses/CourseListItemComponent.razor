@@ -8,8 +8,8 @@
                 <td class="col page-subtitle">@c.CourseName</td>
                 <td class="col page-subtitle">@c.CourseDesc</td>
                 <td class="col page-subtitle">
-                    <button type="button" class="btn btn-light page-subtitle" @onclick="@(() => EditCourse(c.Id))">Edit</button>
-                    <a class="btn btn-primary page-subtitle" @onclick="@(() => ViewDeliverables(c.Id))"> <span class="oi oi-book" aria-hidden="true"></span> Deliverables </a>
+                    <button type="button" class="btn btn-light page-subtitle" @onclick="@(() => EditCourse(c.CourseId))">Edit</button>
+                    <a class="btn btn-primary page-subtitle" @onclick="@(() => ViewDeliverables(c.CourseId))"> <span class="oi oi-book" aria-hidden="true"></span> Deliverables </a>
                 </td>
             </tr>
         }

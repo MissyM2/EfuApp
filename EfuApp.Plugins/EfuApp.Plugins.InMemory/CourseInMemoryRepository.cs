@@ -11,10 +11,10 @@ public class CourseInMemoryRepository : ICourseRepository
     {
         _courses = new List<Course>()
         {
-            new Course { Id = 1, CourseName = "English 101", CourseDesc = "A course on English"},
-            new Course { Id = 2, CourseName = "Math 101", CourseDesc = "A course on Math" },
-            new Course { Id = 3, CourseName = "Psych 101", CourseDesc = "A course on Psychology"},
-            new Course { Id = 4, CourseName = "Soc 101", CourseDesc = "A course on Sociology" }
+            new Course { CourseId = 1, CourseName = "English 101", CourseDesc = "A course on English"},
+            new Course { CourseId = 2, CourseName = "Math 101", CourseDesc = "A course on Math" },
+            new Course { CourseId = 3, CourseName = "Psych 101", CourseDesc = "A course on Psychology"},
+            new Course { CourseId = 4, CourseName = "Soc 101", CourseDesc = "A course on Sociology" }
         };
     }
 
@@ -30,8 +30,8 @@ public class CourseInMemoryRepository : ICourseRepository
         if (_courses.Any(x => x.CourseName.Equals(course.CourseName, StringComparison.OrdinalIgnoreCase)))
             return Task.CompletedTask;
         
-        var maxId = _courses.Max(x => x.Id);
-        course.Id = maxId + 1;
+        var maxId = _courses.Max(x => x.CourseId);
+        course.CourseId = maxId + 1;
 
         _courses.Add(course);
 
@@ -40,10 +40,10 @@ public class CourseInMemoryRepository : ICourseRepository
 
      public async Task<Course> GetCourseByIdAsync(int courseId)
     {
-        var c = _courses.First(x => x.Id == courseId);
+        var c = _courses.First(x => x.CourseId == courseId);
         var newCourse = new Course
         {
-            Id = c.Id,
+            CourseId = c.CourseId,
             CourseName = c.CourseName,
             CourseDesc = c.CourseDesc
         };
@@ -55,11 +55,11 @@ public class CourseInMemoryRepository : ICourseRepository
         {
 
             // we are not allowing two different courses to have the same name, so we have to check to make sure
-            if (_courses.Any(x => x.Id != course.Id &&
+            if (_courses.Any(x => x.CourseId != course.CourseId &&
                 x.CourseName.Equals(course.CourseName, StringComparison.OrdinalIgnoreCase)))
                 return Task.CompletedTask;
 
-            var crs = _courses.FirstOrDefault(x => x.Id == course.Id);
+            var crs = _courses.FirstOrDefault(x => x.CourseId == course.CourseId);
             if (crs != null)
             {
                 crs.CourseName = course.CourseName;

@@ -32,11 +32,6 @@
         <InputText id="leastdifficult" @bind-Value="weekAssessment.LeastDifficult" class="form-control"></InputText>
     </div>
 
-   @*  <div class="form-group">
-        <label for="userid">Student User</label>
-        <InputText id="leastdifficult" @bind-Value="weekAssessment.UserId" class="form-control"></InputText>
-    </div> *@
-
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
@@ -44,20 +39,12 @@
 
 
 @code {
-
-    private AuthenticationState? authenticationState;
-
-    [CascadingParameter]
-    private Task<AuthenticationState>? authenticationStateTask { get; set; }
-
-
     [Parameter]
     public int WaId { get; set; }
 
     private WeekAssessment weekAssessment = new WeekAssessment();
     private List<Term> listTerms = new List<Term>();
     private List<Course> listCourses = new List<Course>();
-
 
     protected override async Task OnInitializedAsync()
     {

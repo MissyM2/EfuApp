@@ -50,7 +50,7 @@ public class SuggestionSqliteRepository : ISuggestionRepository
 
      public async Task<Suggestion> GetSuggestionByIdAsync(int suggestionId)
     {
-       return await this.database.Table<Suggestion>().Where(x => x.Id == suggestionId).FirstOrDefaultAsync();
+       return await this.database.Table<Suggestion>().Where(x => x.SuggestionId == suggestionId).FirstOrDefaultAsync();
 
     }
 
@@ -59,10 +59,10 @@ public class SuggestionSqliteRepository : ISuggestionRepository
 
              // we are not allowing two different suggestions to have the same name, so we have to check to make sure
 
-            var existingItems = await this.database.Table<Suggestion>().Where(x => x.Id != suggestion.Id && x.SuggestionName.Contains(suggestion.SuggestionName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+            var existingItems = await this.database.Table<Suggestion>().Where(x => x.SuggestionId != suggestion.SuggestionId && x.SuggestionName.Contains(suggestion.SuggestionName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
             if (existingItems.Count > 0 ) return;
 
-             var sug = await this.database.Table<Suggestion>().FirstOrDefaultAsync(x => x.Id == suggestion.Id);
+             var sug = await this.database.Table<Suggestion>().FirstOrDefaultAsync(x => x.SuggestionId == suggestion.SuggestionId);
             if (sug != null)
             {
                 sug.SuggestionName = suggestion.SuggestionName;

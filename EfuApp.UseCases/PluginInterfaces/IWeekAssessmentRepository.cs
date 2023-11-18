@@ -4,9 +4,9 @@ namespace EfuApp.UseCases.PluginInterfaces
 {
     public interface IWeekAssessmentRepository
     {
-        Task AddWeekAssessmentsAsync(Term term, int wkCount, string userId);
+        Task AddWeekAssessmentAsync(WeekAssessment weekAssessment);
         Task UpdateWeekAssessmentAsync(WeekAssessment weekAssessment);
-        Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermAsync(int trmId);
+        Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByTermAsync(string trmName);
         Task<WeekAssessment> GetWeekAssessmentByIdAsync(int weekAssessmentId);
         Task<IEnumerable<WeekAssessment>> GetWeekAssessmentsByWeekNumberAsync();
 

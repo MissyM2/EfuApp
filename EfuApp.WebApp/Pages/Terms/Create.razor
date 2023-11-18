@@ -39,32 +39,11 @@
 </EditForm>
 
 @code {
-
-
-    private AuthenticationState? authenticationState;
-
-    [CascadingParameter]
-    private Task<AuthenticationState>? authenticationStateTask { get; set; }
-
-
-
     private Term term = new Term();
-
-    protected override async Task OnInitializedAsync()
-    {
-        if (authenticationStateTask != null)
-            authenticationState = await authenticationStateTask;
-        var user = authenticationState?.User;
-        var name = user?.Identity?.Name;
-    }
-
 
     private async Task SaveTerm()
     {
-        var user = authenticationState?.User?.Claims?.FirstOrDefault()?.Value;
-
-        if (user != null)
-            await AddTermUseCase.ExecuteAsync(term, user );
+        await AddTermUseCase.ExecuteAsync(term);
         NavManager.NavigateTo("/terms/list");
     }
 

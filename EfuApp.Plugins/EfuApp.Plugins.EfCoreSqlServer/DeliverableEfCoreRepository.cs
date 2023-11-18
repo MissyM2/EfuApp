@@ -54,7 +54,7 @@ public class DeliverableEfCoreRepository : IDeliverableRepository
     {
         using var db = this.contextFactory.CreateDbContext();
 
-        var del = await db.Deliverables.FindAsync(deliverable.Id);
+        var del = await db.Deliverables.FindAsync(deliverable.DeliverableId);
         if (del != null)
         {
             del.DeliverableName = deliverable.DeliverableName;

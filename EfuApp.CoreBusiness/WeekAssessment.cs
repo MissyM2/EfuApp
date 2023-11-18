@@ -1,5 +1,4 @@
-﻿using EfuApp.CoreBusiness.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace EfuApp.CoreBusiness
 {
-    public class WeekAssessment : EntityBase
+    public class WeekAssessment
     {
+        public int WeekAssessmentId { get; set; }
 
         [Required]
         public int TermId { get; set; }
@@ -19,6 +19,8 @@ namespace EfuApp.CoreBusiness
         [Required]
         public int WeekNumber { get; set; }
 
+        //[Required]
+        //public string DoneBy { get; set; } = string.Empty;
 
         public string LikedLeast { get; set; } = null!;
 

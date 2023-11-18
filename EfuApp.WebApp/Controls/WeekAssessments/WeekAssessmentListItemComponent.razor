@@ -18,11 +18,8 @@
         <td class="col page-subtitle">
             @wa.LeastDifficult
         </td>
-        @* <td class="col page-subtitle">
-            @wa.UserId
-        </td> *@
         <td class="col page-subtitle">
-            <button type="button" class="btn btn-light page-subtitle" @onclick="@(() => EditWeekAssessment(wa.Id))">Edit</button>
+            <button type="button" class="btn btn-light page-subtitle" @onclick="@(() => EditWeekAssessment(wa.WeekAssessmentId))">Edit</button>
         </td>
     </tr>
 }

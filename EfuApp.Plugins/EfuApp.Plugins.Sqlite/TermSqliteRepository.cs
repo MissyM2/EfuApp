@@ -40,7 +40,7 @@ public class TermSqliteRepository : ITermRepository
         return await this.database.Table<Term>().Where(x => x.TermName.Contains(name, StringComparison.OrdinalIgnoreCase)).ToListAsync();
     }
 
-    public async Task AddTermAsync(Term week, string userId)
+    public async Task AddTermAsync(Term week)
     {
         var existingItems = await this.database.Table<Term>().Where(x => x.TermName.Contains(week.TermName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
         if (existingItems.Count > 0 ) return;
@@ -50,7 +50,7 @@ public class TermSqliteRepository : ITermRepository
 
      public async Task<Term> GetTermByIdAsync(int weekId)
     {
-        return await this.database.Table<Term>().Where(x => x.Id == weekId).FirstOrDefaultAsync();
+        return await this.database.Table<Term>().Where(x => x.TermId == weekId).FirstOrDefaultAsync();
     }
 
       public async Task UpdateTermAsync(Term week)
@@ -58,10 +58,10 @@ public class TermSqliteRepository : ITermRepository
 
         // we are not allowing two different weeks to have the same name, so we have to check to make sure
 
-        var existingItems = await this.database.Table<Term>().Where(x => x.Id != week.Id && x.TermName.Contains(week.TermName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+        var existingItems = await this.database.Table<Term>().Where(x => x.TermId != week.TermId && x.TermName.Contains(week.TermName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
         if (existingItems.Count > 0 ) return;
 
-        var trm = await this.database.Table<Term>().FirstOrDefaultAsync(x => x.Id == week.Id);
+        var trm = await this.database.Table<Term>().FirstOrDefaultAsync(x => x.TermId == week.TermId);
         if (trm != null)
         {
             trm.TermName = week.TermName;
@@ -69,8 +69,4 @@ public class TermSqliteRepository : ITermRepository
         }
     }
 
-    public Task<Term> GetTermByNameAsync(string trmName)
-    {
-        throw new NotImplementedException();
-    }
 }

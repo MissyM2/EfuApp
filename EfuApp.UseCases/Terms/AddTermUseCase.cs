@@ -12,9 +12,9 @@ public class AddTermUseCase : IAddTermUseCase
         this.termRepository = termRepository;
     }
 
-    public async Task ExecuteAsync(Term term, string userId)
+    public async Task ExecuteAsync(Term term)
     {
-        await this.termRepository.AddTermAsync(term, userId);
+        await this.termRepository.AddTermAsync(term);
     }
 
 }

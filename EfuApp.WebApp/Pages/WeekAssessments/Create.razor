@@ -1,0 +1,44 @@
+﻿@page "/weekAssessments/create"
+@inject NavigationManager NavManager
+@inject IAddWeekAssessmentUseCase AddWeekAssessmentUseCase
+@inject IViewTermsByNameUseCase ViewTermsByNameUseCase
+
+<h3>Add WeekAssessment</h3>
+<br />
+<EditForm Model="weekAssessment" OnValidSubmit="SaveWeekAssessment">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <div class="form-group">
+        <label for="wknumber">WeekAssessment Number</label>
+        <InputNumber id="wknumber"
+                   @bind-Value="weekAssessment.WeekNumber"
+                   class="form-control">
+        </InputNumber>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@code {
+    private WeekAssessment weekAssessment = new WeekAssessment();
+    private List<Term> listTerms = new List<Term>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listTerms = (await ViewTermsByNameUseCase.ExecuteAsync("")).ToList();
+    }
+
+    private async Task SaveWeekAssessment()
+    {
+        await AddWeekAssessmentUseCase.ExecuteAsync(weekAssessment);
+        NavManager.NavigateTo("/weekAssessments/list");
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/weekAssessments/list");
+    }
+}

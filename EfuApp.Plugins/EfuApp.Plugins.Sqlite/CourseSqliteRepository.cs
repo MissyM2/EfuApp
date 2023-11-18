@@ -41,10 +41,10 @@ public class CourseSqliteRepository : ICourseRepository
 
     void AddCourseSeedData()
     {
-        var item1 = new Course { Id = 1, CourseName = "English 101", CourseDesc = "A course on English"};
-        var item2 = new Course { Id = 2, CourseName = "Math 101", CourseDesc = "A course on Math" };
-        var item3 = new Course { Id = 3, CourseName = "Psych 101", CourseDesc = "A course on Psychology"};
-        var item4 = new Course { Id = 4, CourseName = "Soc 101", CourseDesc = "A course on Sociology" };
+        var item1 = new Course { CourseName = "English 101", CourseDesc = "A course on English"};
+        var item2 = new Course { CourseName = "Math 101", CourseDesc = "A course on Math" };
+        var item3 = new Course { CourseId = 3, CourseName = "Psych 101", CourseDesc = "A course on Psychology"};
+        var item4 = new Course { CourseName = "Soc 101", CourseDesc = "A course on Sociology" };
 
         _dbConnection.InsertAsync(item1);
         _dbConnection.InsertAsync(item2);
@@ -75,7 +75,7 @@ public class CourseSqliteRepository : ICourseRepository
      public async Task<Course> GetCourseByIdAsync(int courseId)
     {
 
-        return await _dbConnection.Table<Course>().Where(x => x.Id == courseId).FirstOrDefaultAsync();
+        return await _dbConnection.Table<Course>().Where(x => x.CourseId == courseId).FirstOrDefaultAsync();
     }
 
      public async Task UpdateCourseAsync(Course course)
@@ -83,10 +83,10 @@ public class CourseSqliteRepository : ICourseRepository
 
         // we are not allowing two different courses to have the same name, so we have to check to make sure
 
-        var existingItems = await _dbConnection.Table<Course>().Where(x => x.Id != course.Id && x.CourseName.Contains(course.CourseName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+        var existingItems = await _dbConnection.Table<Course>().Where(x => x.CourseId != course.CourseId && x.CourseName.Contains(course.CourseName, StringComparison.OrdinalIgnoreCase)).ToListAsync();
         if (existingItems.Count > 0 ) return;
 
-            var crs = await _dbConnection.Table<Course>().FirstOrDefaultAsync(x => x.Id == course.Id);
+            var crs = await _dbConnection.Table<Course>().FirstOrDefaultAsync(x => x.CourseId == course.CourseId);
         if (crs != null)
         {
             crs.CourseName = course.CourseName;

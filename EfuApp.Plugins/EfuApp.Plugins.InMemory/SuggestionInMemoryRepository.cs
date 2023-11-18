@@ -11,10 +11,10 @@ public class SuggestionInMemoryRepository : ISuggestionRepository
     {
         _courses = new List<Suggestion>()
         {
-            new Suggestion { Id = 1, SuggestionName = "Suggestion1", SuggestionDesc = "Read a book."},
-            new Suggestion { Id = 2, SuggestionName = "Suggestion2", SuggestionDesc = "Make a list." },
-            new Suggestion { Id = 3, SuggestionName = "Suggestion3", SuggestionDesc = "Take notes."},
-            new Suggestion { Id = 4, SuggestionName = "Suggestion4", SuggestionDesc = "Start early." }
+            new Suggestion { SuggestionId = 1, SuggestionName = "Suggestion1", SuggestionDesc = "Read a book."},
+            new Suggestion { SuggestionId = 2, SuggestionName = "Suggestion2", SuggestionDesc = "Make a list." },
+            new Suggestion { SuggestionId = 3, SuggestionName = "Suggestion3", SuggestionDesc = "Take notes."},
+            new Suggestion { SuggestionId = 4, SuggestionName = "Suggestion4", SuggestionDesc = "Start early." }
         };
     }
 
@@ -30,8 +30,8 @@ public class SuggestionInMemoryRepository : ISuggestionRepository
         if (_courses.Any(x => x.SuggestionName.Equals(course.SuggestionName, StringComparison.OrdinalIgnoreCase)))
             return Task.CompletedTask;
         
-        var maxId = _courses.Max(x => x.Id);
-        course.Id = maxId + 1;
+        var maxId = _courses.Max(x => x.SuggestionId);
+        course.SuggestionId = maxId + 1;
 
         _courses.Add(course);
 
@@ -40,10 +40,10 @@ public class SuggestionInMemoryRepository : ISuggestionRepository
 
      public async Task<Suggestion> GetSuggestionByIdAsync(int courseId)
     {
-        var c = _courses.First(x => x.Id == courseId);
+        var c = _courses.First(x => x.SuggestionId == courseId);
         var newSuggestion = new Suggestion
         {
-            Id = c.Id,
+            SuggestionId = c.SuggestionId,
             SuggestionName = c.SuggestionName,
             SuggestionDesc = c.SuggestionDesc
         };
@@ -55,11 +55,11 @@ public class SuggestionInMemoryRepository : ISuggestionRepository
         {
 
             // we are not allowing two different courses to have the same name, so we have to check to make sure
-            if (_courses.Any(x => x.Id != course.Id &&
+            if (_courses.Any(x => x.SuggestionId != course.SuggestionId &&
                 x.SuggestionName.Equals(course.SuggestionName, StringComparison.OrdinalIgnoreCase)))
                 return Task.CompletedTask;
 
-            var crs = _courses.FirstOrDefault(x => x.Id == course.Id);
+            var crs = _courses.FirstOrDefault(x => x.SuggestionId == course.SuggestionId);
             if (crs != null)
             {
                 crs.SuggestionName = course.SuggestionName;

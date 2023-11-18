@@ -43,7 +43,7 @@ public class SuggestionEfCoreRepository : ISuggestionRepository
     {
         using var db = this.contextFactory.CreateDbContext();
 
-        var sug = await db.Suggestions.FindAsync(suggestion.Id);
+        var sug = await db.Suggestions.FindAsync(suggestion.SuggestionId);
         if (sug != null)
         {
             sug.SuggestionName = suggestion.SuggestionName;

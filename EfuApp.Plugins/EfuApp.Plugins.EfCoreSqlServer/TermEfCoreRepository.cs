@@ -22,27 +22,31 @@ public class TermEfCoreRepository : ITermRepository
             .ToListAsync();
     }
 
-    public async Task<Term> GetTermByNameAsync(string trmName)
-    {
-        using var db = this.contextFactory.CreateDbContext();
-
-        var trm = await db.Terms.FindAsync(trmName);
-        if (trm != null) return trm;
-
-        return new Term();
-    }
-
-    public async Task AddTermAsync(Term term, string userId)
+    public async Task AddTermAsync(Term term)
     {
         using var db = this.contextFactory.CreateDbContext();
 
         db.Terms.Add(term);
         await db.SaveChangesAsync();
 
-        int newTermId = term.Id;
+        int newTermId = term.TermId;
         int wkCount = term.TermWeekCount;
 
-       
+        for (int i = 1; i <= term.TermWeekCount; i++)
+        {
+            db.WeekAssessments.Add(new WeekAssessment
+            {
+                TermId = term.TermId,
+                Term = term,
+                WeekNumber = i,
+                LikedLeast = "",
+                LikedMost = "",
+                MostDifficult = "",
+                LeastDifficult = ""
+            });
+
+            await db.SaveChangesAsync();
+        }
     }
 
     public async Task<Term> GetTermByIdAsync(int termId)
@@ -61,7 +65,7 @@ public class TermEfCoreRepository : ITermRepository
 
         var trm = await db.Terms
             .Include(x => x.WeekAssessments)
-            .FirstOrDefaultAsync(x => x.Id == term.Id);
+            .FirstOrDefaultAsync(x => x.TermId == term.TermId);
 
         if (trm != null)
         {

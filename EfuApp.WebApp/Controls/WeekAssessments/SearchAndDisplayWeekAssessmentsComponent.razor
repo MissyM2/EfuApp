@@ -7,7 +7,7 @@
         <ul>
             @foreach(var wk in _weekAssessments)
             {
-                <li @key="wk.Id" 
+                <li @key="wk.WeekAssessmentId" 
                     @onclick="@(async () => { await OnSelectWeekAssessment(wk);})">
                     @wk.WeekNumber
                 </li>
@@ -23,9 +23,9 @@
     [Parameter]
     public EventCallback<WeekAssessment> OnWeekAssessmentSelected { get; set; }
 
-    private async Task OnSearchWeekAssessmentList(int termId)
+    private async Task OnSearchWeekAssessmentList(string searchTerm)
     {
-        _weekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(termId)).ToList();
+        _weekAssessments = (await ViewWeekAssessmentsByTermUseCase.ExecuteAsync(searchTerm)).ToList();
     }
 
     private async Task OnSelectWeekAssessment(WeekAssessment weekAssessment)
